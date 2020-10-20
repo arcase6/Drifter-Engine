@@ -12,12 +12,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Drifter\Application.cpp" />
+    <ClCompile Include="src\Drifter\Log.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Drifter\Application.h" />
     <ClInclude Include="src\Drifter\Core.h" />
     <ClInclude Include="src\Drifter.h" />
     <ClInclude Include="src\Drifter\EntryPoint.h" />
+    <ClInclude Include="src\Drifter\Log.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -65,8 +67,9 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>DF_PLATFORM_WINDOWS;DRIFTER_BUILD_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DF_CORE;DF_PLATFORM_WINDOWS;DRIFTER_BUILD_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)/vendors/spdlogger/include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -79,8 +82,9 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>DF_PLATFORM_WINDOWS;DRIFTER_BUILD_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DF_CORE;DF_PLATFORM_WINDOWS;DRIFTER_BUILD_DLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(SolutionDir)/vendors/spdlogger/include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
