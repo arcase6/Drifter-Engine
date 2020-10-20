@@ -1,5 +1,4 @@
 #include <Drifter.h>
-#include <stdio.h>
 class SandboxApplication : public Drifter::Application
 {
 public:
@@ -9,6 +8,6 @@ public:
 
 
 Drifter::Application* Drifter::CreateApplication() {
-	printf("Creating Application\n");
+	DF_LOG_INFO("Creating Application\n");
 	return new SandboxApplication();
 }
