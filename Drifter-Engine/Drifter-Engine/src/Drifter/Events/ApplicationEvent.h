@@ -2,8 +2,6 @@
 
 #include "Event.h"
 
-#include <sstream>
-
 namespace Drifter {
 	class DRIFTER_API WindowResizeEvent : public Event
 	{

@@ -1,3 +1,5 @@
+#include "dfpch.h"
+
 #include "Application.h"
 #include <stdio.h>
 #include "Log.h"

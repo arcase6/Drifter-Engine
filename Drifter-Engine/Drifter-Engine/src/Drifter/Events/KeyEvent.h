@@ -2,8 +2,6 @@
 
 #include <Drifter/Events/Event.h>
 
-#include <sstream>
-
 namespace Drifter {
 	class DRIFTER_API KeyEvent : public Event
 	{

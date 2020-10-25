@@ -28,6 +28,7 @@
     <ClInclude Include="src\Drifter\Events\KeyEvent.h" />
     <ClInclude Include="src\Drifter\Events\MouseEvent.h" />
     <ClInclude Include="src\Drifter\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\dfpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Drifter\Application.cpp">
@@ -36,6 +37,7 @@
     <ClCompile Include="src\Drifter\Log.cpp">
       <Filter>Drifter</Filter>
     </ClCompile>
+    <ClCompile Include="src\dfpch.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

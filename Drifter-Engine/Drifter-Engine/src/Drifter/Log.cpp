@@ -1,3 +1,5 @@
+#include "dfpch.h"
+
 #include "Log.h"
 
 namespace Drifter {
