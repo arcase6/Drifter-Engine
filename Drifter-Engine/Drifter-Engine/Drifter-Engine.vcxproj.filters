@@ -19,15 +19,21 @@
     <ClInclude Include="src\Drifter\EntryPoint.h">
       <Filter>Drifter</Filter>
     </ClInclude>
+    <ClInclude Include="src\Drifter\Events\ApplicationEvent.h">
+      <Filter>Drifter\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\Drifter\Events\Event.h">
+      <Filter>Drifter\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Events\KeyEvent.h">
+      <Filter>Drifter\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Events\MouseEvent.h">
       <Filter>Drifter\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Drifter\Log.h">
       <Filter>Drifter</Filter>
     </ClInclude>
-    <ClInclude Include="src\Drifter\Events\KeyEvent.h" />
-    <ClInclude Include="src\Drifter\Events\MouseEvent.h" />
-    <ClInclude Include="src\Drifter\Events\ApplicationEvent.h" />
     <ClInclude Include="src\dfpch.h" />
   </ItemGroup>
   <ItemGroup>
@@ -38,8 +44,5 @@
       <Filter>Drifter</Filter>
     </ClCompile>
     <ClCompile Include="src\dfpch.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

@@ -5,6 +5,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sandbox", "Sandbox\Sandbox.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Drifter-Engine", "Drifter-Engine\Drifter-Engine.vcxproj", "{389EAD88-246C-A18E-0D00-12B5F96C7DF3}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "glfw", "vendors\glfw\glfw.vcxproj", "{9563977C-819A-980D-2A87-7E10169D140F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -24,6 +26,12 @@ Global
 		{389EAD88-246C-A18E-0D00-12B5F96C7DF3}.Dist|x64.Build.0 = Dist|x64
 		{389EAD88-246C-A18E-0D00-12B5F96C7DF3}.Release|x64.ActiveCfg = Release|x64
 		{389EAD88-246C-A18E-0D00-12B5F96C7DF3}.Release|x64.Build.0 = Release|x64
+		{9563977C-819A-980D-2A87-7E10169D140F}.Debug|x64.ActiveCfg = Debug|x64
+		{9563977C-819A-980D-2A87-7E10169D140F}.Debug|x64.Build.0 = Debug|x64
+		{9563977C-819A-980D-2A87-7E10169D140F}.Dist|x64.ActiveCfg = Dist|x64
+		{9563977C-819A-980D-2A87-7E10169D140F}.Dist|x64.Build.0 = Dist|x64
+		{9563977C-819A-980D-2A87-7E10169D140F}.Release|x64.ActiveCfg = Release|x64
+		{9563977C-819A-980D-2A87-7E10169D140F}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

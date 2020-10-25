@@ -1,3 +1,6 @@
 [submodule "Drifter-Engine/vendors/spdlogger"]
 	path = Drifter-Engine/vendors/spdlogger
 	url = https://github.com/gabime/spdlog
+[submodule "Drifter-Engine/vendors/glfw"]
+	path = Drifter-Engine/vendors/glfw
+	url = https://github.com/arcase6/glfw

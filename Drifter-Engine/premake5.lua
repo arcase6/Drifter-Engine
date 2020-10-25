@@ -11,6 +11,11 @@ workspace "Drifter-Engine"
 
 	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+	IncludeDir = {}
+	IncludeDir["glfw"] = "%{wks.location}/Drifter-Engine/vendors/glfw/include"
+
+	include "/vendors/glfw"
+
 project "Drifter-Engine"
 	location "Drifter-Engine"
 	kind "SharedLib"
@@ -27,7 +32,13 @@ project "Drifter-Engine"
 
 	includedirs{
 		"%{prj.name}/src",
-		"vendors/spdlogger/include"
+		"vendors/spdlogger/include",
+		"%{IncludeDir.glfw}",
+	}
+
+	links{
+		"glfw",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
