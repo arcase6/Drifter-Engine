@@ -26,6 +26,7 @@ project "Drifter-Engine"
 	}
 
 	includedirs{
+		"%{prj.name}/src",
 		"vendors/spdlogger/include"
 	}
 

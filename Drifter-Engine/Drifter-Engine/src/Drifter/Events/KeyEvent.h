@@ -1,0 +1,55 @@
+#pragma once
+
+#include <Drifter/Events/Event.h>
+
+#include <sstream>
+
+namespace Drifter {
+	class DRIFTER_API KeyEvent : public Event
+	{
+	public:
+		inline int GetKeyCode() const { return m_keyCode; }
+		EVENT_CLASS_CATEGORY(EventCategory::EventCategoryInput | EventCategory::EventCategoryKeyboard)
+	protected:
+		KeyEvent(int keyCode) : m_keyCode(keyCode) {}
+		int m_keyCode;
+	};
+
+	class DRIFTER_API KeyPressedEvent : public KeyEvent
+	{
+	public:
+		KeyPressedEvent(int keyCode, int repeatedCount):
+			KeyEvent(keyCode),
+			m_repeatCount(repeatedCount)
+		{}
+
+		inline int GetRepeatCount() const { return m_repeatCount; }
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "KeyPressedEvent: " << m_keyCode << " (" << m_repeatCount << " repeats)";
+			return ss.str();
+		}
+		
+		EVENT_CLASS_TYPE(KeyPressed)
+	private:
+		int m_repeatCount;
+	};
+
+	class DRIFTER_API KeyReleasedEvent : public KeyEvent
+	{
+	public:
+		KeyReleasedEvent(int keyCode) :
+			KeyEvent(keyCode)
+		{}
+
+		std::string ToString() const override
+		{
+			std::stringstream ss;
+			ss << "KeyPressedEvent: " << m_keyCode;
+			return ss.str();
+		}
+
+		EVENT_CLASS_TYPE(KeyReleased)
+	};
+}

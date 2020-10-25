@@ -4,6 +4,9 @@
     <Filter Include="Drifter">
       <UniqueIdentifier>{D5CEC987-41AE-4823-4AC6-D3F9B624AF84}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Drifter\Events">
+      <UniqueIdentifier>{19D93123-05A7-2529-EE3A-964FDAA7018E}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Drifter.h" />
@@ -16,9 +19,15 @@
     <ClInclude Include="src\Drifter\EntryPoint.h">
       <Filter>Drifter</Filter>
     </ClInclude>
+    <ClInclude Include="src\Drifter\Events\Event.h">
+      <Filter>Drifter\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\Drifter\Log.h">
       <Filter>Drifter</Filter>
     </ClInclude>
+    <ClInclude Include="src\Drifter\Events\KeyEvent.h" />
+    <ClInclude Include="src\Drifter\Events\MouseEvent.h" />
+    <ClInclude Include="src\Drifter\Events\ApplicationEvent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Drifter\Application.cpp">
@@ -27,5 +36,8 @@
     <ClCompile Include="src\Drifter\Log.cpp">
       <Filter>Drifter</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>
