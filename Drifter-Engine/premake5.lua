@@ -12,7 +12,7 @@ workspace "Drifter-Engine"
 	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 	IncludeDir = {}
-	IncludeDir["glfw"] = "%{wks.location}/Drifter-Engine/vendors/glfw/include"
+	IncludeDir["glfw"] = "vendors/glfw/include"
 
 	include "/vendors/glfw"
 
