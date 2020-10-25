@@ -5,9 +5,11 @@
 #include "Log.h"
 #include "Events/ApplicationEvent.h"
 
+#include <GLFW/glfw3.h>
+
 namespace Drifter {
 	Application::Application() {
-
+		m_window = std::unique_ptr<Window>(Window::Create());
 	}
 
 	Application::~Application() {
@@ -16,15 +18,10 @@ namespace Drifter {
 
 	void Application::Run() {
 		DF_LOG_INFO("Welcome to Drifter!");
-		DF_LOG_WARNING("Run has not yet been implemented! Entering into an infinite loop");
 		
-		WindowResizeEvent e(1280, 720);
-		if (e.IsInCategory(EventCategoryApplication)) {
-			DF_LOG_Trace(e.ToString() + " is an Application Event");
+		
+		while (m_running) {
+			m_window->OnUpdate();
 		}
-		else if(e.IsInCategory(EventCategoryInput)){
-			DF_LOG_Trace(e.ToString() + " is an Input Event");
-		}
-		while (true);
 	}
 }

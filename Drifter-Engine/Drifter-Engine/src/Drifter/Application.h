@@ -2,6 +2,7 @@
 
 #include "Core.h"
 #include "Events/Event.h"
+#include "Window.h"
 
 namespace Drifter {
 	class DRIFTER_API Application
@@ -12,6 +13,10 @@ namespace Drifter {
 		~Application();
 
 		void Run();
+
+	private:
+		std::unique_ptr<Window> m_window;
+		bool m_running = true;
 	};
 
 	Application* CreateApplication();
