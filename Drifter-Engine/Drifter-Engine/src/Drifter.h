@@ -6,5 +6,8 @@
 //Logging
 #include "Drifter/Log.h"
 
+//Layers
+#include "Drifter/Layer.h"
+
 // Entry Point
 #include "Drifter/EntryPoint.h"

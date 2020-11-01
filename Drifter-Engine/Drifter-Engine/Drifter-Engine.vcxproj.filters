@@ -37,6 +37,12 @@
     <ClInclude Include="src\Drifter\Events\MouseEvent.h">
       <Filter>Drifter\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Drifter\Layer.h">
+      <Filter>Drifter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\LayerStack.h">
+      <Filter>Drifter</Filter>
+    </ClInclude>
     <ClInclude Include="src\Drifter\Log.h">
       <Filter>Drifter</Filter>
     </ClInclude>
@@ -50,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Drifter\Application.cpp">
+      <Filter>Drifter</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drifter\Layer.cpp">
+      <Filter>Drifter</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drifter\LayerStack.cpp">
       <Filter>Drifter</Filter>
     </ClCompile>
     <ClCompile Include="src\Drifter\Log.cpp">

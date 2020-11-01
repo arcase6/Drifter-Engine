@@ -138,7 +138,6 @@ namespace Drifter
 	void WindowsWindow::OnUpdate() {
 		glClearColor(0, 0, .05f, 1);
 		glClear(GL_COLOR_BUFFER_BIT);
-
 		glfwPollEvents();
 		glfwSwapBuffers(m_window);
 	}

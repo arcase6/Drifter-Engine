@@ -23,6 +23,22 @@ namespace Drifter {
 		DF_LOG_TRACE("{0}", e);
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
+
+		for (auto it = m_layerStack.end(); it != m_layerStack.begin();) {
+			(*--it)->OnEvent(e);
+			if (e.Handled)
+				break;
+		}
+	}
+
+	void Application::PushLayer(Layer* layer)
+	{
+		m_layerStack.PushLayer(layer);
+	}
+
+	void Application::PopLayer(Layer* layer)
+	{
+		m_layerStack.PopLayer(layer);
 	}
 
 	bool Application::OnWindowClose(WindowCloseEvent& e) {
@@ -36,6 +52,9 @@ namespace Drifter {
 		
 		while (m_running) {
 			m_window->OnUpdate();
+			for (Layer* layer : m_layerStack) {
+				layer->OnUpdate();
+			}
 		}
 	}
 }
