@@ -13,8 +13,10 @@ workspace "Drifter-Engine"
 
 	IncludeDir = {}
 	IncludeDir["glfw"] = "vendors/glfw/include"
+	IncludeDir["glad"] = "vendors/glad/include"
 
 	include "/vendors/glfw"
+	include "/vendors/glad"
 
 project "Drifter-Engine"
 	location "Drifter-Engine"
@@ -34,10 +36,12 @@ project "Drifter-Engine"
 		"%{prj.name}/src",
 		"vendors/spdlogger/include",
 		"%{IncludeDir.glfw}",
+		"%{IncludeDir.glad}",
 	}
 
 	links{
 		"glfw",
+		"glad",
 		"opengl32.lib"
 	}
 

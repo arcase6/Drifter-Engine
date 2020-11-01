@@ -1,0 +1,2 @@
+C:\Users\arcas\Desktop\Git Managed\Drifter\Drifter-Engine\vendors\glad\bin\Debug-windows-x86_64\glad\glad.pdb
+C:\Users\arcas\Desktop\Git Managed\Drifter\Drifter-Engine\vendors\glad\bin-int\Debug-windows-x86_64\glad\glad.pdb

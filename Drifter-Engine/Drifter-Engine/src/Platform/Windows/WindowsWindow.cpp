@@ -4,6 +4,7 @@
 #include "Drifter/Events/KeyEvent.h"
 #include "Drifter/Events/MouseEvent.h"
 
+
 namespace Drifter
 {
 	static bool s_GLFWInitialized = false;
@@ -40,6 +41,10 @@ namespace Drifter
 
 		m_window = glfwCreateWindow((int)m_data.Width, (int)m_data.Height, m_data.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_window);
+		
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		DF_ASSERT(status, "Failed to initialize glad!");
+
 		glfwSetWindowUserPointer(m_window, &m_data);
 
 		SetVSync(true);
