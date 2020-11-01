@@ -62,14 +62,17 @@ project "Drifter-Engine"
 			"DF_DEBUG",
 			"DF_ENABLE_ASSERTS"
 		}
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "DF_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "DF_DIST"
+		buildoptions "/MD"
 		optimize "On"
 
 project "Sandbox"
@@ -108,12 +111,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "DF_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "DF_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "DF_DIST"
+		buildoptions "/MD"
 		optimize "On"
