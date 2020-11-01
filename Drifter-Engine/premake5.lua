@@ -58,7 +58,10 @@ project "Drifter-Engine"
 		}
 
 	filter "configurations:Debug"
-		defines "DF_DEBUG"
+		defines {
+			"DF_DEBUG",
+			"DF_ENABLE_ASSERTS"
+		}
 		symbols "On"
 
 	filter "configurations:Release"
