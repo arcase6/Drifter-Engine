@@ -16,12 +16,15 @@ namespace Drifter {
 		inline unsigned int GetHeight() const override { return m_data.Height; }
 		
 		//window attributes
-		inline void SetEventCallback(const EventCallbackFn& callback) override { m_data.EventCallback; }
+		inline void SetEventCallback(const EventCallbackFn& callback) override { m_data.EventCallback = callback; }
 		
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
 	private:
 		virtual void Init(const WindowProps& props);
+		void SetWindowCallbacks();
+		void SetKeyCallbacks();
+		void SetMouseCallbacks();
 		virtual void Shutdown();
 	private: 
 		GLFWwindow* m_window;

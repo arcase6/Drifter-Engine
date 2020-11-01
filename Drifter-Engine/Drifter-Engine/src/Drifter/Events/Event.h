@@ -50,7 +50,9 @@ namespace Drifter {
 		bool Dispatch(EventFn<T> func) {
 			if (m_event.GetEventType() == T::GetStaticType()) {
 				m_event.m_handled = func(*(T*)&m_event);
+				return true;
 			}
+			return false;
 		}
 	private:
 		Event& m_event;
