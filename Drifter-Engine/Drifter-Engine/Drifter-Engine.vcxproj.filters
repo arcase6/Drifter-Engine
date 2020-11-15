@@ -43,6 +43,9 @@
     <ClInclude Include="src\Drifter\Events\MouseEvent.h">
       <Filter>Drifter\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Drifter\Input.h">
+      <Filter>Drifter</Filter>
+    </ClInclude>
     <ClInclude Include="src\Drifter\Layer.h">
       <Filter>Drifter</Filter>
     </ClInclude>
@@ -54,6 +57,9 @@
     </ClInclude>
     <ClInclude Include="src\Drifter\Window.h">
       <Filter>Drifter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\Windows\WindowsInput.h">
+      <Filter>Platform\Windows</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>Platform\Windows</Filter>
@@ -75,6 +81,9 @@
     </ClCompile>
     <ClCompile Include="src\Drifter\Log.cpp">
       <Filter>Drifter</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\Windows\WindowsInput.cpp">
+      <Filter>Platform\Windows</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>Platform\Windows</Filter>
