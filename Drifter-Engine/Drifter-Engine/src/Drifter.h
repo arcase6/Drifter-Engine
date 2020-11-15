@@ -8,6 +8,6 @@
 
 //Layers
 #include "Drifter/Layer.h"
-
+#include "Drifter/EditorUI/ImguiLayer.h"
 // Entry Point
 #include "Drifter/EntryPoint.h"

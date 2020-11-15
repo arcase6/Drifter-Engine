@@ -20,7 +20,9 @@ class SandboxApplication : public Drifter::Application
 {
 public:
 	SandboxApplication(){
-		PushLayer(new ExampleLayer());
+		auto debugLayer = new Drifter::EditorUI::ImguiLayer(GetWindow());
+		PushOverlay(debugLayer);
+		//PushLayer(new ExampleLayer());
 	}
 	~SandboxApplication() {}
 };

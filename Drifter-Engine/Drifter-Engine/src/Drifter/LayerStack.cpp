@@ -16,15 +16,18 @@ namespace Drifter {
 	{
 		m_layers.emplace(layersEnd(), layer);
 		++m_insertOffset;
+		layer->OnAttach();
 	}
 	void LayerStack::PushOverlay(Layer* overlay)
 	{
 		m_layers.emplace_back(overlay);
+		overlay->OnAttach();
 	}
 	void LayerStack::PopLayer(Layer* layer)
 	{
 		auto it = std::find(begin(), layersEnd(), layer);
 		if (it != end()) {
+			(*it)->OnDetach();
 			m_layers.erase(it);
 			--m_insertOffset;
 		}
@@ -33,6 +36,7 @@ namespace Drifter {
 	{
 		auto it = std::find(layersEnd(), end(), overlay);
 		if (it != end()) {
+			(*it)->OnDetach();
 			m_layers.erase(it);
 		}
 	}

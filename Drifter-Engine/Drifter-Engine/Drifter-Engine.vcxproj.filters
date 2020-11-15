@@ -4,6 +4,9 @@
     <Filter Include="Drifter">
       <UniqueIdentifier>{D5CEC987-41AE-4823-4AC6-D3F9B624AF84}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Drifter\EditorUI">
+      <UniqueIdentifier>{69BC3257-55B5-51A9-7EE7-362E6A3F31B5}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Drifter\Events">
       <UniqueIdentifier>{19D93123-05A7-2529-EE3A-964FDAA7018E}</UniqueIdentifier>
     </Filter>
@@ -21,6 +24,9 @@
     </ClInclude>
     <ClInclude Include="src\Drifter\Core.h">
       <Filter>Drifter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\EditorUI\IMGUILayer.h">
+      <Filter>Drifter\EditorUI</Filter>
     </ClInclude>
     <ClInclude Include="src\Drifter\EntryPoint.h">
       <Filter>Drifter</Filter>
@@ -57,6 +63,9 @@
   <ItemGroup>
     <ClCompile Include="src\Drifter\Application.cpp">
       <Filter>Drifter</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drifter\EditorUI\IMGUILayer.cpp">
+      <Filter>Drifter\EditorUI</Filter>
     </ClCompile>
     <ClCompile Include="src\Drifter\Layer.cpp">
       <Filter>Drifter</Filter>

@@ -14,14 +14,17 @@ workspace "Drifter-Engine"
 	IncludeDir = {}
 	IncludeDir["glfw"] = "vendors/glfw/include"
 	IncludeDir["glad"] = "vendors/glad/include"
+	IncludeDir["imgui"] = "vendors/imgui"
 
 	include "/vendors/glfw"
 	include "/vendors/glad"
+	include "/vendors/imgui"
 
 project "Drifter-Engine"
 	location "Drifter-Engine"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -37,17 +40,18 @@ project "Drifter-Engine"
 		"vendors/spdlogger/include",
 		"%{IncludeDir.glfw}",
 		"%{IncludeDir.glad}",
+		"%{IncludeDir.imgui}",
 	}
 
 	links{
 		"glfw",
 		"glad",
+		"imgui",
 		"opengl32.lib"
 	}
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines{
@@ -58,7 +62,7 @@ project "Drifter-Engine"
 
 		postbuildcommands
 		{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
 		}
 
 	filter "configurations:Debug"
@@ -66,23 +70,24 @@ project "Drifter-Engine"
 			"DF_DEBUG",
 			"DF_ENABLE_ASSERTS"
 		}
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "DF_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "DF_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -105,7 +110,6 @@ project "Sandbox"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines{
@@ -115,15 +119,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "DF_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:Release"
 		defines "DF_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:Dist"
 		defines "DF_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"

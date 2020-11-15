@@ -12,10 +12,12 @@ namespace Drifter {
 		WindowsWindow(const WindowProps& props);
 		virtual ~WindowsWindow();
 
-		void OnUpdate() override;
+		virtual void OnFrameBegin() override;
+		void OnFrameEnd() override;
 
 		inline unsigned int GetWidth() const override { return m_data.Width; }
 		inline unsigned int GetHeight() const override { return m_data.Height; }
+		inline GLFWwindow * GetGlfwWindow() { return m_window; }
 		
 		//window attributes
 		inline void SetEventCallback(const EventCallbackFn& callback) override { m_data.EventCallback = callback; }

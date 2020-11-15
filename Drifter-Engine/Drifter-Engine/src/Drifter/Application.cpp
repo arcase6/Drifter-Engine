@@ -41,6 +41,16 @@ namespace Drifter {
 		m_layerStack.PopLayer(layer);
 	}
 
+	void Application::PushOverlay(Layer* overlay)
+	{
+		m_layerStack.PushOverlay(overlay);
+	}
+
+	void Application::PopOverlay(Layer* overlay)
+	{
+		m_layerStack.PopOverlay(overlay);
+	}
+
 	bool Application::OnWindowClose(WindowCloseEvent& e) {
 		m_running = false;
 		return true;
@@ -51,10 +61,11 @@ namespace Drifter {
 		
 		
 		while (m_running) {
-			m_window->OnUpdate();
+			m_window->OnFrameBegin();
 			for (Layer* layer : m_layerStack) {
 				layer->OnUpdate();
 			}
+			m_window->OnFrameEnd();
 		}
 	}
 }

@@ -21,7 +21,10 @@ namespace Drifter {
 
 		void PushLayer(Layer* layer);
 		void PopLayer(Layer* layer);
+		void PushOverlay(Layer* overlay);
+		void PopOverlay(Layer* overlay);
 
+		inline Window& GetWindow() { return *m_window; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 		std::unique_ptr<Window> m_window;
