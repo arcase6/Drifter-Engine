@@ -156,9 +156,11 @@
     <ClInclude Include="src\Drifter\Events\KeyEvent.h" />
     <ClInclude Include="src\Drifter\Events\MouseEvent.h" />
     <ClInclude Include="src\Drifter\Input.h" />
+    <ClInclude Include="src\Drifter\KeyCodes.h" />
     <ClInclude Include="src\Drifter\Layer.h" />
     <ClInclude Include="src\Drifter\LayerStack.h" />
     <ClInclude Include="src\Drifter\Log.h" />
+    <ClInclude Include="src\Drifter\MouseCodes.h" />
     <ClInclude Include="src\Drifter\Window.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
@@ -170,6 +172,8 @@
     <ClCompile Include="src\Drifter\Layer.cpp" />
     <ClCompile Include="src\Drifter\LayerStack.cpp" />
     <ClCompile Include="src\Drifter\Log.cpp" />
+    <ClCompile Include="src\Platform\Windows\KeyCodes.cpp" />
+    <ClCompile Include="src\Platform\Windows\MouseCodes.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\dfpch.cpp" />
@@ -188,4 +192,4 @@
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
-</Project>
+</Project> 
