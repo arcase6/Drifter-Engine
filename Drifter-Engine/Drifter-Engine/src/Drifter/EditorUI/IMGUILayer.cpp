@@ -3,16 +3,14 @@
 #include "IMGUILayer.h"
 
 #include <glad/glad.h>
-//#include "GLFW/glfw3.h"
+#include "GLFW/glfw3.h"
 #include "backends/imgui_impl_opengl3.h"
 #include "backends/imgui_impl_glfw.h"
 
 #include <Drifter/Layer.h>
 
-#ifdef DF_PLATFORM_WINDOWS
-#include <Platform/Windows/WindowsWindow.h>
-inline GLFWwindow* GetGLFWwindow(Drifter::Window& window) { return ((Drifter::WindowsWindow*) & window)->GetGlfwWindow(); }
-#endif
+inline GLFWwindow* GetGLFWwindow(Drifter::Window& window) { return (GLFWwindow * )window.GetNativeWindow(); }
+
 namespace Drifter::EditorUI {
 	ImguiLayer::ImguiLayer(Drifter::Window& window, const std::string& name)
 		:Layer(name), m_window(window)
@@ -65,8 +63,6 @@ namespace Drifter::EditorUI {
 		int display_w, display_h;
 		glfwGetFramebufferSize(GetGLFWwindow(m_window), &display_w, &display_h);
 		glViewport(0, 0, display_w, display_h);
-		//glClearColor(clear_color.x, clear_color.y, clear_color.z, clear_color.w);
-		//glClear(GL_COLOR_BUFFER_BIT);
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	}
 

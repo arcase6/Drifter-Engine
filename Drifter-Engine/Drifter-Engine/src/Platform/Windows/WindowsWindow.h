@@ -15,6 +15,8 @@ namespace Drifter {
 		virtual void OnFrameBegin() override;
 		void OnFrameEnd() override;
 
+		inline void* GetNativeWindow() const override { return m_window; };
+
 		inline unsigned int GetWidth() const override { return m_data.Width; }
 		inline unsigned int GetHeight() const override { return m_data.Height; }
 		inline GLFWwindow * GetGlfwWindow() { return m_window; }
