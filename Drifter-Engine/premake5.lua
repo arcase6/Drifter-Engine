@@ -15,6 +15,7 @@ workspace "Drifter-Engine"
 	IncludeDir["glfw"] = "vendors/glfw/include"
 	IncludeDir["glad"] = "vendors/glad/include"
 	IncludeDir["imgui"] = "vendors/imgui"
+	IncludeDir["glm"] = "vendors/glm"
 
 	include "/vendors/glfw"
 	include "/vendors/glad"
@@ -32,7 +33,8 @@ project "Drifter-Engine"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"vendors/glm/glm/**.cpp",
 	}
 
 	includedirs{
@@ -41,6 +43,7 @@ project "Drifter-Engine"
 		"%{IncludeDir.glfw}",
 		"%{IncludeDir.glad}",
 		"%{IncludeDir.imgui}",
+		"%{IncludeDir.glm}",
 	}
 
 	links{
