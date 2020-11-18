@@ -1,15 +1,15 @@
 //#include "dfpch.h"
+#include <glad/glad.h>
 
 #include "IMGUILayer.h"
 
-#include <glad/glad.h>
 #include "GLFW/glfw3.h"
 #include "backends/imgui_impl_opengl3.h"
 #include "backends/imgui_impl_glfw.h"
 
-#include <Drifter/Layer.h>
+#include "Drifter/Application.h"
 
-inline GLFWwindow* GetGLFWwindow(Drifter::Window& window) { return (GLFWwindow * )window.GetNativeWindow(); }
+inline GLFWwindow* GetGLFWwindow(Drifter::Window& window) { return (GLFWwindow*)window.GetNativeWindow(); }
 
 namespace Drifter::EditorUI {
 	ImguiLayer::ImguiLayer(Drifter::Window& window, const std::string& name)
@@ -24,13 +24,28 @@ namespace Drifter::EditorUI {
 	void ImguiLayer::OnAttach()
 	{
 		const char* glsl_version = "#version 410";
+		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
+
 		ImGuiIO& io = ImGui::GetIO();
+		io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;           // Enable Docking
+		io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;         // Enable Multi-Viewport / Platform Windows
+
+		DF_LOG_INFO("Config flags set");
 		ImGui::StyleColorsDark();
+
+		ImGuiStyle& style = ImGui::GetStyle();
+		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+		{
+			style.WindowRounding = 0.0f;
+			style.Colors[ImGuiCol_WindowBg].w = 1.0f;
+		}
+
 #if DF_PLATFORM_WINDOWS
 		ImGui_ImplGlfw_InitForOpenGL(GetGLFWwindow(m_window), false);
 #endif
 		ImGui_ImplOpenGL3_Init(glsl_version);
+		DF_LOG_INFO("Backends called");
 	}
 
 	void ImguiLayer::OnDetach()
@@ -57,13 +72,19 @@ namespace Drifter::EditorUI {
 
 	void ImguiLayer::EndFrameGLFW()
 	{
+		ImGuiIO& io = ImGui::GetIO();
+		Window& window = Application::Get().GetWindow();
+		io.DisplaySize = ImVec2(window.GetWidth(), window.GetHeight());
+
 		ImGui::Render();
 
-		ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
-		int display_w, display_h;
-		glfwGetFramebufferSize(GetGLFWwindow(m_window), &display_w, &display_h);
-		glViewport(0, 0, display_w, display_h);
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+		if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable) {
+			GLFWwindow* backup_current_context = glfwGetCurrentContext();
+			ImGui::UpdatePlatformWindows();
+			ImGui::RenderPlatformWindowsDefault();
+			glfwMakeContextCurrent(backup_current_context);
+		}
 	}
 
 	void ImguiLayer::OnEvent(Drifter::Event& e)
