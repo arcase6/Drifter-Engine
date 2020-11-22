@@ -92,6 +92,7 @@
     </ClInclude>
     <ClInclude Include="src\Drifter\Renderer\GraphicsContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Drifter\Renderer\Shader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\vendors\glm\glm\detail\glm.cpp">
@@ -128,5 +129,6 @@
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Drifter\Renderer\Shader.cpp" />
   </ItemGroup>
 </Project>

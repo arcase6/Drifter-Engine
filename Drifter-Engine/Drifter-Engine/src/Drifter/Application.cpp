@@ -9,7 +9,7 @@
 namespace Drifter {
 #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 
-	Application * Application::s_Instance = nullptr;
+	Application* Application::s_Instance = nullptr;
 
 	Application::Application() {
 		DF_CORE_ASSERT(!s_Instance, "Application instance already exists!");
@@ -20,6 +20,33 @@ namespace Drifter {
 
 		GenerateOpenGLBuffers();
 		SetBufferData();
+
+		const char* vert = R"(
+			#version 330 core
+			
+			layout(location=0) in vec3 a_Position;
+			out vec3 v_Position;			
+
+			void main(){
+				v_Position = a_Position;
+				gl_Position = vec4(v_Position, 1.0);
+			}
+		)";
+
+		const char* frag = R"(
+			#version 330 core
+
+			layout(location=0) out vec4 fragColor;
+			in vec3 v_Position;
+			
+			void main(){
+				vec3 col = vec3(0,0,1);
+				float scale = length(v_Position) / 0.5;
+				fragColor = vec4(scale * col, 1.0);
+			}
+		)";
+
+		m_shader.reset(new Shader(vert,frag));
 	}
 
 
@@ -90,7 +117,7 @@ namespace Drifter {
 		};
 
 		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-		
+
 		const int TRI_COUNT = 1;
 		GLuint indices[TRI_COUNT * 3] = {
 			0, 1, 2
@@ -104,16 +131,19 @@ namespace Drifter {
 
 	void Application::Run() {
 		DF_LOG_INFO("Welcome to Drifter!");
-		
-		
+
+
 		while (m_running) {
 			m_window->OnFrameBegin();
 			for (Layer* layer : m_layerStack) {
 				layer->OnUpdate();
 			}
 
+			m_shader->Bind();
 			glBindVertexArray(m_vertexArray);
 			glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
+			
+			
 			m_window->OnFrameEnd();
 		}
 	}

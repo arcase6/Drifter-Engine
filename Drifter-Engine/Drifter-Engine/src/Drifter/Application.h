@@ -6,6 +6,8 @@
 #include "Events/ApplicationEvent.h"
 #include <Drifter/LayerStack.h>
 
+#include "Drifter/Renderer/Shader.h"
+
 
 namespace Drifter {
 	class Application
@@ -33,16 +35,18 @@ namespace Drifter {
 		std::unique_ptr<Window> m_window;
 		bool m_running = true;
 		LayerStack m_layerStack;
-	
-		static Application* s_Instance;
-
-	private: //OpenGL buffer data
-		unsigned int m_vertexArray, m_vertexBuffer, m_indexBuffer;
 		void GenerateOpenGLBuffers();
 		void SetBufferData();
+
+	private:
+		static Application* s_Instance;
+	
+		//OpenGL data for rendering -- likely to be removed later
+		unsigned int m_vertexArray, m_vertexBuffer, m_indexBuffer;
+		std::unique_ptr<Shader> m_shader;
+
 	};
 
 	Application* CreateApplication();
-
 }
 
