@@ -35,6 +35,11 @@ namespace Drifter {
 		LayerStack m_layerStack;
 	
 		static Application* s_Instance;
+
+	private: //OpenGL buffer data
+		unsigned int m_vertexArray, m_vertexBuffer, m_indexBuffer;
+		void GenerateOpenGLBuffers();
+		void SetBufferData();
 	};
 
 	Application* CreateApplication();
