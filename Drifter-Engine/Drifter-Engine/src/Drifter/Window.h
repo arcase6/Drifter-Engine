@@ -3,6 +3,8 @@
 
 #include <Drifter/Core.h>
 #include <Drifter/Events/Event.h>
+#include <Drifter/Renderer/GraphicsContext.h>
+
 
 namespace Drifter {
 	struct WindowProps

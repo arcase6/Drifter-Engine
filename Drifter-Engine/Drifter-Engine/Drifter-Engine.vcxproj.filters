@@ -90,6 +90,8 @@
     <ClInclude Include="src\dfpch.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\Drifter\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\vendors\glm\glm\detail\glm.cpp">
@@ -125,5 +127,6 @@
     <ClCompile Include="src\dfpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
   </ItemGroup>
 </Project>

@@ -3,7 +3,7 @@
 #include "Drifter/Events/ApplicationEvent.h"
 #include "Drifter/Events/KeyEvent.h"
 #include "Drifter/Events/MouseEvent.h"
-
+#include <Platform/OpenGL/OpenGLContext.h>
 
 namespace Drifter
 {
@@ -40,10 +40,11 @@ namespace Drifter
 		}
 
 		m_window = glfwCreateWindow((int)m_data.Width, (int)m_data.Height, m_data.Title.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(m_window);
 		
-		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		DF_ASSERT(status, "Failed to initialize glad!");
+		OpenGLContext * openGLContext = new OpenGLContext();
+		openGLContext->SetTarget(m_window);
+		m_context = static_cast<GraphicsContext *>(openGLContext);
+
 
 		glfwSetWindowUserPointer(m_window, &m_data);
 
@@ -148,7 +149,7 @@ namespace Drifter
 
 	void WindowsWindow::OnFrameEnd() {
 		glfwPollEvents();
-		glfwSwapBuffers(m_window);
+		m_context->SwapBuffers();
 	}
 
 	void WindowsWindow::SetVSync(bool enabled) {

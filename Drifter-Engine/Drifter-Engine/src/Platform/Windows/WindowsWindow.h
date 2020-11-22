@@ -42,6 +42,7 @@ namespace Drifter {
 			EventCallbackFn EventCallback;
 		};
 		WindowData m_data;
+		GraphicsContext* m_context;
 	};
 
 }
