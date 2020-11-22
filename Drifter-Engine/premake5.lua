@@ -23,9 +23,9 @@ workspace "Drifter-Engine"
 
 project "Drifter-Engine"
 	location "Drifter-Engine"
-	kind "SharedLib"
+	kind "StaticLib"
 	language "C++"
-	staticruntime "off"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -35,6 +35,10 @@ project "Drifter-Engine"
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp",
 		"vendors/glm/glm/**.cpp",
+	}
+
+	defines{
+		"_CRT_SECURE_NO_WARNINGS"
 	}
 
 	includedirs{
@@ -74,23 +78,23 @@ project "Drifter-Engine"
 			"DF_ENABLE_ASSERTS"
 		}
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "DF_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "DF_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
-	staticruntime "off"
+	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -123,14 +127,14 @@ project "Sandbox"
 	filter "configurations:Debug"
 		defines "DF_DEBUG"
 		runtime "Debug"
-		symbols "On"
+		symbols "on"
 
 	filter "configurations:Release"
 		defines "DF_RELEASE"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
 
 	filter "configurations:Dist"
 		defines "DF_DIST"
 		runtime "Release"
-		optimize "On"
+		optimize "on"
