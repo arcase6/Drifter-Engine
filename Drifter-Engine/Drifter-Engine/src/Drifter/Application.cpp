@@ -40,9 +40,12 @@ namespace Drifter {
 			in vec3 v_Position;
 			
 			void main(){
-				vec3 col = vec3(0,0,1);
-				float scale = length(v_Position) / 0.5;
-				fragColor = vec4(scale * col, 1.0);
+				vec3 col = vec3(1,1,1);
+				float r = v_Position.x + .5;
+				float g = 1 - r;
+				float b = v_Position.y + .5;
+				vec3 posCol = vec3(r,g,b);
+				fragColor = vec4(col * posCol, 1.0);
 			}
 		)";
 
