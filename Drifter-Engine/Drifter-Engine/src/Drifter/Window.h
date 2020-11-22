@@ -17,7 +17,7 @@ namespace Drifter {
 		:Title(title), Width(width), Height(height){}
 	};
 
-	class DRIFTER_API Window
+	class Window
 	{
 	public:
 		using EventCallbackFn = std::function<void(Event&)>;

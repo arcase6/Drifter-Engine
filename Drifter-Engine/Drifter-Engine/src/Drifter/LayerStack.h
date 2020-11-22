@@ -6,7 +6,7 @@
 #include <vector>
 
 namespace Drifter {
-	class DRIFTER_API LayerStack
+	class LayerStack
 	{
 	public:
 		LayerStack();

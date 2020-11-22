@@ -5,7 +5,7 @@
 
 
 namespace Drifter::EditorUI {
-	class DRIFTER_API ImguiLayer : public Drifter::Layer
+	class ImguiLayer : public Drifter::Layer
 	{
 	public:
 		ImguiLayer(Drifter::Window& window, const std::string& name = "IMGUI Layer");

@@ -6,7 +6,7 @@
 #include <spdlog/fmt/ostr.h>
 
 namespace Drifter {
-	class DRIFTER_API Log {
+	class Log {
 	public:
 		static void Init();
 		inline static std::shared_ptr<spdlog::logger>& GetCoreLoggger() { return s_CoreLogger; }

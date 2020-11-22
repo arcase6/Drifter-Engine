@@ -3,7 +3,7 @@
 #include "Drifter/Core.h"
 
 namespace Drifter {
-	class DRIFTER_API MouseCodes {
+	class MouseCodes {
 	public:
 		static int BUTTON_1() { return IMP_BUTTON_1; }
 		static int BUTTON_2() { return IMP_BUTTON_2; }

@@ -3,7 +3,7 @@
 #include "Drifter/Events/Event.h"
 
 namespace Drifter {
-	class DRIFTER_API Layer
+	class Layer
 	{
 	public:
 		Layer(const std::string & name = "Layer");

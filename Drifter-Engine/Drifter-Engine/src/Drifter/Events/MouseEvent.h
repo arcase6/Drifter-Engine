@@ -4,7 +4,7 @@
 
 namespace Drifter {
 
-	class DRIFTER_API MouseMovedEvent : public Event
+	class MouseMovedEvent : public Event
 	{
 	public:
 		MouseMovedEvent(float xOffset, float y) 
@@ -25,7 +25,7 @@ namespace Drifter {
 		float m_mouseX, m_mouseY;
 	};
 
-	class DRIFTER_API MouseScrolledEvent : public Event
+	class MouseScrolledEvent : public Event
 	{
 	public:
 		MouseScrolledEvent(float xOffset, float yOffset)
@@ -46,20 +46,20 @@ namespace Drifter {
 		float m_xOffset, m_yOffset;
 	};
 
-	class DRIFTER_API MouseButtonEvent : public Event
+	class MouseButtonEvent : public Event
 	{
 	public:
 		inline int GetMouseButton() const { return m_button; }
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	protected:
-		MouseButtonEvent(float button) : m_button(button) {}
-		float m_button;
+		MouseButtonEvent(int button) : m_button(button) {}
+		int m_button;
 	};
 
-	class DRIFTER_API MouseButtonPressedEvent : public MouseButtonEvent
+	class MouseButtonPressedEvent : public MouseButtonEvent
 	{
 	public:
-		MouseButtonPressedEvent(float button)
+		MouseButtonPressedEvent(int button)
 			: MouseButtonEvent(button) {}
 
 		inline int GetMouseButtonPressed() const { return m_button; }
@@ -73,10 +73,10 @@ namespace Drifter {
 		EVENT_CLASS_TYPE(MouseButtonPressed)
 	};
 
-	class DRIFTER_API MouseButtonReleasedEvent : public MouseButtonEvent
+	class MouseButtonReleasedEvent : public MouseButtonEvent
 	{
 	public:
-		MouseButtonReleasedEvent(float button)
+		MouseButtonReleasedEvent(int button)
 			: MouseButtonEvent(button) {}
 
 		inline int GetMouseButtonReleased() const { return m_button; }

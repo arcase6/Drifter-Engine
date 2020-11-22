@@ -124,13 +124,13 @@ namespace Drifter
 		glfwSetScrollCallback(m_window, [](GLFWwindow* window, double xoffset, double yoffset)
 		{
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
-			MouseScrolledEvent event(xoffset, yoffset);
+			MouseScrolledEvent event((float)xoffset, (float)yoffset);
 			data.EventCallback(event);
 		});
 
 		glfwSetCursorPosCallback(m_window, [](GLFWwindow* window, double xpos, double ypos) {
 			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
-			MouseMovedEvent event(xpos, ypos);
+			MouseMovedEvent event((float)xpos, (float)ypos);
 			data.EventCallback(event);
 		});
 	}

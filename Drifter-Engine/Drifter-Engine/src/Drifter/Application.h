@@ -8,7 +8,7 @@
 
 
 namespace Drifter {
-	class DRIFTER_API Application
+	class Application
 	{
 	public:
 		Application();

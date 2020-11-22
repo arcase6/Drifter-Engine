@@ -2,9 +2,6 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\arcas\Desktop\Git Managed\Drifter\Drifter-Engine\bin\Debug-windows-x86_64\Drifter-Engine\Drifter-Engine.dll</FullPath>
-    </ProjectOutput>
-    <ProjectOutput>
       <FullPath>C:\Users\arcas\Desktop\Git Managed\Drifter\Drifter-Engine\bin\Debug-windows-x86_64\Sandbox\Sandbox.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>

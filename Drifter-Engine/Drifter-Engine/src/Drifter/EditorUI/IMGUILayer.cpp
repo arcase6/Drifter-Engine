@@ -74,7 +74,7 @@ namespace Drifter::EditorUI {
 	{
 		ImGuiIO& io = ImGui::GetIO();
 		Window& window = Application::Get().GetWindow();
-		io.DisplaySize = ImVec2(window.GetWidth(), window.GetHeight());
+		io.DisplaySize = ImVec2((float)window.GetWidth(), (float)window.GetHeight());
 
 		ImGui::Render();
 

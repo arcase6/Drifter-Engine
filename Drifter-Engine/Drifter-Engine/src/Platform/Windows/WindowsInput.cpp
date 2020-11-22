@@ -31,20 +31,20 @@ namespace Drifter {
 	{
 		double x, y;
 		glfwGetCursorPos(GetWindow(), &x, &y);
-		return std::pair<float, float>(x,y);
+		return std::pair<float, float>((float)x,(float)y);
 	}
 
 	float WindowsInput::GetMouseXImpl()
 	{
 		double x, y;
 		glfwGetCursorPos(GetWindow(), &x, &y);
-		return x;
+		return (float)x;
 	}
 
 	float WindowsInput::GetMouseYImpl()
 	{
 		double x, y;
 		glfwGetCursorPos(GetWindow(), &x, &y);
-		return y;
+		return (float)y;
 	}
 }

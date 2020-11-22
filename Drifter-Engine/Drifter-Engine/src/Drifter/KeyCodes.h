@@ -4,7 +4,7 @@
 
 
 namespace Drifter {
-	class DRIFTER_API KeyCodes {
+	class KeyCodes {
 	public:
 		static int SPACE() { return IMP_SPACE; }
 		static int APOSTROPHE() { return IMP_APOSTROPHE; }
