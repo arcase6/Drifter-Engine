@@ -139,6 +139,7 @@ namespace Drifter
 	void WindowsWindow::Shutdown()
 	{
 		glfwDestroyWindow(m_window);
+		delete(m_context);
 	}
 
 
