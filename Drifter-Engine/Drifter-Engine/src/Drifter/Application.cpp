@@ -48,7 +48,7 @@ namespace Drifter {
 			}
 		)";
 
-		m_Shader.reset(new Shader(vert,frag));
+		m_Shader.reset(new Shader(vert, frag));
 	}
 
 
@@ -97,34 +97,19 @@ namespace Drifter {
 
 	void Application::SetBufferData()
 	{
-		const int VERT_SIZE = 3;
-		const int POINT_COUNT = 3;
-		GLfloat vertices[VERT_SIZE * POINT_COUNT] =
+		std::vector<float> vertices = 
 		{
 			-0.5f, -0.5f, 0.0f,
 			0.5f, -0.5f, 0.0f,
 			0.0f, 0.5f, 0.0f
 		};
-
-			BufferLayout layout = {
-				{ShaderDataType::Float3, "a_Position"}
-			};
-
-			
-		
-		const int TRI_COUNT = 1;
-		GLuint indices[TRI_COUNT * 3] = {
+		std::vector<uint32_t> indices = {
 			0, 1, 2
 		};
-
-		m_VertexArray.reset(VertexArray::Create());
-
-		m_VertexArray->AddVertexBuffer(
-			VertexBuffer::Create(vertices, sizeof(vertices), layout)
-		);
-		m_VertexArray->SetIndexBuffer(
-			IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t))
-		);
+		BufferLayout layout = {
+			{ShaderDataType::Float3, "a_Position"}
+		};
+		m_VertexArray.reset(VertexArray::Create(vertices,indices, layout));
 	}
 
 	void Application::Run() {
@@ -140,9 +125,9 @@ namespace Drifter {
 
 			m_Shader->Bind();
 
-			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount() , GL_UNSIGNED_INT, 0);
-			
-			
+			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, 0);
+
+
 			m_window->OnFrameEnd();
 		}
 	}

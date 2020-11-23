@@ -28,6 +28,21 @@ namespace Drifter {
 		virtual const std::shared_ptr<IndexBuffer>& GetIndexBuffer() const = 0;
 
 		static VertexArray* Create();
+
+		static VertexArray* Create(std::vector<float> verts, std::vector<uint32_t> indices, BufferLayout layout)
+		{
+			VertexArray* array = VertexArray::Create();
+			array->Bind();
+
+			array->AddVertexBuffer(
+				VertexBuffer::Create(&verts[0], verts.size() * sizeof(float), layout)
+			);
+			array->SetIndexBuffer(
+				IndexBuffer::Create(&indices[0], indices.size())
+			);
+
+			return array;
+		}
 	};
 
 }
