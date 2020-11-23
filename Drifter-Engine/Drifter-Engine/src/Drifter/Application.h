@@ -8,6 +8,7 @@
 
 #include "Drifter/Renderer/Shader.h"
 #include "Drifter/Renderer/Buffer.h"
+#include "Drifter/Renderer/VertexArray.h"
 
 namespace Drifter {
 	class Application
@@ -35,16 +36,13 @@ namespace Drifter {
 		std::unique_ptr<Window> m_window;
 		bool m_running = true;
 		LayerStack m_layerStack;
-		void GenerateOpenGLBuffers();
 		void SetBufferData();
 
 	private:
 		static Application* s_Instance;
 	
 		//OpenGL data for rendering -- likely to be removed later
-		unsigned int m_vertexArray;
-		std::unique_ptr<VertexBuffer> m_VertexBuffer;
-		std::unique_ptr<IndexBuffer> m_IndexBuffer;
+		std::unique_ptr<VertexArray> m_VertexArray;
 		std::unique_ptr<Shader> m_Shader;
 
 	};

@@ -10,27 +10,6 @@ namespace Drifter {
 #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 
 	Application* Application::s_Instance = nullptr;
-	
-	static GLenum ShaderDataTypeToOpenGLBaseType(ShaderDataType type)
-	{
-		switch (type)
-		{
-		case Drifter::ShaderDataType::Float:    return GL_FLOAT;
-		case Drifter::ShaderDataType::Float2:   return GL_FLOAT;
-		case Drifter::ShaderDataType::Float3:   return GL_FLOAT;
-		case Drifter::ShaderDataType::Float4:   return GL_FLOAT;
-		case Drifter::ShaderDataType::Mat3:     return GL_FLOAT;
-		case Drifter::ShaderDataType::Mat4:     return GL_FLOAT;
-		case Drifter::ShaderDataType::Int:      return GL_INT;
-		case Drifter::ShaderDataType::Int2:     return GL_INT;
-		case Drifter::ShaderDataType::Int3:     return GL_INT;
-		case Drifter::ShaderDataType::Int4:     return GL_INT;
-		case Drifter::ShaderDataType::Bool:     return GL_BOOL;
-		}
-
-		DF_CORE_ASSERT(false, "Unknown ShaderDataType!");
-		return 0;
-	}
 
 	Application::Application() {
 		DF_CORE_ASSERT(!s_Instance, "Application instance already exists!");
@@ -39,7 +18,6 @@ namespace Drifter {
 		m_window = std::unique_ptr<Window>(Window::Create());
 		m_window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 
-		GenerateOpenGLBuffers();
 		SetBufferData();
 
 		const char* vert = R"(
@@ -117,12 +95,6 @@ namespace Drifter {
 		return true;
 	}
 
-	void Application::GenerateOpenGLBuffers()
-	{
-		glGenVertexArrays(1, &m_vertexArray);
-		glBindVertexArray(m_vertexArray);
-	}
-
 	void Application::SetBufferData()
 	{
 		const int VERT_SIZE = 3;
@@ -134,36 +106,25 @@ namespace Drifter {
 			0.0f, 0.5f, 0.0f
 		};
 
-		{
 			BufferLayout layout = {
 				{ShaderDataType::Float3, "a_Position"}
 			};
 
-			m_VertexBuffer.reset(
-				VertexBuffer::Create(vertices, sizeof(vertices), layout));
-		}
+			
+		
 		const int TRI_COUNT = 1;
 		GLuint indices[TRI_COUNT * 3] = {
 			0, 1, 2
 		};
 
-		m_IndexBuffer.reset(IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
+		m_VertexArray.reset(VertexArray::Create());
 
-		auto layout = m_VertexBuffer->GetLayout();
-		int index = 0;
-		for (auto& bufferElement : layout) {
-			glEnableVertexAttribArray(index);
-			glVertexAttribPointer(
-				index,
-				bufferElement.GetComponentCount(),
-				ShaderDataTypeToOpenGLBaseType(bufferElement.Type),
-				bufferElement.Normalized ? GL_TRUE : GL_FALSE,
-				layout.GetStride(),
-				(const void*)bufferElement.Offset
-			);
-			index++;
-		}
-		
+		m_VertexArray->AddVertexBuffer(
+			VertexBuffer::Create(vertices, sizeof(vertices), layout)
+		);
+		m_VertexArray->SetIndexBuffer(
+			IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t))
+		);
 	}
 
 	void Application::Run() {
@@ -175,10 +136,11 @@ namespace Drifter {
 			for (Layer* layer : m_layerStack) {
 				layer->OnUpdate();
 			}
+			m_VertexArray->Bind();
 
 			m_Shader->Bind();
-			glBindVertexArray(m_vertexArray);
-			glDrawElements(GL_TRIANGLES, m_IndexBuffer->GetCount() , GL_UNSIGNED_INT, 0);
+
+			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount() , GL_UNSIGNED_INT, 0);
 			
 			
 			m_window->OnFrameEnd();

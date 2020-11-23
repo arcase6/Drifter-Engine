@@ -146,8 +146,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\Drifter\Renderer\Shader.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
     <ClInclude Include="src\Drifter.h" />
     <ClInclude Include="src\Drifter\Application.h" />
     <ClInclude Include="src\Drifter\Core.h" />
@@ -163,26 +162,37 @@
     <ClInclude Include="src\Drifter\LayerStack.h" />
     <ClInclude Include="src\Drifter\Log.h" />
     <ClInclude Include="src\Drifter\MouseCodes.h" />
+    <ClInclude Include="src\Drifter\Renderer\Buffer.h" />
     <ClInclude Include="src\Drifter\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Drifter\Renderer\Renderer.h" />
+    <ClInclude Include="src\Drifter\Renderer\Shader.h" />
     <ClInclude Include="src\Drifter\Window.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
+    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
     <ClInclude Include="src\dfpch.h" />
+    <ClInclude Include="src\Drifter\Renderer\VertexArray.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\vendors\glm\glm\detail\glm.cpp" />
-    <ClCompile Include="src\Drifter\Renderer\Shader.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Drifter\Application.cpp" />
     <ClCompile Include="src\Drifter\EditorUI\IMGUILayer.cpp" />
     <ClCompile Include="src\Drifter\Layer.cpp" />
     <ClCompile Include="src\Drifter\LayerStack.cpp" />
     <ClCompile Include="src\Drifter\Log.cpp" />
+    <ClCompile Include="src\Drifter\Renderer\Buffer.cpp" />
+    <ClCompile Include="src\Drifter\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Drifter\Renderer\Shader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\Windows\KeyCodes.cpp" />
     <ClCompile Include="src\Platform\Windows\MouseCodes.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
     <ClCompile Include="src\dfpch.cpp" />
+    <ClCompile Include="src\Drifter\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\vendors\glfw\glfw.vcxproj">
