@@ -53,13 +53,14 @@ namespace Drifter {
 		int index = 0;
 		for (auto& bufferElement : layout) {
 			glEnableVertexAttribArray(index);
+			uint64_t offset = static_cast<uint64_t>(bufferElement.Offset);
 			glVertexAttribPointer(
 				index,
 				bufferElement.GetComponentCount(),
 				ShaderDataTypeToOpenGLBaseType(bufferElement.Type),
 				bufferElement.Normalized ? GL_TRUE : GL_FALSE,
 				layout.GetStride(),
-				(const void*)bufferElement.Offset
+				(const void*)offset
 			);
 			index++;
 		}

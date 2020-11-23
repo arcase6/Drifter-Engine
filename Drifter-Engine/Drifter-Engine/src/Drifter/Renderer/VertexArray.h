@@ -35,10 +35,10 @@ namespace Drifter {
 			array->Bind();
 
 			array->AddVertexBuffer(
-				VertexBuffer::Create(&verts[0], verts.size() * sizeof(float), layout)
+				VertexBuffer::Create(&verts[0], static_cast<uint32_t>(verts.size() * sizeof(float)), layout)
 			);
 			array->SetIndexBuffer(
-				IndexBuffer::Create(&indices[0], indices.size())
+				IndexBuffer::Create(&indices[0], static_cast<uint32_t>(indices.size()))
 			);
 
 			return array;
