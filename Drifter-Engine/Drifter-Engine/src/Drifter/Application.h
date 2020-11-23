@@ -7,7 +7,7 @@
 #include <Drifter/LayerStack.h>
 
 #include "Drifter/Renderer/Shader.h"
-
+#include "Drifter/Renderer/Buffer.h"
 
 namespace Drifter {
 	class Application
@@ -42,8 +42,10 @@ namespace Drifter {
 		static Application* s_Instance;
 	
 		//OpenGL data for rendering -- likely to be removed later
-		unsigned int m_vertexArray, m_vertexBuffer, m_indexBuffer;
-		std::unique_ptr<Shader> m_shader;
+		unsigned int m_vertexArray;
+		std::unique_ptr<VertexBuffer> m_VertexBuffer;
+		std::unique_ptr<IndexBuffer> m_IndexBuffer;
+		std::unique_ptr<Shader> m_Shader;
 
 	};
 
