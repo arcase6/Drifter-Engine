@@ -5,6 +5,8 @@
 #include "Drifter/Events/MouseEvent.h"
 #include <Platform/OpenGL/OpenGLContext.h>
 
+#include "Drifter/Renderer/Renderer.h"
+
 namespace Drifter
 {
 	static bool s_GLFWInitialized = false;
@@ -144,8 +146,8 @@ namespace Drifter
 
 
 	void WindowsWindow::OnFrameBegin() {
-		glClearColor(0, 0, .05f, 1);
-		glClear(GL_COLOR_BUFFER_BIT);
+		Renderer::SetClearColor({ 0.0f, 0.0f, 0.05f, 1.0f });
+		Renderer::Clear();
 	}
 
 	void WindowsWindow::OnFrameEnd() {

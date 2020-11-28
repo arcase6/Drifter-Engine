@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include "Log.h"
 
-#include "glad/glad.h"
+#include "Renderer/Renderer.h"
 
 namespace Drifter {
 #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
@@ -125,7 +125,7 @@ namespace Drifter {
 
 			m_Shader->Bind();
 
-			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, 0);
+			Renderer::Submit(m_VertexArray);
 
 
 			m_window->OnFrameEnd();

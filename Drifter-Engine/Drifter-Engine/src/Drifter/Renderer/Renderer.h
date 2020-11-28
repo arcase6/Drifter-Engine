@@ -1,5 +1,8 @@
 #pragma once
 
+#include "VertexArray.h"
+#include "glm/glm.hpp"
+
 namespace Drifter {
 	enum class RendererAPI
 	{
@@ -8,6 +11,13 @@ namespace Drifter {
 	class Renderer
 	{
 	public:
+		static void SetClearColor(const glm::vec4 color);
+		static void Clear();
+
+		static void BeginScene();
+		static void EndScene();
+
+		static void Submit(const std::shared_ptr<VertexArray>& vertexArray);
 		inline static RendererAPI GetAPI() { return s_RendererAPI; }
 	private:
 		static RendererAPI s_RendererAPI;

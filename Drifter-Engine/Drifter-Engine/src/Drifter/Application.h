@@ -42,7 +42,7 @@ namespace Drifter {
 		static Application* s_Instance;
 	
 		//OpenGL data for rendering -- likely to be removed later
-		std::unique_ptr<VertexArray> m_VertexArray;
+		std::shared_ptr<VertexArray> m_VertexArray;
 		std::unique_ptr<Shader> m_Shader;
 
 	};
