@@ -2,11 +2,8 @@
 #include <cstdint>
 #include <Drifter/Log.h>
 
+#include "Material/ShaderDataType.h"
 namespace Drifter {
-	enum class ShaderDataType {
-		None = 0, Float, Float2, Float3, Float4, Mat3, Mat4, Int, Int2, Int3, Int4, Bool
-	};
-
 	static uint32_t ShaderDataTypeSize(ShaderDataType type)
 	{
 		switch (type)

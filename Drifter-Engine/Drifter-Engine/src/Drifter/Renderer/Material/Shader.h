@@ -11,8 +11,12 @@ namespace Drifter {
 		void Bind();
 		void UnBind();
 
+		inline uint32_t GetID()
+		{
+			return m_RendererID;
+		}
 	private:
-		unsigned int m_RendererID;
+		uint32_t m_RendererID;
 	};
 }
 

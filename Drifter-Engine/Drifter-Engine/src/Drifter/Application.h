@@ -6,7 +6,7 @@
 #include "Events/ApplicationEvent.h"
 #include <Drifter/LayerStack.h>
 
-#include "Drifter/Renderer/Shader.h"
+#include "Drifter/Renderer/Material/Shader.h"
 #include "Drifter/Renderer/Buffer.h"
 #include "Drifter/Renderer/VertexArray.h"
 
