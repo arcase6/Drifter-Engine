@@ -5,7 +5,9 @@
 #include "Log.h"
 
 #include "Renderer/Renderer.h"
+#include "Renderer/Material/Uniform.h"
 
+#include <GLFW/glfw3.h>
 namespace Drifter {
 #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 
@@ -24,7 +26,7 @@ namespace Drifter {
 			#version 330 core
 			
 			layout(location=0) in vec3 a_Position;
-			out vec3 v_Position;			
+			out vec3 v_Position;
 
 			void main(){
 				v_Position = a_Position;
@@ -38,8 +40,10 @@ namespace Drifter {
 			layout(location=0) out vec4 fragColor;
 			in vec3 v_Position;
 			
+			uniform float u_time;			
+
 			void main(){
-				vec3 col = vec3(1,1,1);
+				vec3 col = vec3(1,1,1) * sin(u_time) / 2. + .5;
 				float r = v_Position.x + .5;
 				float g = 1 - r;
 				float b = v_Position.y + .5;
@@ -115,6 +119,8 @@ namespace Drifter {
 	void Application::Run() {
 		DF_LOG_INFO("Welcome to Drifter!");
 
+		std::unique_ptr<Uniform> u_time;
+		u_time.reset(Uniform::Create(*m_Shader, "u_time"));
 
 		while (m_running) {
 			m_window->OnFrameBegin();
@@ -124,6 +130,7 @@ namespace Drifter {
 			m_VertexArray->Bind();
 
 			m_Shader->Bind();
+			u_time->Set(static_cast<float>(glfwGetTime()));
 
 			Renderer::Submit(m_VertexArray);
 
