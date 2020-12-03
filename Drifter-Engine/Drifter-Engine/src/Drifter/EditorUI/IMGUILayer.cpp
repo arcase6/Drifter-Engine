@@ -1,4 +1,4 @@
-//#include "dfpch.h"
+//#include "Drifter/Core/dfpch.h"
 #include <glad/glad.h>
 
 #include "IMGUILayer.h"
@@ -31,7 +31,6 @@ namespace Drifter::EditorUI {
 		io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;           // Enable Docking
 		io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;         // Enable Multi-Viewport / Platform Windows
 
-		DF_LOG_INFO("Config flags set");
 		ImGui::StyleColorsDark();
 
 		ImGuiStyle& style = ImGui::GetStyle();
@@ -45,7 +44,6 @@ namespace Drifter::EditorUI {
 		ImGui_ImplGlfw_InitForOpenGL(GetGLFWwindow(m_window), false);
 #endif
 		ImGui_ImplOpenGL3_Init(glsl_version);
-		DF_LOG_INFO("Backends called");
 	}
 
 	void ImguiLayer::OnDetach()

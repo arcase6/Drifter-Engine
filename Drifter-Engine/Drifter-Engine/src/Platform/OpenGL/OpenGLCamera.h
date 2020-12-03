@@ -15,14 +15,14 @@ namespace Drifter {
 			m_FarClip(1000.0f),
 			m_Width(static_cast<float>(Application::Get().GetWindow().GetWidth())),
 			m_Height(static_cast<float>(Application::Get().GetWindow().GetWidth())),
-			m_ViewMatrix(glm::mat4x4(1.0)),
-			m_ProjectionMatrix(glm::mat4x4(1.0))
+			m_ViewMatrix(glm::mat4(1.0)),
+			m_ProjectionMatrix(glm::mat4(1.0))
 		{ }
 
 		// Inherited via Camera
 		virtual void SetPosition(const glm::vec3& position) override { m_Position = position; }
 
-		virtual void SetLookVector(const glm::vec3& lookVector) override { m_LookVector = glm::normalize(lookVector * -1.0f); }
+		virtual void SetLookVector(const glm::vec3& lookVector) override { m_LookVector = glm::normalize(lookVector); }
 
 		virtual float GetWidth() const override { return m_Width;}
 		virtual float GetHeight() const override { return m_Height; }
@@ -34,9 +34,9 @@ namespace Drifter {
 
 		virtual glm::vec3 GetPosition() const override { return m_Position; }
 
-		virtual glm::mat4x4 GetViewMatrix() const override { return m_ViewMatrix; }
+		virtual glm::mat4 GetViewMatrix() const override { return m_ViewMatrix; }
 
-		virtual glm::mat4x4 GetProjectionMatrix() const override { return m_ProjectionMatrix; }
+		virtual glm::mat4 GetProjectionMatrix() const override { return m_ProjectionMatrix; }
 
 		virtual float GetNearClipDistance() const override { return m_NearClip; }
 
@@ -56,8 +56,8 @@ namespace Drifter {
 		float m_Width;
 		float m_Height;
 
-		glm::mat4x4 m_ViewMatrix;
-		glm::mat4x4 m_ProjectionMatrix;
+		glm::mat4 m_ViewMatrix;
+		glm::mat4 m_ProjectionMatrix;
 
 	};
 

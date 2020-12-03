@@ -15,7 +15,7 @@ namespace Drifter {
 		virtual void Set(const glm::vec4& value) override;
 
 		virtual void Set(const glm::mat3x3& value) override;
-		virtual void Set(const glm::mat4x4& value) override;
+		virtual void Set(const glm::mat4& value) override;
 
 		virtual void Set(int value) override;
 		virtual void Set(const glm::ivec2& value) override;
@@ -31,7 +31,7 @@ namespace Drifter {
 		virtual glm::vec4 GetVec4() override;
 		
 		virtual glm::mat3x3 GetMat3() override;
-		virtual glm::mat4x4 GetMat4() override;
+		virtual glm::mat4 GetMat4() override;
 		
 		virtual int GetInt() override;
 		virtual glm::ivec2 GetIVec2() override;

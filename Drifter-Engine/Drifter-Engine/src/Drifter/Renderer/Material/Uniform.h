@@ -18,7 +18,7 @@ namespace Drifter {
 		virtual void Set(const glm::vec4& value) = 0;
 
 		virtual void Set(const glm::mat3x3& value) = 0;
-		virtual void Set(const glm::mat4x4& value) = 0;
+		virtual void Set(const glm::mat4& value) = 0;
 
 		virtual void Set(int value) = 0;
 		virtual void Set(const glm::ivec2& value) = 0;
@@ -34,7 +34,7 @@ namespace Drifter {
 		virtual glm::vec4   GetVec4()  = 0;
 									   
 		virtual glm::mat3x3 GetMat3()  = 0;
-		virtual glm::mat4x4 GetMat4()  = 0;
+		virtual glm::mat4 GetMat4()  = 0;
 
 		virtual int         GetInt()   = 0;
 		virtual glm::ivec2  GetIVec2() = 0;

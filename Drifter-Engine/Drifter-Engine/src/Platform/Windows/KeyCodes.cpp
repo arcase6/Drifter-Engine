@@ -1,4 +1,4 @@
-#include "Drifter/KeyCodes.h"
+#include "Drifter/Input/KeyCodes.h"
 #include "GLFW/glfw3.h"
 
 #if DF_PLATFORM_WINDOWS

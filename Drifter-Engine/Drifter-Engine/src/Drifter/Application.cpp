@@ -1,13 +1,11 @@
-#include "dfpch.h"
+#include "Core/dfpch.h"
 
 #include "Application.h"
 #include <stdio.h>
-#include "Log.h"
+#include "Core/Log.h"
+#include "Drifter/Input/Input.h"
+#include "Drifter/Core/Time.h"
 
-#include "Renderer/Renderer.h"
-#include "Renderer/Material/Uniform.h"
-
-#include <GLFW/glfw3.h>
 namespace Drifter {
 #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 
@@ -19,40 +17,6 @@ namespace Drifter {
 
 		m_window = std::unique_ptr<Window>(Window::Create());
 		m_window->SetEventCallback(BIND_EVENT_FN(OnEvent));
-
-		SetBufferData();
-
-		const char* vert = R"(
-			#version 330 core
-			
-			layout(location=0) in vec3 a_Position;
-			out vec3 v_Position;
-
-			void main(){
-				v_Position = a_Position;
-				gl_Position = vec4(v_Position, 1.0);
-			}
-		)";
-
-		const char* frag = R"(
-			#version 330 core
-
-			layout(location=0) out vec4 fragColor;
-			in vec3 v_Position;
-			
-			uniform float u_time;			
-
-			void main(){
-				vec3 col = vec3(1,1,1) * sin(u_time) / 2. + .5;
-				float r = v_Position.x + .5;
-				float g = 1 - r;
-				float b = v_Position.y + .5;
-				vec3 posCol = vec3(r,g,b);
-				fragColor = vec4(col * posCol, 1.0);
-			}
-		)";
-
-		m_Shader.reset(new Shader(vert, frag));
 	}
 
 
@@ -63,7 +27,6 @@ namespace Drifter {
 
 	void Application::OnEvent(Event& e)
 	{
-		DF_LOG_TRACE("{0}", e);
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 
@@ -99,42 +62,15 @@ namespace Drifter {
 		return true;
 	}
 
-	void Application::SetBufferData()
-	{
-		std::vector<float> vertices = 
-		{
-			-0.5f, -0.5f, 0.0f,
-			0.5f, -0.5f, 0.0f,
-			0.0f, 0.5f, 0.0f
-		};
-		std::vector<uint32_t> indices = {
-			0, 1, 2
-		};
-		BufferLayout layout = {
-			{ShaderDataType::Float3, "a_Position"}
-		};
-		m_VertexArray.reset(VertexArray::Create(vertices,indices, layout));
-	}
-
 	void Application::Run() {
 		DF_LOG_INFO("Welcome to Drifter!");
 
-		std::unique_ptr<Uniform> u_time;
-		u_time.reset(Uniform::Create(*m_Shader, "u_time"));
-
 		while (m_running) {
 			m_window->OnFrameBegin();
+			Time::Tick();
 			for (Layer* layer : m_layerStack) {
 				layer->OnUpdate();
 			}
-			m_VertexArray->Bind();
-
-			m_Shader->Bind();
-			u_time->Set(static_cast<float>(glfwGetTime()));
-
-			Renderer::Submit(m_VertexArray);
-
-
 			m_window->OnFrameEnd();
 		}
 	}

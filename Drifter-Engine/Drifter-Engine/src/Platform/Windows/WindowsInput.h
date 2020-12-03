@@ -1,5 +1,5 @@
 #pragma once
-#include <Drifter/Input.h>
+#include <Drifter/Input/Input.h>
 namespace Drifter {
 	class WindowsInput : public Input
 	{

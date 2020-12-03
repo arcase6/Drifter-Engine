@@ -1,5 +1,5 @@
 
-#include "Drifter/MouseCodes.h"
+#include "Drifter/Input/MouseCodes.h"
 #include "GLFW/glfw3.h"
 
 #if DF_PLATFORM_WINDOWS

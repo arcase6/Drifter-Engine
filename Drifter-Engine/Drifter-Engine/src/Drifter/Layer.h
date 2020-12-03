@@ -1,5 +1,6 @@
 #pragma once
-#include "Drifter/Core.h"
+
+#include "Core/Core.h"
 #include "Drifter/Events/Event.h"
 
 namespace Drifter {

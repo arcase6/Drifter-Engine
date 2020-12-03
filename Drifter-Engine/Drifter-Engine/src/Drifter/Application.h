@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core.h"
+#include "Core/Core.h"
 #include "Events/Event.h"
 #include "Window.h"
 #include "Events/ApplicationEvent.h"
@@ -36,14 +36,9 @@ namespace Drifter {
 		std::unique_ptr<Window> m_window;
 		bool m_running = true;
 		LayerStack m_layerStack;
-		void SetBufferData();
 
 	private:
 		static Application* s_Instance;
-	
-		//OpenGL data for rendering -- likely to be removed later
-		std::shared_ptr<VertexArray> m_VertexArray;
-		std::unique_ptr<Shader> m_Shader;
 
 	};
 

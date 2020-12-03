@@ -1,6 +1,6 @@
 #pragma once
 #include <cstdint>
-#include <Drifter/Log.h>
+#include <Drifter/Core/Log.h>
 
 #include "Material/ShaderDataType.h"
 namespace Drifter {

@@ -107,7 +107,9 @@ project "Sandbox"
 
 	includedirs{
 		"vendors/spdlogger/include",
-		"Drifter-Engine/src"
+		"Drifter-Engine/src",
+		"%{IncludeDir.imgui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links

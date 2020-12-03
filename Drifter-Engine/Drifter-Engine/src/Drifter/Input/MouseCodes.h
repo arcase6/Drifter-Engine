@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Drifter/Core.h"
+#include "Drifter/Core/Core.h"
 
 namespace Drifter {
 	class MouseCodes {

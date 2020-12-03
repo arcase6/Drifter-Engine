@@ -1,4 +1,4 @@
-#include "dfpch.h"
+#include "Drifter/Core/dfpch.h"
 
 #include "OpenGLUniform.h"
 #include "glad/glad.h"
@@ -38,7 +38,7 @@ namespace Drifter {
 		m_Shader.Bind();
 		glUniformMatrix3fv(m_UniformID, 1, GL_FALSE, glm::value_ptr(value));
 	}
-	void OpenGLUniform::Set(const glm::mat4x4& value)
+	void OpenGLUniform::Set(const glm::mat4& value)
 	{
 		m_Shader.Bind();
 		glUniformMatrix4fv(m_UniformID, 1, GL_FALSE, glm::value_ptr(value));
@@ -100,11 +100,11 @@ namespace Drifter {
 		glGetnUniformfv(m_Shader.GetID(), m_UniformID, 3 * 3, result);
 		return glm::make_mat3x3(result);
 	}
-	glm::mat4x4 OpenGLUniform::GetMat4()
+	glm::mat4 OpenGLUniform::GetMat4()
 	{
 		float  result[4 * 4];
 		glGetnUniformfv(m_Shader.GetID(), m_UniformID, 4 * 4, result);
-		return glm::make_mat4x4(result);
+		return glm::make_mat4(result);
 	}
 	int OpenGLUniform::GetInt()
 	{

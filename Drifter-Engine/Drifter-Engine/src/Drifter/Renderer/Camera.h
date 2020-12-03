@@ -18,8 +18,8 @@ namespace Drifter {
 		virtual void LookAt(const glm::vec3& target) = 0;
 
 
-		virtual glm::mat4x4 GetViewMatrix() const = 0;
-		virtual glm::mat4x4 GetProjectionMatrix() const = 0;
+		virtual glm::mat4 GetViewMatrix() const = 0;
+		virtual glm::mat4 GetProjectionMatrix() const = 0;
 
 
 		virtual float GetNearClipDistance() const= 0;
@@ -45,6 +45,7 @@ namespace Drifter {
 
 	class OrthographicCamera : virtual public Camera
 	{
+	public:
 		static OrthographicCamera* Create(const glm::vec3& position, const glm::vec3& lookDirection);
 
 	};
