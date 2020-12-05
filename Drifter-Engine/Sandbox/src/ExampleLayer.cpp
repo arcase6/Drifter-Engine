@@ -129,10 +129,12 @@ namespace Sandbox
 		//SetupCamera
 		m_CameraPosition = glm::vec3(0.0f, 0.0f, 1.0f);
 		m_Camera.reset(static_cast<Drifter::Camera*>(
-			Drifter::PerspectiveCamera::Create(m_CameraPosition, glm::vec3(0.0f, 0.0f, -1.0f), 60.0)
+			Drifter::PerspectiveCamera::Create(m_CameraPosition, glm::vec3(0.0f, 0.0f, 1.0f), 60.0)
 			));
 		m_Camera->SetNearClipDistance(0.01f);
 		m_Camera->SetFarClipDistance(1000.0f);
+
+		m_Camera->SetLookVector(glm::vec3(0.0f, 0.0f, -1.0f));
 		m_Camera->RecalculateTransforms();
 	}
 
@@ -141,11 +143,11 @@ namespace Sandbox
 		using namespace Drifter;
 		static glm::mat4 triangleTransform = glm::mat4(1);
 		
-		static glm::vec3 boxPosition = glm::vec3(0,0,-2);
+		static glm::vec3 boxPosition = glm::vec3(0,0,-5.0f);
 		static glm::mat4 boxTransform = glm::translate(glm::mat4(1), boxPosition);
 
 		//move camera here
-		glm::vec2 posDelta = glm::vec2(0.0f, 0.0f);
+		glm::vec3 posDelta = glm::vec3(0.0f, 0.0f, 0.0f);
 		if (Input::IsKeyPressed(KeyCodes::W())) {
 			posDelta.y = 1.0f;
 		}
@@ -162,7 +164,7 @@ namespace Sandbox
 		static float movementPerSecond = 1.0f;
 		posDelta *= Time::GetDeltaTime() * movementPerSecond;
 
-		m_CameraPosition = m_Camera->GetPosition() + glm::vec3(posDelta, 0);
+		m_CameraPosition = m_Camera->GetPosition() + posDelta;
 		m_Camera->SetPosition(m_CameraPosition);
 		m_Camera->RecalculateTransforms();
 
@@ -170,8 +172,9 @@ namespace Sandbox
 		glm::mat4 projectionMatrix = m_Camera->GetProjectionMatrix();
 
 
-		//DF_LOG_INFO("position : {0}", glm::to_string(camera->GetPosition()));
+		//DF_LOG_INFO("position : {0}", glm::to_string(m_Camera->GetPosition()));
 		//DF_LOG_INFO("delta  : {0}", glm::to_string(posDelta));
+		//DF_LOG_INFO("deltaTime  : {0}", Time::GetDeltaTime());
 		//DF_LOG_INFO("View Matrix {0}", glm::to_string(viewMatrix));
 		//DF_LOG_INFO("Projection Matrix {0}" , glm::to_string(projectionMatrix));
 
