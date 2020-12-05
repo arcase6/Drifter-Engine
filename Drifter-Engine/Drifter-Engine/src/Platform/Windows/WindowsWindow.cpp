@@ -51,6 +51,7 @@ namespace Drifter
 		glfwSetWindowUserPointer(m_window, &m_data);
 
 		SetVSync(true);
+		glEnable(GL_DEPTH_TEST);
 
 		//set glfw callbacks
 		SetWindowCallbacks();

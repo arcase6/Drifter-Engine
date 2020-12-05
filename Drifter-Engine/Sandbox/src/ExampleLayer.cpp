@@ -2,7 +2,7 @@
 
 namespace Sandbox
 {
-	void ExampleLayer::SetBufferData()
+	void ExampleLayer::SetTriangleData()
 	{
 		std::vector<float> vertices =
 		{
@@ -16,9 +16,75 @@ namespace Sandbox
 		Drifter::BufferLayout layout = {
 			{ Drifter::ShaderDataType::Float3, "a_Position" }
 		};
-		m_VertexArray.reset(Drifter::VertexArray::Create(vertices, indices, layout));
+		m_Triangle.reset(Drifter::VertexArray::Create(vertices, indices, layout));
 	}
-	
+
+	void ExampleLayer::SetBoxData()
+	{
+		std::vector<float> vertices =
+		{
+			//bottom face
+			-0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+	         0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
+	         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+	        -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+	        
+			//top face
+	        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+	         0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+	         0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
+	        -0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
+	        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	        
+			//left face
+	        -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	        -0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	        -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	        
+			 //right face
+	         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	         0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	         0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	         0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	        
+			 //back face
+	        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	         0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
+	         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+	         0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
+	        -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+	        -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+	        
+			//front face
+	        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
+	         0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
+	         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	         0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+	        -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
+	        -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
+
+
+		};
+		std::vector<uint32_t> indices;
+		for (int i = 0; i < vertices.size(); i++) {
+			indices.push_back(i);
+		}
+
+		Drifter::BufferLayout layout = {
+			{ Drifter::ShaderDataType::Float3, "a_Position" },
+			{ Drifter::ShaderDataType::Float2, "a_UV" }
+		};
+		m_Box.reset(Drifter::VertexArray::Create(vertices, indices, layout));
+	}
+
 	void ExampleLayer::SetupShaders()
 	{
 		const char* vert = R"(
@@ -55,52 +121,53 @@ namespace Sandbox
 			}
 		)";
 
-		m_Shader.reset(dynamic_cast<Drifter::OpenGLShader *>(Drifter::Shader::Create(vert, frag)));
+		m_Shader.reset(dynamic_cast<Drifter::OpenGLShader*>(Drifter::Shader::Create(vert, frag)));
 	}
-	
+
 	void ExampleLayer::SetupCameras() {
 
 		//SetupCamera
 		m_CameraPosition = glm::vec3(0.0f, 0.0f, 1.0f);
-		camera.reset(static_cast<Drifter::Camera*>(
-			Drifter::OrthographicCamera::Create(m_CameraPosition, glm::vec3(0.0f, 0.0f, -1.0f))
+		m_Camera.reset(static_cast<Drifter::Camera*>(
+			Drifter::PerspectiveCamera::Create(m_CameraPosition, glm::vec3(0.0f, 0.0f, -1.0f), 60.0)
 			));
-		camera->SetNearClipDistance(0.01f);
-		camera->SetFarClipDistance(2.0f);
-		camera->SetWidth(2);
-		camera->SetHeight(2);
-		camera->RecalculateTransforms();
+		m_Camera->SetNearClipDistance(0.01f);
+		m_Camera->SetFarClipDistance(1000.0f);
+		m_Camera->RecalculateTransforms();
 	}
-	
+
 	void ExampleLayer::OnUpdate()
 	{
 		using namespace Drifter;
-		static float movementPerSecond = 1;
-		static glm::mat4 transform = glm::mat4(1);
+		static glm::mat4 triangleTransform = glm::mat4(1);
+		
+		static glm::vec3 boxPosition = glm::vec3(0,0,-2);
+		static glm::mat4 boxTransform = glm::translate(glm::mat4(1), boxPosition);
 
 		//move camera here
 		glm::vec2 posDelta = glm::vec2(0.0f, 0.0f);
 		if (Input::IsKeyPressed(KeyCodes::W())) {
 			posDelta.y = 1.0f;
 		}
-		else if(Input::IsKeyPressed(KeyCodes::S())){
+		else if (Input::IsKeyPressed(KeyCodes::S())) {
 			posDelta.y = -1.0f;
 		}
 		if (Input::IsKeyPressed(KeyCodes::A())) {
 			posDelta.x = -1.0f;
 		}
-		else if(Input::IsKeyPressed(KeyCodes::D())){
+		else if (Input::IsKeyPressed(KeyCodes::D())) {
 			posDelta.x = 1.0f;
 		}
 
+		static float movementPerSecond = 1.0f;
 		posDelta *= Time::GetDeltaTime() * movementPerSecond;
 
-		m_CameraPosition = camera->GetPosition() + glm::vec3(posDelta, 0);
-		camera->SetPosition(m_CameraPosition);
-		camera->RecalculateTransforms();
+		m_CameraPosition = m_Camera->GetPosition() + glm::vec3(posDelta, 0);
+		m_Camera->SetPosition(m_CameraPosition);
+		m_Camera->RecalculateTransforms();
 
-		glm::mat4 viewMatrix = camera->GetViewMatrix();
-		glm::mat4 projectionMatrix = camera->GetProjectionMatrix();
+		glm::mat4 viewMatrix = m_Camera->GetViewMatrix();
+		glm::mat4 projectionMatrix = m_Camera->GetProjectionMatrix();
 
 
 		//DF_LOG_INFO("position : {0}", glm::to_string(camera->GetPosition()));
@@ -112,17 +179,24 @@ namespace Sandbox
 		glm::mat4 vpMatrix = projectionMatrix * viewMatrix;
 
 
-		m_VertexArray->Bind();
+		m_Triangle->Bind();
 
 		m_Shader->Bind();
 		m_Shader->Set("u_Time", static_cast<float>(Time::GetTime()));
 		m_Shader->Set("u_ViewProjection", vpMatrix);
-		m_Shader->Set("u_Model", transform);
+		m_Shader->Set("u_Model", triangleTransform);
+
+		Renderer::Submit(m_Triangle);
+
+		m_Box->Bind();
+
+		m_Shader->Set("u_Model", boxTransform);
+
+		Renderer::Submit(m_Box);
 
 
-		Renderer::Submit(m_VertexArray);
 	}
-	
+
 	void ExampleLayer::OnEvent(Drifter::Event& e)
 	{
 	}

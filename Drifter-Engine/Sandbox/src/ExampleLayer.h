@@ -8,11 +8,13 @@ namespace Sandbox {
 	public:
 		ExampleLayer() : Layer("Example") {
 
-			SetBufferData();
+			SetTriangleData();
+			SetBoxData();
 			SetupShaders();
 			SetupCameras();
 		}
-		void ExampleLayer::SetBufferData();
+		void ExampleLayer::SetTriangleData();
+		void ExampleLayer::SetBoxData();
 		void ExampleLayer::SetupShaders();
 		void ExampleLayer::SetupCameras();
 
@@ -22,10 +24,11 @@ namespace Sandbox {
 
 	private:
 		//OpenGL data for rendering -- likely to be removed later
-		Drifter::Ref<Drifter::VertexArray> m_VertexArray;
+		Drifter::Ref<Drifter::VertexArray> m_Triangle;
+		Drifter::Ref<Drifter::VertexArray> m_Box;
 		Drifter::Ref<Drifter::OpenGLShader> m_Shader;
 
-		Drifter::Scope<Drifter::Camera> camera;
+		Drifter::Scope<Drifter::Camera> m_Camera;
 		glm::vec3 m_CameraPosition;
 	};
 }
