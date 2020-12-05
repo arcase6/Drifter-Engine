@@ -146,6 +146,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\Platform\OpenGL\Material\OpenGLShader.h" />
     <ClInclude Include="src\Drifter.h" />
     <ClInclude Include="src\Drifter\Application.h" />
     <ClInclude Include="src\Drifter\Core\Core.h" />
@@ -186,6 +187,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\vendors\glm\glm\detail\glm.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\Material\OpenGLShader.cpp" />
     <ClCompile Include="src\Drifter\Application.cpp" />
     <ClCompile Include="src\Drifter\EditorUI\IMGUILayer.cpp" />
     <ClCompile Include="src\Drifter\Layer.cpp" />

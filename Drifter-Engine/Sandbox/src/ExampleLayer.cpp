@@ -53,7 +53,7 @@ namespace Sandbox
 			}
 		)";
 
-		m_Shader.reset(new Drifter::Shader(vert, frag));
+		m_Shader.reset(Drifter::Shader::Create(vert, frag));
 
 		//Create unitforms for shader
 		u_time.reset(Drifter::Uniform::Create(*m_Shader, "u_time"));

@@ -9,7 +9,7 @@ namespace Drifter {
 		const char* Name;
 
 		static Uniform * Create(Shader& shader,const char* name);
-
+		virtual ~Uniform() = default;
 
 		//setters
 		virtual void Set(float value) = 0;

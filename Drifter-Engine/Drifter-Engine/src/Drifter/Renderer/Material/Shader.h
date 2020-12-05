@@ -5,17 +5,14 @@ namespace Drifter {
 	class Shader
 	{
 	public:
-		Shader(const char* vert, const char* frag);
-		virtual ~Shader();
+		static Shader* Create(const char* vert, const char* frag);
+		virtual ~Shader() = default;
 
-		void Bind();
-		void UnBind();
+		virtual void Bind() = 0;
+		virtual void UnBind() = 0;
 
-		inline uint32_t GetID()
-		{
-			return m_RendererID;
-		}
-	private:
+		virtual uint32_t GetID() = 0;
+	protected:
 		uint32_t m_RendererID;
 	};
 }

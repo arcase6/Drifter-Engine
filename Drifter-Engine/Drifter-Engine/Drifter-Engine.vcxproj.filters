@@ -159,6 +159,7 @@
     <ClInclude Include="src\Drifter.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\Material\OpenGLShader.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\vendors\glm\glm\detail\glm.cpp">
@@ -242,5 +243,6 @@
     <ClCompile Include="src\Drifter\Core\dfpch.cpp">
       <Filter>src</Filter>
     </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\Material\OpenGLShader.cpp" />
   </ItemGroup>
 </Project>

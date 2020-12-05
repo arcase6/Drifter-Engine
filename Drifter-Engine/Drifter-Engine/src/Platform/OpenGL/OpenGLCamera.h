@@ -78,7 +78,7 @@ namespace Drifter {
 		virtual void RecalculateTransforms() override;
 	private:
 		float m_FOVRadians;
-	};
+	 };
 
 	class OpenGLOrthographicCamera : public OpenGLCamera, public OrthographicCamera
 	{
