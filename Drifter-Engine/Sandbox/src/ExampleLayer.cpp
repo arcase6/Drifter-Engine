@@ -43,10 +43,10 @@ namespace Sandbox
 			layout(location=0) out vec4 fragColor;
 			in vec3 v_Position;
 			
-			uniform float u_time;			
+			uniform float u_Time;			
 
 			void main(){
-				vec3 col = vec3(1,1,1) * sin(u_time) / 2. + .5;
+				vec3 col = vec3(1,1,1) * sin(u_Time) / 2. + .5;
 				float r = v_Position.x + .5;
 				float g = 1 - r;
 				float b = v_Position.y + .5;
@@ -55,11 +55,7 @@ namespace Sandbox
 			}
 		)";
 
-		m_Shader.reset(Drifter::Shader::Create(vert, frag));
-
-		//Create unitforms for shader
-		u_time.reset(Drifter::Uniform::Create(*m_Shader, "u_time"));
-		u_VP.reset(Drifter::Uniform::Create(*m_Shader, "u_ViewProjection"));
+		m_Shader.reset(dynamic_cast<Drifter::OpenGLShader *>(Drifter::Shader::Create(vert, frag)));
 	}
 	
 	void ExampleLayer::SetupCameras() {
@@ -80,6 +76,7 @@ namespace Sandbox
 	{
 		using namespace Drifter;
 		static float movementPerSecond = 1;
+		static glm::mat4 transform = glm::mat4(1);
 
 		//move camera here
 		glm::vec2 posDelta = glm::vec2(0.0f, 0.0f);
@@ -118,8 +115,10 @@ namespace Sandbox
 		m_VertexArray->Bind();
 
 		m_Shader->Bind();
-		u_time->Set(static_cast<float>(Time::GetTime()));
-		u_VP->Set(vpMatrix);
+		m_Shader->Set("u_Time", static_cast<float>(Time::GetTime()));
+		m_Shader->Set("u_ViewProjection", vpMatrix);
+		m_Shader->Set("u_Model", transform);
+
 
 		Renderer::Submit(m_VertexArray);
 	}

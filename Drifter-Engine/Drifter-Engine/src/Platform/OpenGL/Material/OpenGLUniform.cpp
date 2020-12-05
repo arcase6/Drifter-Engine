@@ -15,57 +15,57 @@ namespace Drifter {
 	}
 	void OpenGLUniform::Set(float value)
 	{
-		m_Shader.Bind();
+		//m_Shader.Bind()();
 		glUniform1f(m_UniformID, value);
 	}
 	void OpenGLUniform::Set(const glm::vec2& value)
 	{
-		m_Shader.Bind();
+		//m_Shader.Bind()();
 		glUniform2f(m_UniformID, value.r, value.g);
 	}
 	void OpenGLUniform::Set(const glm::vec3& value)
 	{
-		m_Shader.Bind();
+		//m_Shader.Bind()();
 		glUniform3f(m_UniformID, value.r, value.g, value.b);
 	}
 	void OpenGLUniform::Set(const glm::vec4& value)
 	{
-		m_Shader.Bind();
+		//m_Shader.Bind()();
 		glUniform4f(m_UniformID, value.r, value.g, value.b, value.a);
 	}
 	void OpenGLUniform::Set(const glm::mat3x3& value)
 	{
-		m_Shader.Bind();
+		//m_Shader.Bind()();
 		glUniformMatrix3fv(m_UniformID, 1, GL_FALSE, glm::value_ptr(value));
 	}
 	void OpenGLUniform::Set(const glm::mat4& value)
 	{
-		m_Shader.Bind();
+		//m_Shader.Bind()();
 		glUniformMatrix4fv(m_UniformID, 1, GL_FALSE, glm::value_ptr(value));
 	}
 	void OpenGLUniform::Set(int value)
 	{
-		m_Shader.Bind();
+		//m_Shader.Bind()();
 		glUniform1i(m_UniformID, value);
 	}
 	void OpenGLUniform::Set(const glm::ivec2& value)
 	{
-		m_Shader.Bind();
+		//m_Shader.Bind()();
 		glUniform2i(m_UniformID, value.r, value.g);
 	}
 	void OpenGLUniform::Set(const glm::ivec3& value)
 	{
-		m_Shader.Bind();
+		//m_Shader.Bind()();
 		glUniform3i(m_UniformID, value.r, value.g, value.b);
 	}
 	void OpenGLUniform::Set(const glm::ivec4& value)
 	{
-		m_Shader.Bind();
+		//m_Shader.Bind()();
 		glUniform4i(m_UniformID, value.r, value.g, value.b, value.a);
 	}
 	void OpenGLUniform::Set(bool value)
 	{
-		m_Shader.Bind();
+		//m_Shader.Bind()();
 		glUniform1i(m_UniformID, static_cast<GLint>(value));
 	}
 	float OpenGLUniform::GetFloat()

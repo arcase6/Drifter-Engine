@@ -1,6 +1,7 @@
 #pragma once
 #include "Drifter.h"
 
+#include "Platform/OpenGL/Material/OpenGLShader.h"
 namespace Sandbox {
 	class ExampleLayer : public Drifter::Layer
 	{
@@ -22,10 +23,7 @@ namespace Sandbox {
 	private:
 		//OpenGL data for rendering -- likely to be removed later
 		Drifter::Ref<Drifter::VertexArray> m_VertexArray;
-		Drifter::Ref<Drifter::Shader> m_Shader;
-		Drifter::Ref<Drifter::Uniform> u_time;
-		Drifter::Ref<Drifter::Uniform> u_VP;
-
+		Drifter::Ref<Drifter::OpenGLShader> m_Shader;
 
 		Drifter::Scope<Drifter::Camera> camera;
 		glm::vec3 m_CameraPosition;
