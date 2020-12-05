@@ -27,10 +27,12 @@ namespace Sandbox
 			layout(location=0) in vec3 a_Position;
 			out vec3 v_Position;
 			
-			uniform mat4 u_vp;
+
+			uniform mat4 u_Model;
+			uniform mat4 u_ViewProjection;
 
 			void main(){
-				gl_Position = u_vp * vec4(a_Position, 1.0);
+				gl_Position = u_ViewProjection * u_Model * vec4(a_Position, 1.0);
 				v_Position = gl_Position.xyz;
 			}
 		)";
@@ -57,7 +59,7 @@ namespace Sandbox
 
 		//Create unitforms for shader
 		u_time.reset(Drifter::Uniform::Create(*m_Shader, "u_time"));
-		u_VP.reset(Drifter::Uniform::Create(*m_Shader, "u_vp"));
+		u_VP.reset(Drifter::Uniform::Create(*m_Shader, "u_ViewProjection"));
 	}
 	
 	void ExampleLayer::SetupCameras() {

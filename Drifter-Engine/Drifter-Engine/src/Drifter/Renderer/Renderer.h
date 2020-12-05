@@ -17,7 +17,7 @@ namespace Drifter {
 		static void BeginScene();
 		static void EndScene();
 
-		static void Submit(const std::shared_ptr<VertexArray>& vertexArray);
+		static void Submit(const Ref<VertexArray>& vertexArray);
 		inline static RendererAPI GetAPI() { return s_RendererAPI; }
 	private:
 		static RendererAPI s_RendererAPI;

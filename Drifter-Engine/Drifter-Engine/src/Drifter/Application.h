@@ -1,14 +1,9 @@
 #pragma once
 
 #include "Core/Core.h"
-#include "Events/Event.h"
 #include "Window.h"
 #include "Events/ApplicationEvent.h"
 #include <Drifter/LayerStack.h>
-
-#include "Drifter/Renderer/Material/Shader.h"
-#include "Drifter/Renderer/Buffer.h"
-#include "Drifter/Renderer/VertexArray.h"
 
 namespace Drifter {
 	class Application
@@ -33,7 +28,7 @@ namespace Drifter {
 		inline Window& GetWindow() { return *m_window; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
-		std::unique_ptr<Window> m_window;
+		Scope<Window> m_window;
 		bool m_running = true;
 		LayerStack m_layerStack;
 

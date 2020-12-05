@@ -8,7 +8,7 @@ namespace Drifter {
 	public:
 		virtual void SetClearColor(const glm::vec4 color) = 0;
 		virtual void Clear() = 0;
-		virtual void DrawIndexedTriangles(const std::shared_ptr<VertexArray>& vertexArray) = 0;
+		virtual void DrawIndexedTriangles(const Ref<VertexArray>& vertexArray) = 0;
 	};
 
 	class RenderCommand
@@ -23,7 +23,7 @@ namespace Drifter {
 			s_CommandParser->Clear();
 		}
 
-		inline static void DrawIndexedTriangles(const std::shared_ptr<VertexArray>& vertexArray) {
+		inline static void DrawIndexedTriangles(const Ref<VertexArray>& vertexArray) {
 			s_CommandParser->DrawIndexedTriangles(vertexArray);
 		}
 

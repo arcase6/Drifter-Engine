@@ -1,4 +1,5 @@
 #pragma once
+#include <memory>
 
 
 #ifdef DF_PLATFORM_WINDOWS
@@ -16,3 +17,11 @@
 #endif
 
 #define BIT(X) (1 << X)
+
+namespace Drifter {
+	template<typename T>
+	using Scope = std::unique_ptr<T>;
+
+	template <typename T>
+	using Ref = std::shared_ptr<T>;
+}

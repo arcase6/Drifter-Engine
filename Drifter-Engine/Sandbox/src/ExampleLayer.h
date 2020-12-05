@@ -21,13 +21,13 @@ namespace Sandbox {
 
 	private:
 		//OpenGL data for rendering -- likely to be removed later
-		std::shared_ptr<Drifter::VertexArray> m_VertexArray;
-		std::unique_ptr<Drifter::Shader> m_Shader;
-		std::unique_ptr<Drifter::Uniform> u_time;
-		std::unique_ptr<Drifter::Uniform> u_VP;
+		Drifter::Ref<Drifter::VertexArray> m_VertexArray;
+		Drifter::Ref<Drifter::Shader> m_Shader;
+		Drifter::Ref<Drifter::Uniform> u_time;
+		Drifter::Ref<Drifter::Uniform> u_VP;
 
 
-		std::unique_ptr<Drifter::Camera> camera;
+		Drifter::Scope<Drifter::Camera> camera;
 		glm::vec3 m_CameraPosition;
 	};
 }

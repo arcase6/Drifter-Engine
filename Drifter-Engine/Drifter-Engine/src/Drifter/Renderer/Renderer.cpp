@@ -19,7 +19,7 @@ namespace Drifter {
 	void Renderer::EndScene()
 	{
 	}
-	void Renderer::Submit(const std::shared_ptr<VertexArray>& vertexArray)
+	void Renderer::Submit(const Ref<VertexArray>& vertexArray)
 	{
 		RenderCommand::DrawIndexedTriangles(vertexArray);
 	}
