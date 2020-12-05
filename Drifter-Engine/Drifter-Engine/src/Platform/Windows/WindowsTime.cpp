@@ -29,7 +29,7 @@ namespace Drifter {
 		}
 		virtual void TickImpl() override
 		{
-			m_DeltaTime = Timestep( static_cast<float>( m_Time - glfwGetTime() ) );
+			m_DeltaTime = Timestep( static_cast<float>( glfwGetTime() - m_Time ) );
 			m_Time = glfwGetTime();
 		}
 	};
