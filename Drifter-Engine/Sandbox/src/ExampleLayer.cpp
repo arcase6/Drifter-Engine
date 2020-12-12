@@ -6,15 +6,17 @@ namespace Sandbox
 	{
 		std::vector<float> vertices =
 		{
-			-0.5f, -0.5f, 0.0f,
-			0.5f, -0.5f, 0.0f,
-			0.0f, 0.5f, 0.0f
+			-0.5f, -0.5f, 0.0f,	 0.0f, 0.0f,
+			0.5f, -0.5f, 0.0f,	 1.0f, 0.0f,
+			0.0f, 0.5f, 0.0f,    0.5f, 1.0f,
 		};
 		std::vector<uint32_t> indices = {
 			0, 1, 2
 		};
 		Drifter::BufferLayout layout = {
-			{ Drifter::ShaderDataType::Float3, "a_Position" }
+			{ Drifter::ShaderDataType::Float3, "a_Position" },
+			{ Drifter::ShaderDataType::Float2, "a_UV" }
+
 		};
 		m_Triangle.reset(Drifter::VertexArray::Create(vertices, indices, layout));
 	}
@@ -91,15 +93,16 @@ namespace Sandbox
 			#version 330 core
 			
 			layout(location=0) in vec3 a_Position;
-			out vec3 v_Position;
-			
+			layout(location=1) in vec2 a_UV;
+
+			out vec2 v_UV;			
 
 			uniform mat4 u_Model;
 			uniform mat4 u_ViewProjection;
 
 			void main(){
 				gl_Position = u_ViewProjection * u_Model * vec4(a_Position, 1.0);
-				v_Position = gl_Position.xyz;
+				v_UV = a_UV;
 			}
 		)";
 
@@ -107,21 +110,22 @@ namespace Sandbox
 			#version 330 core
 
 			layout(location=0) out vec4 fragColor;
-			in vec3 v_Position;
+			in vec2 v_UV;			
 			
-			uniform float u_Time;			
+			uniform float u_Time;	
+			uniform sampler2D u_MainTex;		
 
 			void main(){
-				vec3 col = vec3(1,1,1) * sin(u_Time) / 2. + .5;
-				float r = v_Position.x + .5;
-				float g = 1 - r;
-				float b = v_Position.y + .5;
-				vec3 posCol = vec3(r,g,b);
-				fragColor = vec4(col * posCol, 1.0);
+				float sinAmp = 3.;
+				float sinFreq = .25;
+				float sinFac = sinAmp * (sin(u_Time * sinFreq) / 2. + .5);
+				vec4 col = texture(u_MainTex, v_UV * sinFac);
+				fragColor = col;
 			}
 		)";
 
 		m_Shader.reset(dynamic_cast<Drifter::OpenGLShader*>(Drifter::Shader::Create(vert, frag)));
+		m_MainTex = Drifter::Texture2D::Create("./assets/textures/Checkerboard.png");
 	}
 
 	void ExampleLayer::SetupCameras() {
@@ -188,6 +192,7 @@ namespace Sandbox
 		m_Shader->Set("u_Time", static_cast<float>(Time::GetTime()));
 		m_Shader->Set("u_ViewProjection", vpMatrix);
 		m_Shader->Set("u_Model", triangleTransform);
+		m_MainTex->Bind(0);
 
 		Renderer::Submit(m_Triangle);
 

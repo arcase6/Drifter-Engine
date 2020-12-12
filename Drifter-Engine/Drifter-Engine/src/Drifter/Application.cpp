@@ -15,7 +15,8 @@ namespace Drifter {
 		DF_CORE_ASSERT(!s_Instance, "Application instance already exists!");
 		s_Instance = this;
 
-		m_window = Scope<Window>(Window::Create());
+		WindowProps windowProps("Drifter Engine", 720,720);
+		m_window = Scope<Window>(Window::Create(windowProps));
 		m_window->SetEventCallback(BIND_EVENT_FN(OnEvent));
 	}
 

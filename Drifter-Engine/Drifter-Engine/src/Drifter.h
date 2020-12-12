@@ -26,5 +26,6 @@
 //Rendering
 #include "Drifter/Renderer/Material/Shader.h"
 #include "Drifter/Renderer/Material/Uniform.h"
+#include "Drifter/Renderer/Material/Texture.h"
 #include "Drifter/Renderer/Camera.h"
 #include "Drifter/Renderer/Renderer.h"
