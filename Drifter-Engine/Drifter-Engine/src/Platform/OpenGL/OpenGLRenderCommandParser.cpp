@@ -5,6 +5,7 @@ namespace Drifter {
 	void OpenGLRenderCommandParser::Init()
 	{
 		glEnable(GL_BLEND);
+		glEnable(GL_DEPTH_TEST);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	}
 	void OpenGLRenderCommandParser::SetClearColor(const glm::vec4 color)
