@@ -5,6 +5,10 @@
 namespace Drifter {
 	RendererAPI Renderer::s_RendererAPI = RendererAPI::OpenGL;
 	
+	void Renderer::Init() {
+		RenderCommand::Init();
+	}
+
 	void Renderer::SetClearColor(const glm::vec4 color)
 	{
 		RenderCommand::SetClearColor(color);

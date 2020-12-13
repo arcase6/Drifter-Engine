@@ -147,7 +147,6 @@ namespace Drifter
 
 
 	void WindowsWindow::OnFrameBegin() {
-		Renderer::SetClearColor({ 0.0f, 0.0f, 0.05f, 1.0f });
 		Renderer::Clear();
 	}
 

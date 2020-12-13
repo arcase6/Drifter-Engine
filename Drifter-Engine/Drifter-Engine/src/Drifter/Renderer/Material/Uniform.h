@@ -33,7 +33,7 @@ namespace Drifter {
 		virtual glm::vec3   GetVec3()  = 0;
 		virtual glm::vec4   GetVec4()  = 0;
 									   
-		virtual glm::mat3x3 GetMat3()  = 0;
+		virtual glm::mat3 GetMat3()  = 0;
 		virtual glm::mat4 GetMat4()  = 0;
 
 		virtual int         GetInt()   = 0;

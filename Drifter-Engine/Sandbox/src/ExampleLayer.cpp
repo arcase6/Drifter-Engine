@@ -119,13 +119,14 @@ namespace Sandbox
 				float sinAmp = 3.;
 				float sinFreq = .25;
 				float sinFac = sinAmp * (sin(u_Time * sinFreq) / 2. + .5);
-				vec4 col = texture(u_MainTex, v_UV * sinFac);
+				vec4 col = texture(u_MainTex, v_UV * sinFac / sinFac);
 				fragColor = col;
 			}
 		)";
 
 		m_Shader.reset(dynamic_cast<Drifter::OpenGLShader*>(Drifter::Shader::Create(vert, frag)));
 		m_MainTex = Drifter::Texture2D::Create("./assets/textures/Checkerboard.png");
+		m_OverlayTex = Drifter::Texture2D::Create("./assets/textures/Spiral.png");
 	}
 
 	void ExampleLayer::SetupCameras() {
@@ -184,23 +185,23 @@ namespace Sandbox
 
 		//projectionMatrix = glm::mat4(1.0f);
 		glm::mat4 vpMatrix = projectionMatrix * viewMatrix;
+		
 
+		m_Box->Bind();
+		m_Shader->Bind();
+		m_Shader->Set("u_Model", boxTransform);
+		m_MainTex->Bind(0);
+		Renderer::Submit(m_Box);
 
 		m_Triangle->Bind();
-
 		m_Shader->Bind();
 		m_Shader->Set("u_Time", static_cast<float>(Time::GetTime()));
 		m_Shader->Set("u_ViewProjection", vpMatrix);
 		m_Shader->Set("u_Model", triangleTransform);
-		m_MainTex->Bind(0);
-
+		m_OverlayTex->Bind(0);
 		Renderer::Submit(m_Triangle);
 
-		m_Box->Bind();
-
-		m_Shader->Set("u_Model", boxTransform);
-
-		Renderer::Submit(m_Box);
+		
 
 
 	}

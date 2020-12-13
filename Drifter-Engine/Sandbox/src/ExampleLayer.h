@@ -27,7 +27,7 @@ namespace Sandbox {
 		Drifter::Ref<Drifter::VertexArray> m_Triangle;
 		Drifter::Ref<Drifter::VertexArray> m_Box;
 		Drifter::Ref<Drifter::OpenGLShader> m_Shader;
-		Drifter::Ref<Drifter::Texture2D> m_MainTex;
+		Drifter::Ref<Drifter::Texture2D> m_MainTex, m_OverlayTex;
 
 		Drifter::Scope<Drifter::Camera> m_Camera;
 		glm::vec3 m_CameraPosition;

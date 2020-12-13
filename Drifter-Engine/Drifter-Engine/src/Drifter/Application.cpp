@@ -6,6 +6,8 @@
 #include "Drifter/Input/Input.h"
 #include "Drifter/Core/Time.h"
 
+#include "Drifter/Renderer/Renderer.h"
+
 namespace Drifter {
 #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 
@@ -18,6 +20,9 @@ namespace Drifter {
 		WindowProps windowProps("Drifter Engine", 720,720);
 		m_window = Scope<Window>(Window::Create(windowProps));
 		m_window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+
+		Renderer::Init();
+		Renderer::SetClearColor({ 0.0f, 0.0f, 0.05f, 1.0f });
 	}
 
 
