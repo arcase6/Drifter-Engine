@@ -1,10 +1,11 @@
 #pragma once
-
+#include "Drifter/Core/Core.h"
 namespace Drifter {
 
 	class Shader
 	{
 	public:
+		static Shader* Create(const char* filepath);
 		static Shader* Create(const char* vert, const char* frag);
 		virtual ~Shader() = default;
 
