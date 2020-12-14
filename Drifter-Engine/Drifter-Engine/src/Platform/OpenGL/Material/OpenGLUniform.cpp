@@ -1,4 +1,4 @@
-#include "Drifter/Core/dfpch.h"
+#include "dfpch.h"
 
 #include "OpenGLUniform.h"
 #include "glad/glad.h"

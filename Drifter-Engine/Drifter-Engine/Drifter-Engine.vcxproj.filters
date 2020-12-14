@@ -63,19 +63,10 @@
     <ClInclude Include="src\Drifter\Application.h">
       <Filter>src\Drifter</Filter>
     </ClInclude>
-    <ClInclude Include="src\Drifter\Core\Core.h">
-      <Filter>src\Drifter\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drifter\Core\EntryPoint.h">
-      <Filter>src\Drifter\Core</Filter>
-    </ClInclude>
     <ClInclude Include="src\Drifter\Core\Log.h">
       <Filter>src\Drifter\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Drifter\Core\Time.h">
-      <Filter>src\Drifter\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drifter\Core\dfpch.h">
       <Filter>src\Drifter\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Drifter\EditorUI\IMGUILayer.h">
@@ -177,6 +168,15 @@
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h">
       <Filter>src\Platform\Windows</Filter>
     </ClInclude>
+    <ClInclude Include="src\dfpch.h">
+      <Filter>src\Drifter\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Core.h">
+      <Filter>src\Drifter\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\EntryPoint.h">
+      <Filter>src\Drifter\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\vendors\glm\glm\detail\glm.cpp">
@@ -189,9 +189,6 @@
       <Filter>src\Drifter</Filter>
     </ClCompile>
     <ClCompile Include="src\Drifter\Core\Log.cpp">
-      <Filter>src\Drifter\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Drifter\Core\dfpch.cpp">
       <Filter>src\Drifter\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Drifter\EditorUI\IMGUILayer.cpp">
@@ -271,6 +268,9 @@
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp">
       <Filter>src\Platform\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="src\dfpch.cpp">
+      <Filter>src\Drifter\Core</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

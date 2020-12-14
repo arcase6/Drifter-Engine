@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Drifter/Core/Core.h"
+#include "Core.h"
 #include "Drifter/Window.h"
 #include "KeyCodes.h"
 

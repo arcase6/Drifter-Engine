@@ -1,6 +1,6 @@
-#include "Drifter/Core/dfpch.h"
+#include "dfpch.h"
 #include "Texture.h"
-#include "Drifter/Core/Core.h"
+#include "Core.h"
 
 #include "Drifter/Renderer/Renderer.h"
 #include "Platform/OpenGL/Material/OpenGLTexture.h"

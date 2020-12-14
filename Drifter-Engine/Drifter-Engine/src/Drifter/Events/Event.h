@@ -1,7 +1,7 @@
 #pragma once
-#include "Core/dfpch.h"
+#include "dfpch.h"
 
-#include "../Core/Core.h"
+#include "Core.h"
 namespace Drifter {
 	enum class EventType {
 		None = 0,

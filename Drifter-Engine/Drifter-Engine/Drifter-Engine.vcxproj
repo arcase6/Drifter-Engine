@@ -149,11 +149,11 @@
     <ClInclude Include="..\vendors\stb_image\stb_image.h" />
     <ClInclude Include="src\Drifter.h" />
     <ClInclude Include="src\Drifter\Application.h" />
-    <ClInclude Include="src\Drifter\Core\Core.h" />
-    <ClInclude Include="src\Drifter\Core\EntryPoint.h" />
+    <ClInclude Include="src\Core.h" />
+    <ClInclude Include="src\EntryPoint.h" />
     <ClInclude Include="src\Drifter\Core\Log.h" />
     <ClInclude Include="src\Drifter\Core\Time.h" />
-    <ClInclude Include="src\Drifter\Core\dfpch.h" />
+    <ClInclude Include="src\dfpch.h" />
     <ClInclude Include="src\Drifter\EditorUI\IMGUILayer.h" />
     <ClInclude Include="src\Drifter\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Drifter\Events\Event.h" />
@@ -193,7 +193,7 @@
     <ClCompile Include="..\vendors\stb_image\stb_image.cpp" />
     <ClCompile Include="src\Drifter\Application.cpp" />
     <ClCompile Include="src\Drifter\Core\Log.cpp" />
-    <ClCompile Include="src\Drifter\Core\dfpch.cpp" />
+    <ClCompile Include="src\dfpch.cpp" />
     <ClCompile Include="src\Drifter\EditorUI\IMGUILayer.cpp" />
     <ClCompile Include="src\Drifter\Layer.cpp" />
     <ClCompile Include="src\Drifter\LayerStack.cpp" />

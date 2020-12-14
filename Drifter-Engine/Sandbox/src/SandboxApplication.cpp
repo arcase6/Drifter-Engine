@@ -1,5 +1,5 @@
 #include <Drifter.h>
-#include <Drifter/Core/EntryPoint.h>
+#include <EntryPoint.h>
 #include "ExampleLayer.h"
 
 namespace Sandbox {
