@@ -25,12 +25,6 @@ namespace Drifter {
 		Renderer::SetClearColor({ 0.0f, 0.0f, 0.05f, 1.0f });
 	}
 
-
-
-	Application::~Application() {
-
-	}
-
 	void Application::OnEvent(Event& e)
 	{
 		EventDispatcher dispatcher(e);
@@ -43,22 +37,22 @@ namespace Drifter {
 		}
 	}
 
-	void Application::PushLayer(Layer* layer)
+	void Application::PushLayer(Ref<Layer> layer)
 	{
 		m_layerStack.PushLayer(layer);
 	}
 
-	void Application::PopLayer(Layer* layer)
+	void Application::PopLayer(Ref<Layer> layer)
 	{
 		m_layerStack.PopLayer(layer);
 	}
 
-	void Application::PushOverlay(Layer* overlay)
+	void Application::PushOverlay(Ref<Layer> overlay)
 	{
 		m_layerStack.PushOverlay(overlay);
 	}
 
-	void Application::PopOverlay(Layer* overlay)
+	void Application::PopOverlay(Ref<Layer> overlay)
 	{
 		m_layerStack.PopOverlay(overlay);
 	}
@@ -74,7 +68,7 @@ namespace Drifter {
 		while (m_running) {
 			m_window->OnFrameBegin();
 			Time::Tick();
-			for (Layer* layer : m_layerStack) {
+			for (Ref<Layer> layer : m_layerStack) {
 				layer->OnUpdate();
 			}
 			m_window->OnFrameEnd();

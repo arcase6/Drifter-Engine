@@ -4,9 +4,15 @@
 #include "RenderCommand.h"
 namespace Drifter {
 	RendererAPI Renderer::s_RendererAPI = RendererAPI::OpenGL;
-	
+	ShaderLibrary Renderer::s_ShaderLibrary;
+
 	void Renderer::Init() {
 		RenderCommand::Init();
+		LoadStartupShaders();
+	}
+
+	void Renderer::LoadStartupShaders() {
+		s_ShaderLibrary.LoadNewShader("./assets/shaders/StandardShader.glsl");
 	}
 
 	void Renderer::SetClearColor(const glm::vec4 color)

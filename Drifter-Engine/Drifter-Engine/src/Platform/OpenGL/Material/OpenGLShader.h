@@ -5,9 +5,10 @@ namespace Drifter {
 	class OpenGLShader : public Shader
 	{
 	public:
-		OpenGLShader(const char* filepath);
-		OpenGLShader(const char* vert, const char* frag);
+		OpenGLShader(const std::string& filepath);
+		OpenGLShader(const std::string& name, const std::string& vert, const std::string& frag);
 		virtual ~OpenGLShader() = default;
+		virtual const std::string& GetName() const override { return m_Name; }
 		virtual void Bind() override;
 		virtual void UnBind() override;
 
@@ -17,7 +18,9 @@ namespace Drifter {
 	protected:
 		uint32_t m_RendererID;
 	private:
-		std::string ReadFile(const char* filepath) const;
+		std::string m_Name;
+	private:
+		std::string ReadFile(const std::string& filepath) const;
 		std::unordered_map<uint32_t, std::string> Preprocess(const std::string& filepath) const;
 		void Compile(std::unordered_map<uint32_t, std::string>& shaderSources);
 

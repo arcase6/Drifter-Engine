@@ -7,11 +7,11 @@ namespace Sandbox {
 	{
 	public:
 		SandboxApplication() {
-			auto debugLayer = new Drifter::EditorUI::ImguiLayer(GetWindow());
+			auto debugLayer = std::make_shared<Drifter::EditorUI::ImguiLayer>(GetWindow());
 			PushOverlay(debugLayer);
-			PushLayer(new ExampleLayer());
+			PushLayer(std::make_shared<ExampleLayer>());
 		}
-		~SandboxApplication() {}
+		~SandboxApplication() = default;
 	};
 
 

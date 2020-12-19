@@ -11,17 +11,17 @@ namespace Drifter {
 	public:
 		Application();
 
-		~Application();
+		virtual ~Application() = default;
 
 		void Run();
 
 
 		void OnEvent(Event& e);
 
-		void PushLayer(Layer* layer);
-		void PopLayer(Layer* layer);
-		void PushOverlay(Layer* overlay);
-		void PopOverlay(Layer* overlay);
+		void PushLayer(Ref<Layer> layer);
+		void PopLayer(Ref<Layer> layer);
+		void PushOverlay(Ref<Layer> overlay);
+		void PopOverlay(Ref<Layer> overlay);
 
 		static inline Application& Get() { return *s_Instance; }
 

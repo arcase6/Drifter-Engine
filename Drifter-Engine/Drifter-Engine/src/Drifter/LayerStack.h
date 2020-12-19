@@ -10,20 +10,20 @@ namespace Drifter {
 	{
 	public:
 		LayerStack();
-		~LayerStack();
+		~LayerStack() = default;
 
-		void PushLayer(Layer* layer);
-		void PushOverlay(Layer* overlay);
-		void PopLayer(Layer* layer);
-		void PopOverlay(Layer* overlay);
+		void PushLayer(Ref<Layer> layer);
+		void PushOverlay(Ref<Layer> overlay);
+		void PopLayer(Ref<Layer> layer);
+		void PopOverlay(Ref<Layer> overlay);
 
-		std::vector<Layer*>::iterator begin() { return m_layers.begin(); }
-		std::vector<Layer*>::iterator end() { return m_layers.end(); }
+		std::vector<Ref<Layer>>::iterator begin() { return m_layers.begin(); }
+		std::vector<Ref<Layer>>::iterator end() { return m_layers.end(); }
 
 	private:
-		std::vector<Layer*> m_layers;
+		std::vector<Ref<Layer>> m_layers;
 		int m_insertOffset{ 0 };
-		std::vector<Layer*>::iterator layersEnd(){ return begin() + m_insertOffset;}
+		std::vector<Ref<Layer>>::iterator layersEnd(){ return begin() + m_insertOffset;}
 	};
 }
 

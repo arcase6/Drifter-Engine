@@ -1,6 +1,7 @@
 #pragma once
 
 #include "VertexArray.h"
+#include "Drifter/Renderer/Material/Shader.h"
 #include "glm/glm.hpp"
 
 namespace Drifter {
@@ -20,8 +21,13 @@ namespace Drifter {
 		static void EndScene();
 
 		static void Submit(const Ref<VertexArray>& vertexArray);
+		
+		inline static ShaderLibrary& GetShaderLibrary() { return s_ShaderLibrary; }
 		inline static RendererAPI GetAPI() { return s_RendererAPI; }
 	private:
 		static RendererAPI s_RendererAPI;
+		static ShaderLibrary s_ShaderLibrary;
+
+		static void LoadStartupShaders();
 	};
 }

@@ -4,7 +4,7 @@
 
 #include "Platform/OpenGL/Material/OpenGLShader.h"
 namespace Drifter {
-	Shader * Shader::Create(const char* filepath) {
+	Ref<Shader> Shader::Create(const std::string& filepath) {
 		std::shared_ptr<Shader> result;
 		switch (Renderer::GetAPI()) {
 		case RendererAPI::None:
@@ -13,14 +13,14 @@ namespace Drifter {
 		case RendererAPI::OpenGL:
 			//result.reset(static_cast<Shader *>(new OpenGLShader(filepath)));
 			//return result;
-			return static_cast<Shader*>(new OpenGLShader(filepath));
+			return std::shared_ptr<Shader>(static_cast<Shader*>(new OpenGLShader(filepath)));
 		}
 		DF_LOG_ERROR("Unsupported RendererAPI received!");
 		return nullptr;
 	}
 
 
-	Shader * Shader::Create(const char* vert, const char* frag) {
+	Ref<Shader> Shader::Create(const std::string& name, const std::string& vert, const std::string& frag) {
 		std::shared_ptr<Shader> result;
 		switch (Renderer::GetAPI()) {
 		case RendererAPI::None:
@@ -29,9 +29,30 @@ namespace Drifter {
 		case RendererAPI::OpenGL:
 			//result.reset(static_cast<Shader*>(new OpenGLShader(vert, frag)));
 			//return result;
-			return static_cast<Shader*>(new OpenGLShader(vert, frag));
+			return std::shared_ptr<Shader>(static_cast<Shader*>(new OpenGLShader(name, vert, frag)));
 		}
 		DF_LOG_ERROR("Unsupported RendererAPI received!");
 		return nullptr;
 	}
+
+
+	void ShaderLibrary::RegisterExistingShader(const Ref<Shader> shader) {
+		DF_CORE_ASSERT(!Exists(shader->GetName()), "Shader already exists : " + shader->GetName());
+		m_shaders[shader->GetName()] = shader;
+	}
+
+	void ShaderLibrary::LoadNewShader(const std::string& filepath) {
+		Ref<Shader> shader = Shader::Create(filepath);
+		m_shaders[shader->GetName()] = shader;
+	}
+
+	Ref<Shader>  ShaderLibrary::FindShader(const std::string& name) {
+		DF_CORE_ASSERT(Exists(name), "Shader not found : " + name);
+		return m_shaders[name];
+	}
+
+	bool ShaderLibrary::Exists(const std::string& name) const {
+		return m_shaders.find(name) != m_shaders.end();
+	}
+
 }

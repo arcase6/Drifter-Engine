@@ -89,7 +89,6 @@ namespace Sandbox
 
 	void ExampleLayer::SetupShaders()
 	{
-		m_Shader.reset(dynamic_cast<Drifter::OpenGLShader*>(Drifter::Shader::Create("./assets/shaders/StandardShader.glsl")));
 		m_MainTex = Drifter::Texture2D::Create("./assets/textures/Checkerboard.png");
 		m_OverlayTex = Drifter::Texture2D::Create("./assets/textures/Spiral.png");
 	}
@@ -153,16 +152,19 @@ namespace Sandbox
 		
 
 		m_Box->Bind();
-		m_Shader->Bind();
-		m_Shader->Set("u_Model", boxTransform);
+		
+		Ref<OpenGLShader> shader = std::dynamic_pointer_cast<OpenGLShader>(Renderer::GetShaderLibrary().FindShader("StandardShader"));
+		
+		shader->Bind();
+		shader->Set("u_Model", boxTransform);
 		m_MainTex->Bind(0);
 		Renderer::Submit(m_Box);
 
 		m_Triangle->Bind();
-		m_Shader->Bind();
-		m_Shader->Set("u_Time", static_cast<float>(Time::GetTime()));
-		m_Shader->Set("u_ViewProjection", vpMatrix);
-		m_Shader->Set("u_Model", triangleTransform);
+		shader->Bind();
+		shader->Set("u_Time", static_cast<float>(Time::GetTime()));
+		shader->Set("u_ViewProjection", vpMatrix);
+		shader->Set("u_Model", triangleTransform);
 		m_OverlayTex->Bind(0);
 		Renderer::Submit(m_Triangle);
 

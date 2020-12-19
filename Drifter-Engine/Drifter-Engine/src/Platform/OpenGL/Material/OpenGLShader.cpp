@@ -29,16 +29,24 @@ namespace Drifter
 	}
 
 
-	OpenGLShader::OpenGLShader(const char* filepath) :
-		m_RendererID(0)
+	static std::string GetFilename(const std::string& filepath) {
+		size_t lastSlashIndex = filepath.find_last_of("/\\");
+		lastSlashIndex = lastSlashIndex == std::string::npos ? 0 : lastSlashIndex + 1;
+		size_t lastDotIndex = std::min(filepath.rfind('.'), filepath.size());
+
+		return filepath.substr(lastSlashIndex, lastDotIndex - lastSlashIndex);
+	}
+
+	OpenGLShader::OpenGLShader(const std::string& filepath) :
+		m_RendererID(0), m_Name(GetFilename(filepath))
 	{
 		std::string fileContents = ReadFile(filepath);
 		std::unordered_map<uint32_t, std::string> shaderSources = Preprocess(fileContents);
 		this->Compile(shaderSources);
 	}
 
-	OpenGLShader::OpenGLShader(const char* vert, const char* frag) :
-		m_RendererID(0)
+	OpenGLShader::OpenGLShader(const std::string& name, const std::string& vert, const std::string& frag) :
+		m_RendererID(0), m_Name(name)
 	{
 		std::unordered_map<uint32_t, std::string> shaderSources;
 		shaderSources[GL_VERTEX_SHADER] = vert;
@@ -46,7 +54,7 @@ namespace Drifter
 		this->Compile(shaderSources);
 	}
 
-	std::string OpenGLShader::ReadFile(const char* filepath) const{
+	std::string OpenGLShader::ReadFile(const std::string& filepath) const{
 		std::string result;
 		std::ifstream stream;
 		stream.open(filepath, std::ios::in, std::ios::binary);
@@ -75,13 +83,13 @@ namespace Drifter
 			pos += strlen(typeToken);
 			
 			size_t eofLine = std::min(source.find('\r', pos), source.find('\n', pos));
-			int tokStart = source.find_first_not_of(" ", pos);
-			int tokEnd = std::min(source.find(" ", tokStart), eofLine);
+			size_t tokStart = source.find_first_not_of(" ", pos);
+			size_t tokEnd = std::min(source.find(" ", tokStart), eofLine);
 			GLenum glType = GetType(source.substr(tokStart, tokEnd - tokStart));
 			
 			//move pos to shader stage source code
 			pos = std::min(source.find_first_not_of('\r', eofLine + 1), source.find_first_not_of('\n', eofLine + 1));
-			int sourceEnd = std::min(source.find(typeToken, pos), source.length());
+			size_t sourceEnd = std::min(source.find(typeToken, pos), source.length());
 			sourceMap[glType] = source.substr(pos, sourceEnd - pos);
 			pos = sourceEnd;
 		}
@@ -156,7 +164,6 @@ namespace Drifter
 			glDeleteShader(*it);
 		}
 	}
-
 
 	void OpenGLShader::Bind()
 	{
