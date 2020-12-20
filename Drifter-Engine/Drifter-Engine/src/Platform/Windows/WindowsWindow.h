@@ -19,6 +19,8 @@ namespace Drifter {
 
 		inline unsigned int GetWidth() const override { return m_data.Width; }
 		inline unsigned int GetHeight() const override { return m_data.Height; }
+		inline float GetAspectRatio() const override { return (float)GetHeight() / (float)GetWidth(); }
+		
 		inline GLFWwindow * GetGlfwWindow() { return m_window; }
 		
 		//window attributes
@@ -26,6 +28,10 @@ namespace Drifter {
 		
 		void SetVSync(bool enabled) override;
 		bool IsVSync() const override;
+
+		virtual void SetCaptureMouseFlag(bool flag) override { glfwSetInputMode(m_window, GLFW_CURSOR, flag ? GLFW_CURSOR_DISABLED : GLFW_CURSOR_NORMAL); }
+		virtual bool GetCaptureMouseFlag() const override { return glfwGetInputMode(m_window, GLFW_CURSOR) == GLFW_CURSOR_DISABLED; }
+
 	private:
 		virtual void Init(const WindowProps& props);
 		void SetWindowCallbacks();

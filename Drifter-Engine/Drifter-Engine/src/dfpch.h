@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Drifter/Core/Log.h>
+#include <Core.h>
 
 #include <iostream>
 #include <memory>

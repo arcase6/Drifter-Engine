@@ -97,14 +97,15 @@ namespace Sandbox
 
 		//SetupCamera
 		m_CameraPosition = glm::vec3(0.0f, 0.0f, 1.0f);
-		m_Camera.reset(static_cast<Drifter::Camera*>(
-			Drifter::PerspectiveCamera::Create(m_CameraPosition, glm::vec3(0.0f, 0.0f, 1.0f), 60.0)
-			));
+		auto camera = Drifter::PerspectiveCamera::Create(m_CameraPosition, glm::vec3(0.0f, 0.0f, -1.0f));
+		//auto camera = Drifter::OrthographicCamera::CreateByAspectRatio(m_CameraPosition, glm::vec3(0.0f, 0.0f, -1.0f));
+		m_Camera = std::static_pointer_cast<Drifter::Camera>(camera);
 		m_Camera->SetNearClipDistance(0.01f);
 		m_Camera->SetFarClipDistance(1000.0f);
 
-		m_Camera->SetLookVector(glm::vec3(0.0f, 0.0f, -1.0f));
 		m_Camera->RecalculateTransforms();
+
+		m_CameraController = Drifter::CameraController::CreatePerspective(camera, 1.0f);
 	}
 
 	void ExampleLayer::OnUpdate()
@@ -116,26 +117,7 @@ namespace Sandbox
 		static glm::mat4 boxTransform = glm::translate(glm::mat4(1), boxPosition);
 
 		//move camera here
-		glm::vec3 posDelta = glm::vec3(0.0f, 0.0f, 0.0f);
-		if (Input::IsKeyPressed(KeyCodes::W())) {
-			posDelta.y = 1.0f;
-		}
-		else if (Input::IsKeyPressed(KeyCodes::S())) {
-			posDelta.y = -1.0f;
-		}
-		if (Input::IsKeyPressed(KeyCodes::A())) {
-			posDelta.x = -1.0f;
-		}
-		else if (Input::IsKeyPressed(KeyCodes::D())) {
-			posDelta.x = 1.0f;
-		}
-
-		static float movementPerSecond = 1.0f;
-		posDelta *= Time::GetDeltaTime() * movementPerSecond;
-
-		m_CameraPosition = m_Camera->GetPosition() + posDelta;
-		m_Camera->SetPosition(m_CameraPosition);
-		m_Camera->RecalculateTransforms();
+		m_CameraController->OnUpdate();
 
 		glm::mat4 viewMatrix = m_Camera->GetViewMatrix();
 		glm::mat4 projectionMatrix = m_Camera->GetProjectionMatrix();
@@ -175,5 +157,6 @@ namespace Sandbox
 
 	void ExampleLayer::OnEvent(Drifter::Event& e)
 	{
+		m_CameraController->OnEvent(e);
 	}
 }

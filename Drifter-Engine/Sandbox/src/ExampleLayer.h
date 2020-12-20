@@ -2,6 +2,8 @@
 #include "Drifter.h"
 
 #include "Platform/OpenGL/Material/OpenGLShader.h"
+#include "Drifter/Renderer/CameraController.h"
+
 namespace Sandbox {
 	class ExampleLayer : public Drifter::Layer
 	{
@@ -28,7 +30,9 @@ namespace Sandbox {
 		Drifter::Ref<Drifter::VertexArray> m_Box;
 		Drifter::Ref<Drifter::Texture2D> m_MainTex, m_OverlayTex;
 
-		Drifter::Scope<Drifter::Camera> m_Camera;
+		Drifter::Ref<Drifter::Camera> m_Camera;
+		Drifter::Ref<Drifter::CameraController> m_CameraController;
+
 		glm::vec3 m_CameraPosition;
 
 	};

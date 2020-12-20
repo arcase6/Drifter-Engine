@@ -150,9 +150,6 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\OpenGLCamera.h">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
       <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
@@ -176,6 +173,11 @@
     </ClInclude>
     <ClInclude Include="src\EntryPoint.h">
       <Filter>src\Drifter\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Renderer\CameraController.h" />
+    <ClInclude Include="src\Platform\OpenGL\Renderer\OpenGLOrthographicCamera.h" />
+    <ClInclude Include="src\Platform\OpenGL\Renderer\OpenGLPerspectiveCamera.h">
+      <Filter>src\Platform\OpenGL</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -242,9 +244,6 @@
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\OpenGLCamera.cpp">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
@@ -272,5 +271,10 @@
     <ClCompile Include="src\dfpch.cpp">
       <Filter>src\Drifter\Core</Filter>
     </ClCompile>
+    <ClCompile Include="src\Drifter\Renderer\CameraController.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\Renderer\OpenGLPerspectiveCamera.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\Renderer\OpenGLOrthographicCamera.cpp" />
   </ItemGroup>
 </Project>

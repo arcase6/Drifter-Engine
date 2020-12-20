@@ -147,6 +147,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\vendors\stb_image\stb_image.h" />
+    <ClInclude Include="src\Platform\OpenGL\Renderer\OpenGLOrthographicCamera.h" />
+    <ClInclude Include="src\Drifter\Renderer\CameraController.h" />
     <ClInclude Include="src\Drifter.h" />
     <ClInclude Include="src\Drifter\Application.h" />
     <ClInclude Include="src\Core.h" />
@@ -181,7 +183,7 @@
     <ClInclude Include="src\Platform\OpenGL\Material\OpenGLTexture.h" />
     <ClInclude Include="src\Platform\OpenGL\Material\OpenGLUniform.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
-    <ClInclude Include="src\Platform\OpenGL\OpenGLCamera.h" />
+    <ClInclude Include="src\Platform\OpenGL\Renderer\OpenGLPerspectiveCamera.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRenderCommandParser.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
@@ -191,6 +193,8 @@
   <ItemGroup>
     <ClCompile Include="..\vendors\glm\glm\detail\glm.cpp" />
     <ClCompile Include="..\vendors\stb_image\stb_image.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\Renderer\OpenGLOrthographicCamera.cpp" />
+    <ClCompile Include="src\Drifter\Renderer\CameraController.cpp" />
     <ClCompile Include="src\Drifter\Application.cpp" />
     <ClCompile Include="src\Drifter\Core\Log.cpp" />
     <ClCompile Include="src\dfpch.cpp" />
@@ -211,7 +215,7 @@
     <ClCompile Include="src\Platform\OpenGL\Material\OpenGLTexture.cpp" />
     <ClCompile Include="src\Platform\OpenGL\Material\OpenGLUniform.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\OpenGLCamera.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\Renderer\OpenGLPerspectiveCamera.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRenderCommandParser.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
