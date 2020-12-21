@@ -9,7 +9,7 @@ namespace Drifter {
 	public:
 		OpenGLPerspectiveCamera(float aspectRatio, float fovDegrees)
 			:m_Position(glm::vec3(0.0f, 0.0f, 0.0f)),
-			m_LookVector(glm::vec3(1.0f, 0.0f, 0.0f)),
+			m_ForwardVector(glm::vec3(1.0f, 0.0f, 0.0f)),
 			m_NearClip(0.3f),
 			m_FarClip(1000.0f),
 			m_AspectRatio(aspectRatio),
@@ -25,10 +25,11 @@ namespace Drifter {
 		virtual float GetAspectRatio() const override { return m_AspectRatio; }
 		virtual void SetAspectRatio(float aspectRatio) override { m_AspectRatio = aspectRatio; }
 
-		virtual void SetLookVector(const glm::vec3& lookVector) override { m_LookVector = glm::normalize(lookVector); }
+		virtual void LookAt(const glm::vec3& target) override { SetForwardVector(target - m_Position); }
+		virtual void SetForwardVector(const glm::vec3& lookVector) override { m_ForwardVector = glm::normalize(lookVector); }
 		virtual void SetRotationEuler(float yaw, float pitch, float roll) override;
-
-		virtual void LookAt(const glm::vec3& target) override { SetLookVector(target - m_Position); }
+		
+		virtual glm::vec3 GetForwardVector() const override { return m_ForwardVector; }
 
 		virtual glm::mat4 GetViewMatrix() const override { return m_ViewMatrix; }
 		virtual glm::mat4 GetProjectionMatrix() const override { return m_ProjectionMatrix; }
@@ -50,7 +51,7 @@ namespace Drifter {
 	private:
 		//Base fields
 		glm::vec3 m_Position;
-		glm::vec3 m_LookVector;
+		glm::vec3 m_ForwardVector;
 
 		float m_AspectRatio;
 

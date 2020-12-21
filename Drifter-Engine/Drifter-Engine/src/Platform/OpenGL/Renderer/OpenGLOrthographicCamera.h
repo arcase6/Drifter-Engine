@@ -10,7 +10,7 @@ namespace Drifter
 	public:
 		OpenGLOrthographicCamera(float width, float height) :
 			m_Position(glm::vec3(0.0f, 0.0f, 0.0f)),
-			m_LookVector(glm::vec3(1.0f, 0.0f, 0.0f)),
+			m_ForwardVector(glm::vec3(1.0f, 0.0f, 0.0f)),
 			m_NearClip(0.3f),
 			m_FarClip(1000.0f),
 			m_Width(width),
@@ -39,10 +39,11 @@ namespace Drifter
 		virtual float GetZoomLevel() const { return m_Width; }
 		virtual float GetAspectRatio() const { return m_Width / m_Height; }
 
-		virtual void SetLookVector(const glm::vec3& lookVector) override { m_LookVector = glm::normalize(lookVector); }
+		virtual void LookAt(const glm::vec3& target) override { SetForwardVector(target - m_Position); }
+		virtual void SetForwardVector(const glm::vec3& forwardVector) { m_ForwardVector = glm::normalize(forwardVector); }
 		virtual void SetRotationEuler(float yaw, float pitch, float roll) override;
 
-		virtual void LookAt(const glm::vec3& target) override { SetLookVector(target - m_Position); }
+		virtual glm::vec3 GetForwardVector() const override { return m_ForwardVector; }
 
 		virtual glm::mat4 GetViewMatrix() const override { return m_ViewMatrix; }
 		virtual glm::mat4 GetProjectionMatrix() const override { return m_ProjectionMatrix; }
@@ -56,10 +57,10 @@ namespace Drifter
 
 		virtual void RecalculateTransforms() override;
 
-
+	private:
 		//BaseCamera fields
 		glm::vec3 m_Position;
-		glm::vec3 m_LookVector;
+		glm::vec3 m_ForwardVector;
 
 		float m_NearClip;
 		float m_FarClip;
@@ -70,7 +71,8 @@ namespace Drifter
 		glm::mat4 m_ViewMatrix;
 		glm::mat4 m_ProjectionMatrix;
 
-		//Orthographic Camera fields
+	private:
+		void RecalculateUpAndRightVectors();
 
 	};
 }

@@ -6,6 +6,7 @@
 #include "Drifter/Events/KeyEvent.h"
 
 #include "Camera.h"
+#include "glm/glm.hpp"
 
 namespace Drifter {
 
@@ -18,6 +19,10 @@ namespace Drifter {
 		virtual void OnEvent(Event& e) = 0;
 	
 	public:
+		virtual glm::vec3 GetForwardVector() const = 0;
+		virtual glm::vec3 GetRightVector() const = 0;
+		virtual glm::vec3 GetUpVector() const = 0;
+		
 		static Ref<CameraController> CreateOrthographic(Ref<OrthographicCamera> camera, float speed);
 		static Ref<CameraController> CreatePerspective(Ref<PerspectiveCamera> camera, float speed);
 	};
@@ -35,10 +40,14 @@ namespace Drifter {
 		
 		virtual void OnEvent(Event& e) override;
 		
+		virtual glm::vec3 GetForwardVector() const override { return m_Camera->GetForwardVector(); }
+		virtual glm::vec3 GetRightVector() const override{ return glm::cross(GetForwardVector(), glm::vec3(0, 1, 0));}
+		virtual glm::vec3 GetUpVector() const override { return glm::cross(GetRightVector(), GetForwardVector()); }
+
 	private:
 		bool OnMouseScrolled(MouseScrolledEvent& e);
 		bool OnWindowResize(WindowResizeEvent& e);
-
+			
 	private:
 		Ref<OrthographicCamera> m_Camera;
 		float m_Speed;
@@ -56,6 +65,9 @@ namespace Drifter {
 		virtual void OnUpdate() override;
 		virtual void OnEvent(Event& e) override;
 
+		virtual glm::vec3 GetForwardVector() const override { return m_Camera->GetForwardVector(); }
+		virtual glm::vec3 GetRightVector() const override { return glm::cross(GetForwardVector(), glm::vec3(0, 1, 0)); }
+		virtual glm::vec3 GetUpVector() const override { return glm::cross(GetRightVector(), GetForwardVector()); }
 	private:
 		bool OnMouseMoved(MouseMovedEvent& e);
 		bool OnMouseButton(MouseButtonPressedEvent& e);

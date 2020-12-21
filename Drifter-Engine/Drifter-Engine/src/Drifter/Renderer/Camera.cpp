@@ -23,7 +23,7 @@ namespace Drifter {
 		
 		if (camera) {
 			camera->SetPosition(position);
-			camera->SetLookVector(lookDirection);
+			camera->SetForwardVector(lookDirection);
 			camera->SetFOVDegrees(fovDegrees);
 			camera->RecalculateTransforms();
 		}
@@ -36,7 +36,7 @@ namespace Drifter {
 		if (aspectRatio == 0) {
 			aspectRatio = Application::Get().GetWindow().GetAspectRatio();
 		}
-		OrthographicCamera* camera;
+		OrthographicCamera* camera = nullptr;
 		switch (Renderer::GetAPI()) {
 		case RendererAPI::None:
 			DF_LOG_ERROR("RendererAPI::None is not currently implemented!");
@@ -48,7 +48,7 @@ namespace Drifter {
 
 		if (camera) {
 			camera->SetPosition(position);
-			camera->SetLookVector(lookDirection);
+			camera->SetForwardVector(lookDirection);
 			camera->RecalculateTransforms();
 		}
 		else {
@@ -76,7 +76,7 @@ namespace Drifter {
 
 		if (camera) {
 			camera->SetPosition(position);
-			camera->SetLookVector(lookDirection);
+			camera->SetForwardVector(lookDirection);
 			camera->RecalculateTransforms();
 		}
 

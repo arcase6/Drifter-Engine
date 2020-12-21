@@ -13,8 +13,10 @@ namespace Drifter {
 		virtual void SetPosition(const glm::vec3& position) = 0;
 
 		virtual void LookAt(const glm::vec3& target) = 0;
-		virtual void SetLookVector(const glm::vec3& lookVector) = 0;
+		virtual void SetForwardVector(const glm::vec3& forwardVector) = 0;
 		virtual void SetRotationEuler(float yaw, float pitch, float roll) = 0;
+
+		virtual glm::vec3 GetForwardVector() const = 0;
 
 		virtual glm::mat4 GetViewMatrix() const = 0;
 		virtual glm::mat4 GetProjectionMatrix() const = 0;

@@ -5,6 +5,8 @@
 
 #include "Drifter/Events/MouseEvent.h"
 
+#include "glm/gtc/constants.hpp"
+
 namespace Drifter {
 	void OrthorgraphicCameraController::OnUpdate()
 	{
@@ -54,16 +56,28 @@ namespace Drifter {
 	{
 		glm::vec3 posDelta = glm::vec3(0.0f, 0.0f, 0.0f);
 		if (Input::IsKeyPressed(KeyCodes::W())) {
-			posDelta.z = -1.0f;
+			posDelta += GetForwardVector() ;
 		}
 		else if (Input::IsKeyPressed(KeyCodes::S())) {
-			posDelta.z = 1.0f;
+			posDelta -= GetForwardVector();
 		}
+
 		if (Input::IsKeyPressed(KeyCodes::A())) {
-			posDelta.x = -1.0f;
+			posDelta -= GetRightVector();
 		}
 		else if (Input::IsKeyPressed(KeyCodes::D())) {
-			posDelta.x = 1.0f;
+			posDelta += GetRightVector();
+		}
+		
+		if (Input::IsKeyPressed(KeyCodes::Q())) {
+			posDelta -= GetUpVector();
+		}
+		else if (Input::IsKeyPressed(KeyCodes::E())) {
+			posDelta += GetUpVector();
+		}
+
+		if (Input::IsKeyPressed(KeyCodes::LEFT_SHIFT())) {
+			posDelta *= 3.0f;
 		}
 
 		posDelta *= Time::GetDeltaTime() * m_Speed;
@@ -92,6 +106,9 @@ namespace Drifter {
 
 		deltaPosition *= sensitivity;
 		m_YawPitchRoll += glm::vec3(deltaPosition.x * -1 , deltaPosition.y * -1, 0.0f);
+
+		float range = glm::half_pi<float>() * 2 / 3;
+		m_YawPitchRoll.y = glm::clamp(m_YawPitchRoll.y, range * -1, range);
 
 		m_Camera->SetRotationEuler(m_YawPitchRoll.x, m_YawPitchRoll.y, m_YawPitchRoll.z);
 
