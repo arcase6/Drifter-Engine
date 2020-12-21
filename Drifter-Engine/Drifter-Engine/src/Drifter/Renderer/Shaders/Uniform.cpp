@@ -1,7 +1,7 @@
 #include "Uniform.h"
 
 #include "Drifter/Renderer/Renderer.h"
-#include "Platform/OpenGL/Material/OpenGLUniform.h"
+#include "Platform/OpenGL/Renderer/Shaders/OpenGLUniform.h"
 namespace Drifter {
 	Uniform * Uniform::Create(Shader& shader, const char* name) {
 		switch (Renderer::GetAPI()) {

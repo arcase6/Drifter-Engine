@@ -3,7 +3,7 @@
 #include "Core.h"
 
 #include "Drifter/Renderer/Renderer.h"
-#include "Platform/OpenGL/Material/OpenGLTexture.h"
+#include "Platform/OpenGL/Renderer/Shaders/OpenGLTexture.h"
 
 namespace Drifter
 {

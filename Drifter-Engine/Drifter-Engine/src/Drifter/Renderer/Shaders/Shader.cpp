@@ -2,7 +2,7 @@
 #include "Shader.h"
 #include "Drifter/Renderer/Renderer.h"
 
-#include "Platform/OpenGL/Material/OpenGLShader.h"
+#include "Platform/OpenGL/Renderer/Shaders/OpenGLShader.h"
 namespace Drifter {
 	Ref<Shader> Shader::Create(const std::string& filepath) {
 		std::shared_ptr<Shader> result;

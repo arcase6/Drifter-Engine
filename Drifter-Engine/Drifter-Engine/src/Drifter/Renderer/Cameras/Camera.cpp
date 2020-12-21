@@ -2,8 +2,8 @@
 #include "Camera.h"
 
 #include "Drifter/Renderer/Renderer.h"
-#include "Platform/OpenGL/Renderer/OpenGLPerspectiveCamera.h"
-#include "Platform/OpenGL/Renderer/OpenGLOrthographicCamera.h"
+#include "Platform/OpenGL/Renderer/Cameras/OpenGLPerspectiveCamera.h"
+#include "Platform/OpenGL/Renderer/Cameras/OpenGLOrthographicCamera.h"
 namespace Drifter {
     Ref<PerspectiveCamera> PerspectiveCamera::Create(const glm::vec3& position, const glm::vec3& lookDirection, float fovDegrees, float aspectRatio)
     {

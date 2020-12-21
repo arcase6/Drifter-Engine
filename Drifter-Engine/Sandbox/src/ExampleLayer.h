@@ -1,8 +1,8 @@
 #pragma once
 #include "Drifter.h"
 
-#include "Platform/OpenGL/Material/OpenGLShader.h"
-#include "Drifter/Renderer/CameraController.h"
+#include "Platform/OpenGL/Renderer/Shaders/OpenGLShader.h"
+#include "Drifter/Renderer/Cameras/CameraController.h"
 
 namespace Sandbox {
 	class ExampleLayer : public Drifter::Layer

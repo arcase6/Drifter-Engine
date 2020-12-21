@@ -24,8 +24,8 @@
 #include <glm/gtx/string_cast.hpp>
 
 //Rendering
-#include "Drifter/Renderer/Material/Shader.h"
-#include "Drifter/Renderer/Material/Uniform.h"
-#include "Drifter/Renderer/Material/Texture.h"
-#include "Drifter/Renderer/Camera.h"
+#include "Drifter/Renderer/Shaders/Shader.h"
+#include "Drifter/Renderer/Shaders/Uniform.h"
+#include "Drifter/Renderer/Shaders/Texture.h"
+#include "Drifter/Renderer/Cameras/Camera.h"
 #include "Drifter/Renderer/Renderer.h"

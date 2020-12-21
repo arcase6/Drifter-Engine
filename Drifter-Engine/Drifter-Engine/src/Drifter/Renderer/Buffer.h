@@ -2,7 +2,7 @@
 #include <cstdint>
 #include <Drifter/Core/Log.h>
 
-#include "Material/ShaderDataType.h"
+#include "Drifter/Renderer/Shaders/ShaderDataType.h"
 namespace Drifter {
 	static uint32_t ShaderDataTypeSize(ShaderDataType type)
 	{

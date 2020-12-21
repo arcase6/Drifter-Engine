@@ -102,26 +102,8 @@
     <ClInclude Include="src\Drifter\Renderer\Buffer.h">
       <Filter>src\Drifter\Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="src\Drifter\Renderer\Camera.h">
-      <Filter>src\Drifter\Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="src\Drifter\Renderer\GraphicsContext.h">
       <Filter>src\Drifter\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drifter\Renderer\Material\Material.h">
-      <Filter>src\Drifter\Renderer\Material</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drifter\Renderer\Material\Shader.h">
-      <Filter>src\Drifter\Renderer\Material</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drifter\Renderer\Material\ShaderDataType.h">
-      <Filter>src\Drifter\Renderer\Material</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drifter\Renderer\Material\Texture.h">
-      <Filter>src\Drifter\Renderer\Material</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drifter\Renderer\Material\Uniform.h">
-      <Filter>src\Drifter\Renderer\Material</Filter>
     </ClInclude>
     <ClInclude Include="src\Drifter\Renderer\RenderCommand.h">
       <Filter>src\Drifter\Renderer</Filter>
@@ -137,15 +119,6 @@
     </ClInclude>
     <ClInclude Include="src\Drifter\Window.h">
       <Filter>src\Drifter</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\Material\OpenGLShader.h">
-      <Filter>src\Platform\OpenGL\Material</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\Material\OpenGLTexture.h">
-      <Filter>src\Platform\OpenGL\Material</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\Material\OpenGLUniform.h">
-      <Filter>src\Platform\OpenGL\Material</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
       <Filter>src\Platform\OpenGL</Filter>
@@ -174,10 +147,37 @@
     <ClInclude Include="src\EntryPoint.h">
       <Filter>src\Drifter\Core</Filter>
     </ClInclude>
-    <ClInclude Include="src\Drifter\Renderer\CameraController.h" />
-    <ClInclude Include="src\Platform\OpenGL\Renderer\OpenGLOrthographicCamera.h" />
-    <ClInclude Include="src\Platform\OpenGL\Renderer\OpenGLPerspectiveCamera.h">
+    <ClInclude Include="src\Drifter\Renderer\Cameras\Camera.h">
+      <Filter>src\Drifter\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Renderer\Cameras\CameraController.h" />
+    <ClInclude Include="src\Platform\OpenGL\Renderer\Cameras\OpenGLOrthographicCamera.h" />
+    <ClInclude Include="src\Platform\OpenGL\Renderer\Cameras\OpenGLPerspectiveCamera.h">
       <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\Renderer\Shaders\OpenGLShader.h">
+      <Filter>src\Platform\OpenGL\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\Renderer\Shaders\OpenGLTexture.h">
+      <Filter>src\Platform\OpenGL\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\Renderer\Shaders\OpenGLUniform.h">
+      <Filter>src\Platform\OpenGL\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Renderer\Shaders\Material.h">
+      <Filter>src\Drifter\Renderer\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Renderer\Shaders\Shader.h">
+      <Filter>src\Drifter\Renderer\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Renderer\Shaders\ShaderDataType.h">
+      <Filter>src\Drifter\Renderer\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Renderer\Shaders\Texture.h">
+      <Filter>src\Drifter\Renderer\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Renderer\Shaders\Uniform.h">
+      <Filter>src\Drifter\Renderer\Material</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -205,21 +205,6 @@
     <ClCompile Include="src\Drifter\Renderer\Buffer.cpp">
       <Filter>src\Drifter\Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="src\Drifter\Renderer\Camera.cpp">
-      <Filter>src\Drifter\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Drifter\Renderer\Material\Material.cpp">
-      <Filter>src\Drifter\Renderer\Material</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Drifter\Renderer\Material\Shader.cpp">
-      <Filter>src\Drifter\Renderer\Material</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Drifter\Renderer\Material\Texture.cpp">
-      <Filter>src\Drifter\Renderer\Material</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Drifter\Renderer\Material\Uniform.cpp">
-      <Filter>src\Drifter\Renderer\Material</Filter>
-    </ClCompile>
     <ClCompile Include="src\Drifter\Renderer\RenderCommand.cpp">
       <Filter>src\Drifter\Renderer</Filter>
     </ClCompile>
@@ -231,15 +216,6 @@
     </ClCompile>
     <ClCompile Include="src\Drifter\Transform.cpp">
       <Filter>src\Drifter</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\Material\OpenGLShader.cpp">
-      <Filter>src\Platform\OpenGL\Material</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\Material\OpenGLTexture.cpp">
-      <Filter>src\Platform\OpenGL\Material</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\Material\OpenGLUniform.cpp">
-      <Filter>src\Platform\OpenGL\Material</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
       <Filter>src\Platform\OpenGL</Filter>
@@ -271,10 +247,35 @@
     <ClCompile Include="src\dfpch.cpp">
       <Filter>src\Drifter\Core</Filter>
     </ClCompile>
-    <ClCompile Include="src\Drifter\Renderer\CameraController.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\Renderer\OpenGLPerspectiveCamera.cpp">
+    <ClCompile Include="src\Drifter\Renderer\Cameras\Camera.cpp">
+      <Filter>src\Drifter\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drifter\Renderer\Cameras\OrthographicCameraController.cpp" />
+    <ClCompile Include="src\Drifter\Renderer\Cameras\PerspectiveCameraController.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\Renderer\Cameras\OpenGLPerspectiveCamera.cpp">
       <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\Renderer\OpenGLOrthographicCamera.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\Renderer\Cameras\OpenGLOrthographicCamera.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\Renderer\Shaders\OpenGLShader.cpp">
+      <Filter>src\Platform\OpenGL\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\Renderer\Shaders\OpenGLTexture.cpp">
+      <Filter>src\Platform\OpenGL\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\Renderer\Shaders\OpenGLUniform.cpp">
+      <Filter>src\Platform\OpenGL\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drifter\Renderer\Shaders\Material.cpp">
+      <Filter>src\Drifter\Renderer\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drifter\Renderer\Shaders\Shader.cpp">
+      <Filter>src\Drifter\Renderer\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drifter\Renderer\Shaders\Texture.cpp">
+      <Filter>src\Drifter\Renderer\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drifter\Renderer\Shaders\Uniform.cpp">
+      <Filter>src\Drifter\Renderer\Material</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

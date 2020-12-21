@@ -1,7 +1,7 @@
 #pragma once
 
 #include "VertexArray.h"
-#include "Drifter/Renderer/Material/Shader.h"
+#include "Drifter/Renderer/Shaders/Shader.h"
 #include "glm/glm.hpp"
 
 namespace Drifter {

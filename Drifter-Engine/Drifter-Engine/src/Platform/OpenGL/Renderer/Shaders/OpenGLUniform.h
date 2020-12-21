@@ -1,5 +1,5 @@
 #pragma once
-#include "Drifter/Renderer/Material/Uniform.h"
+#include "Drifter/Renderer/Shaders/Uniform.h"
 namespace Drifter {
 	class OpenGLUniform : public Uniform
 	{

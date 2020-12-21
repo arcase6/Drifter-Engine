@@ -1,5 +1,5 @@
 #pragma once
-#include "Drifter/Renderer/Material/Texture.h"
+#include "Drifter/Renderer/Shaders/Texture.h"
 namespace Drifter {
 	class OpenGLTexture2D : public Texture2D
 	{
