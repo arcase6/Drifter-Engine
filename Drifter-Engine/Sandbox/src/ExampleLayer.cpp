@@ -106,6 +106,7 @@ namespace Sandbox
 		m_Camera->RecalculateTransforms();
 
 		m_CameraController = Drifter::CameraController::CreatePerspective(camera, 2.0f);
+		//m_CameraController = Drifter::CameraController::CreateOrthographic(camera, 2.0f);
 	}
 
 	void ExampleLayer::OnUpdate()

@@ -15,7 +15,8 @@ namespace Drifter {
 			m_AspectRatio(aspectRatio),
 			m_ViewMatrix(glm::mat4(1.0)),
 			m_ProjectionMatrix(glm::mat4(1.0)),
-			m_FOVRadians(glm::radians(fovDegrees))
+			m_FOVRadians(glm::radians(fovDegrees)),
+			m_UpVector(0.0f, 1.0f, 0.0f)
 		{ }
 
 		//Base Camera Implementation
@@ -26,10 +27,17 @@ namespace Drifter {
 		virtual void SetAspectRatio(float aspectRatio) override { m_AspectRatio = aspectRatio; }
 
 		virtual void LookAt(const glm::vec3& target) override { SetForwardVector(target - m_Position); }
-		virtual void SetForwardVector(const glm::vec3& lookVector) override { m_ForwardVector = glm::normalize(lookVector); }
+		virtual void SetForwardVector(const glm::vec3& lookVector) override {
+			m_ForwardVector = glm::normalize(lookVector); 
+			glm::vec3 rightVector = glm::cross(lookVector, glm::vec3(0, 1, 0));
+			m_UpVector = glm::cross(rightVector, m_ForwardVector);
+		}
 		virtual void SetRotationEuler(float yaw, float pitch, float roll) override;
 		
 		virtual glm::vec3 GetForwardVector() const override { return m_ForwardVector; }
+		virtual glm::vec3 GetUpVector() const override { return m_UpVector; }
+		virtual glm::vec3 GetRightVector() const override { return glm::cross(m_ForwardVector, m_UpVector); }
+
 
 		virtual glm::mat4 GetViewMatrix() const override { return m_ViewMatrix; }
 		virtual glm::mat4 GetProjectionMatrix() const override { return m_ProjectionMatrix; }
@@ -52,6 +60,7 @@ namespace Drifter {
 		//Base fields
 		glm::vec3 m_Position;
 		glm::vec3 m_ForwardVector;
+		glm::vec3 m_UpVector;
 
 		float m_AspectRatio;
 

@@ -16,7 +16,8 @@ namespace Drifter
 			m_Width(width),
 			m_Height(height),
 			m_ViewMatrix(glm::mat4(1.0)),
-			m_ProjectionMatrix(glm::mat4(1.0))
+			m_ProjectionMatrix(glm::mat4(1.0)),
+			m_UpVector(0, 1, 0)
 		{ }
 
 		//Base Camera Implementation
@@ -40,10 +41,16 @@ namespace Drifter
 		virtual float GetAspectRatio() const { return m_Width / m_Height; }
 
 		virtual void LookAt(const glm::vec3& target) override { SetForwardVector(target - m_Position); }
-		virtual void SetForwardVector(const glm::vec3& forwardVector) { m_ForwardVector = glm::normalize(forwardVector); }
+		virtual void SetForwardVector(const glm::vec3& forwardVector) override {
+			m_ForwardVector = glm::normalize(forwardVector); 
+			auto right = glm::cross(m_ForwardVector, glm::vec3(0, 1, 0));
+			m_UpVector = glm::cross(right, m_ForwardVector);
+		}
 		virtual void SetRotationEuler(float yaw, float pitch, float roll) override;
 
 		virtual glm::vec3 GetForwardVector() const override { return m_ForwardVector; }
+		virtual glm::vec3 GetUpVector() const override { return m_UpVector; }
+		virtual glm::vec3 GetRightVector() const override { return glm::cross(m_ForwardVector, m_UpVector); }
 
 		virtual glm::mat4 GetViewMatrix() const override { return m_ViewMatrix; }
 		virtual glm::mat4 GetProjectionMatrix() const override { return m_ProjectionMatrix; }
@@ -61,6 +68,7 @@ namespace Drifter
 		//BaseCamera fields
 		glm::vec3 m_Position;
 		glm::vec3 m_ForwardVector;
+		glm::vec3 m_UpVector;
 
 		float m_NearClip;
 		float m_FarClip;
@@ -70,10 +78,6 @@ namespace Drifter
 
 		glm::mat4 m_ViewMatrix;
 		glm::mat4 m_ProjectionMatrix;
-
-	private:
-		void RecalculateUpAndRightVectors();
-
 	};
 }
 

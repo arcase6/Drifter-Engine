@@ -34,25 +34,28 @@ namespace Drifter {
 			:m_Camera(camera),
 			m_Speed(speed),
 			m_ZoomLevel(1.0f),
-			m_AspectRatio(camera->GetWidth() / camera->GetHeight())
+			m_AspectRatio(camera->GetWidth() / camera->GetHeight()),
+			m_YawPitchRoll(0)
 		{}
 		virtual void OnUpdate() override;
 		
 		virtual void OnEvent(Event& e) override;
 		
 		virtual glm::vec3 GetForwardVector() const override { return m_Camera->GetForwardVector(); }
-		virtual glm::vec3 GetRightVector() const override{ return glm::cross(GetForwardVector(), glm::vec3(0, 1, 0));}
-		virtual glm::vec3 GetUpVector() const override { return glm::cross(GetRightVector(), GetForwardVector()); }
+		virtual glm::vec3 GetRightVector() const override{ return m_Camera->GetRightVector();}
+		virtual glm::vec3 GetUpVector() const override { return m_Camera->GetUpVector(); }
 
 	private:
 		bool OnMouseScrolled(MouseScrolledEvent& e);
 		bool OnWindowResize(WindowResizeEvent& e);
+		bool OnKeyPressed(KeyPressedEvent& e);
 			
 	private:
 		Ref<OrthographicCamera> m_Camera;
 		float m_Speed;
 		float m_ZoomLevel;
 		float m_AspectRatio;
+		glm::vec3 m_YawPitchRoll;
 	};
 
 	class PerspectiveCameraController : public CameraController
@@ -66,8 +69,8 @@ namespace Drifter {
 		virtual void OnEvent(Event& e) override;
 
 		virtual glm::vec3 GetForwardVector() const override { return m_Camera->GetForwardVector(); }
-		virtual glm::vec3 GetRightVector() const override { return glm::cross(GetForwardVector(), glm::vec3(0, 1, 0)); }
-		virtual glm::vec3 GetUpVector() const override { return glm::cross(GetRightVector(), GetForwardVector()); }
+		virtual glm::vec3 GetRightVector() const override { return m_Camera->GetRightVector(); }
+		virtual glm::vec3 GetUpVector() const override { return m_Camera->GetUpVector(); }
 	private:
 		bool OnMouseMoved(MouseMovedEvent& e);
 		bool OnMouseButton(MouseButtonPressedEvent& e);

@@ -11,7 +11,11 @@ namespace Drifter {
 
 	void PerspectiveCameraController::OnUpdate()
 	{
+		if (!Application::Get().GetWindow().GetCaptureMouseFlag()) {
+			return;
+		}
 		glm::vec3 posDelta = glm::vec3(0.0f, 0.0f, 0.0f);
+		float rotDelta = 0.0f;
 		if (Input::IsKeyPressed(KeyCodes::W())) {
 			posDelta += GetForwardVector();
 		}
@@ -27,10 +31,17 @@ namespace Drifter {
 		}
 
 		if (Input::IsKeyPressed(KeyCodes::Q())) {
-			posDelta -= GetUpVector();
+			posDelta -= glm::vec3(0.0f, 1.0f, 0.0f); //GetUpVector();
 		}
 		else if (Input::IsKeyPressed(KeyCodes::E())) {
-			posDelta += GetUpVector();
+			posDelta += glm::vec3(0.0f, 1.0f, 0.0f); //GetUpVector();
+		}
+
+		if (Input::IsKeyPressed(KeyCodes::NUM_2())) {
+			rotDelta = 1.0f;
+		}
+		else if (Input::IsKeyPressed(KeyCodes::NUM_3())) {
+			rotDelta = -1.0f;
 		}
 
 		if (Input::IsKeyPressed(KeyCodes::LEFT_SHIFT())) {
@@ -38,8 +49,14 @@ namespace Drifter {
 		}
 
 		posDelta *= Time::GetDeltaTime() * m_Speed;
-
+		rotDelta *= Time::GetDeltaTime() * m_Speed * glm::pi<float>() / 2.0f;
+		
+		m_YawPitchRoll.z += rotDelta;
+		
 		m_Camera->SetPosition(m_Camera->GetPosition() + posDelta);
+		m_Camera->SetRotationEuler(m_YawPitchRoll.x, m_YawPitchRoll.y, m_YawPitchRoll.z);
+
+
 		m_Camera->RecalculateTransforms();
 	}
 	void PerspectiveCameraController::OnEvent(Event& e)
@@ -86,6 +103,11 @@ namespace Drifter {
 		auto window = &Application::Get().GetWindow();
 		if (e.GetKeyCode() == KeyCodes::ESCAPE() && window->GetCaptureMouseFlag()) {
 			window->SetCaptureMouseFlag(false);
+			return true;
+		}
+
+		if (e.GetKeyCode() == KeyCodes::NUM_1() && window->GetCaptureMouseFlag()) {
+			m_YawPitchRoll.z = 0.0f;
 			return true;
 		}
 

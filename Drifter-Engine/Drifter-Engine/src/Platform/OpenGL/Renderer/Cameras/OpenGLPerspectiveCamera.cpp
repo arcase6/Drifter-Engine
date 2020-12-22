@@ -7,8 +7,8 @@ namespace Drifter
 {
 	void OpenGLPerspectiveCamera::SetRotationEuler(float yaw, float pitch, float roll)
 	{
-		glm::vec4 direction = glm::yawPitchRoll(yaw, pitch, roll) * glm::vec4(0,0,-1.0,0);
-		m_ForwardVector = direction.xyz;
+		m_ForwardVector = (glm::yawPitchRoll(yaw, pitch, roll) * glm::vec4(0.0f, 0.0f, -1.0f, 0.0f)).xyz;
+		m_UpVector      = (glm::yawPitchRoll(yaw, pitch, roll) * glm::vec4(0.0f, 1.0f, 0.0f, 0.0f)).xyz;
 		RecalculateTransforms();
 		
 	}
@@ -17,7 +17,7 @@ namespace Drifter
 		m_ViewMatrix = glm::lookAt(
 			m_Position,
 			m_Position + m_ForwardVector,
-			glm::vec3(0.0f, 1.0f, 0.0f));
+			m_UpVector);
 		
 		m_ProjectionMatrix = glm::perspective(
 			m_FOVRadians,
