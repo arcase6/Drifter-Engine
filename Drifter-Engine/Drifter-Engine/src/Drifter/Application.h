@@ -28,8 +28,11 @@ namespace Drifter {
 		inline Window& GetWindow() { return *m_window; }
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
+		bool OnWindowResize(WindowResizeEvent& e);
+
 		Scope<Window> m_window;
 		bool m_running = true;
+		bool m_IsMinimized = false;
 		LayerStack m_layerStack;
 
 	private:

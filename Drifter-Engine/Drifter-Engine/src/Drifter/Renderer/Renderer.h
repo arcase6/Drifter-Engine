@@ -21,6 +21,8 @@ namespace Drifter {
 		static void EndScene();
 
 		static void Submit(const Ref<VertexArray>& vertexArray);
+
+		static void OnWindowResize(uint32_t width, uint32_t height);
 		
 		inline static ShaderLibrary& GetShaderLibrary() { return s_ShaderLibrary; }
 		inline static RendererAPI GetAPI() { return s_RendererAPI; }
