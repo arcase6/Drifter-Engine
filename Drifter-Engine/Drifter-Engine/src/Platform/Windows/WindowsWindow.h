@@ -19,7 +19,7 @@ namespace Drifter {
 
 		inline unsigned int GetWidth() const override { return m_data.Width; }
 		inline unsigned int GetHeight() const override { return m_data.Height; }
-		inline float GetAspectRatio() const override { return (float)GetHeight() / (float)GetWidth(); }
+		inline float GetAspectRatio() const override { return (float)GetWidth() / (float)GetHeight(); }
 		
 		inline GLFWwindow * GetGlfwWindow() { return m_window; }
 		

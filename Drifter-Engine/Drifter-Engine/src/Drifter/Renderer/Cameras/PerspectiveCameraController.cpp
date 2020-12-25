@@ -81,7 +81,7 @@ namespace Drifter {
 		deltaPosition *= sensitivity;
 		m_YawPitchRoll += glm::vec3(deltaPosition.x * -1, deltaPosition.y * -1, 0.0f);
 
-		float range = glm::half_pi<float>() * 2 / 3;
+		constexpr float range = glm::half_pi<float>() * 2.0f / 3.0f;
 		m_YawPitchRoll.y = glm::clamp(m_YawPitchRoll.y, range * -1, range);
 
 		m_Camera->SetRotationEuler(m_YawPitchRoll.x, m_YawPitchRoll.y, m_YawPitchRoll.z);
