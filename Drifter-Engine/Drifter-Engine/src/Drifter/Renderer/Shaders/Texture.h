@@ -2,6 +2,7 @@
 
 #include "Core.h"
 #include <string>
+#include "glm/glm.hpp"
 
 namespace Drifter {
 	class Texture
@@ -21,5 +22,6 @@ namespace Drifter {
 		virtual ~Texture2D() = default;
 
 		static Ref<Texture2D> Create(const std::string& filepath);
+		static Ref<Texture2D> Create(const glm::vec4& flatColor, int width, int height);
 	};
 }
