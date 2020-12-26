@@ -5,6 +5,7 @@ namespace Drifter {
 	{
 	public:
 		OpenGLTexture2D(const std::string& filePath);
+		OpenGLTexture2D(const glm::vec4& flatColor, int width, int height);
 		virtual ~OpenGLTexture2D();
 
 		// Inherited via Texture2D

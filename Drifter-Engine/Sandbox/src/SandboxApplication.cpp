@@ -1,15 +1,15 @@
 #include <Drifter.h>
 #include <EntryPoint.h>
-#include "ExampleLayer.h"
+#include "Layers/ExampleLayer.h"
+#include "Layers/Sandbox2DLayer.h"
 
 namespace Sandbox {
 	class SandboxApplication : public Drifter::Application
 	{
 	public:
 		SandboxApplication() {
-			auto debugLayer = std::make_shared<Drifter::EditorUI::ImguiLayer>(GetWindow());
-			PushOverlay(debugLayer);
-			PushLayer(std::make_shared<ExampleLayer>());
+			//PushLayer(std::make_shared<ExampleLayer>());
+			PushLayer(std::make_shared<Sandbox2DLayer>());
 		}
 		~SandboxApplication() = default;
 	};

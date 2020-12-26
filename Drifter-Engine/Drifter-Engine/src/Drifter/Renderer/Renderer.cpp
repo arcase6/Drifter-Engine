@@ -13,6 +13,7 @@ namespace Drifter {
 
 	void Renderer::LoadStartupShaders() {
 		s_ShaderLibrary.LoadNewShader("./assets/shaders/StandardShader.glsl");
+		s_ShaderLibrary.LoadNewShader("./assets/shaders/SpriteShader.glsl");
 	}
 
 	void Renderer::SetClearColor(const glm::vec4 color)

@@ -131,16 +131,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="src\ExampleLayer.h" />
+    <ClInclude Include="src\Layers\Sandbox2DLayer.h" />
+    <ClInclude Include="src\Layers\ExampleLayer.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\ExampleLayer.cpp" />
+    <ClCompile Include="src\Layers\Sandbox2DLayer.cpp" />
+    <ClCompile Include="src\Layers\ExampleLayer.cpp" />
     <ClCompile Include="src\SandboxApplication.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Drifter-Engine\Drifter-Engine.vcxproj">
       <Project>{389EAD88-246C-A18E-0D00-12B5F96C7DF3}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="assets\shaders\SpriteShader.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

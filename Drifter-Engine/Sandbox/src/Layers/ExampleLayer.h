@@ -15,10 +15,10 @@ namespace Sandbox {
 			SetupShaders();
 			SetupCameras();
 		}
-		void ExampleLayer::SetTriangleData();
-		void ExampleLayer::SetBoxData();
-		void ExampleLayer::SetupShaders();
-		void ExampleLayer::SetupCameras();
+		void SetTriangleData();
+		void SetBoxData();
+		void SetupShaders();
+		void SetupCameras();
 
 		//Inheritted from Layer
 		void OnUpdate() override;
@@ -32,8 +32,5 @@ namespace Sandbox {
 
 		Drifter::Ref<Drifter::Camera> m_Camera;
 		Drifter::Ref<Drifter::CameraController> m_CameraController;
-
-		glm::vec3 m_CameraPosition;
-
 	};
 }

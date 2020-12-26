@@ -13,6 +13,7 @@ namespace Drifter {
 		virtual void OnAttach() {}
 		virtual void OnDetach() {}
 		virtual void OnUpdate() {}
+		virtual void OnImgui() {}
 		virtual void OnEvent(Event& e) {}
 
 		inline const std::string& GetName() { return m_debugName; }

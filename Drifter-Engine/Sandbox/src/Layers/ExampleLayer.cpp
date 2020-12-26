@@ -96,8 +96,9 @@ namespace Sandbox
 	void ExampleLayer::SetupCameras() {
 
 		//SetupCamera
-		m_CameraPosition = glm::vec3(0.0f, 0.0f, 1.0f);
-		auto camera = Drifter::PerspectiveCamera::Create(m_CameraPosition, glm::vec3(0.0f, 0.0f, -1.0f));
+		glm::vec3 cameraPosition = glm::vec3(0.0f, 0.0f, -20.0f);
+		glm::vec3 lookVector = glm::vec3(0.0f, 0.0f, 1.0f);
+		auto camera = Drifter::PerspectiveCamera::Create(cameraPosition, lookVector);
 		//auto camera = Drifter::OrthographicCamera::CreateByAspectRatio(m_CameraPosition, glm::vec3(0.0f, 0.0f, -1.0f));
 		m_Camera = std::static_pointer_cast<Drifter::Camera>(camera);
 		m_Camera->SetNearClipDistance(0.01f);
