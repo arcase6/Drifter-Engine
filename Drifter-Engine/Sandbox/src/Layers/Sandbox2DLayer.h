@@ -17,19 +17,14 @@ namespace Sandbox{
 		virtual void OnEvent(Drifter::Event& e) override;
 
 		virtual void OnAttach() override {
-			SetQuadData();
-			SetupShaders();
 			SetupCameras();
 		}
 		
 	private:
-		void SetQuadData();
-		void SetupShaders();
 		void SetupCameras();
 	private:
 
 		//OpenGL data for rendering -- likely to be removed later
-		Drifter::Ref<Drifter::VertexArray> m_Quad;
 		Drifter::Ref<Drifter::Texture2D> m_MainTex, m_OverlayTex;
 
 		Drifter::Ref<Drifter::Camera> m_Camera;

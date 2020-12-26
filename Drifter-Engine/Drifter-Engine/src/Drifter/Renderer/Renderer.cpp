@@ -2,13 +2,30 @@
 #include "Renderer.h"
 
 #include "RenderCommand.h"
+#include "Platform/OpenGL/Renderer/Shaders/OpenGLShader.h"
+#include "Drifter/Renderer/Renderer2D.h"
 namespace Drifter {
 	RendererAPI Renderer::s_RendererAPI = RendererAPI::OpenGL;
 	ShaderLibrary Renderer::s_ShaderLibrary;
 
+	struct SceneData {
+		SceneData() : ViewProjectionMatrix(1.0) {}
+		glm::mat4 ViewProjectionMatrix;
+	};
+	static SceneData * Data;
+
 	void Renderer::Init() {
 		RenderCommand::Init();
+		Data = new SceneData();
 		LoadStartupShaders();
+
+		Renderer2D::Init();
+	}
+	
+	void Renderer::Shutdown() {
+		delete Data;
+		Renderer2D::Shutdown();
+
 	}
 
 	void Renderer::LoadStartupShaders() {
@@ -24,14 +41,19 @@ namespace Drifter {
 	{
 		RenderCommand::Clear();
 	}
-	void Renderer::BeginScene()
+	void Renderer::BeginScene(const Camera& camera)
 	{
+		Data->ViewProjectionMatrix = camera.GetProjectionMatrix() * camera.GetViewMatrix();
 	}
 	void Renderer::EndScene()
 	{
 	}
-	void Renderer::Submit(const Ref<VertexArray>& vertexArray)
+	void Renderer::Submit(const Ref<Shader>& shader, const Ref<VertexArray>& vertexArray, const glm::mat4& transform)
 	{
+		shader->Bind();
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->Set("u_ViewProjection", Data->ViewProjectionMatrix);
+		std::dynamic_pointer_cast<OpenGLShader>(shader)->Set("u_Model", transform);
+
 		RenderCommand::DrawIndexedTriangles(vertexArray);
 	}
 

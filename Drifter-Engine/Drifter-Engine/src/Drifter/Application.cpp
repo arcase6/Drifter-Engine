@@ -28,6 +28,27 @@ namespace Drifter {
 
 	}
 
+	void Application::Run() {
+		DF_LOG_INFO("Welcome to Drifter!");
+
+		while (m_running) {
+			m_window->OnFrameBegin();
+			Time::Tick();
+			if (!m_IsMinimized) {
+				for (Ref<Layer> layer : m_layerStack)
+					layer->OnUpdate();
+			}
+
+			m_ImguiLayer->NewFrameGLFW();
+			for (Ref<Layer> layer : m_layerStack)
+				layer->OnImgui();
+			m_ImguiLayer->EndFrameGLFW();
+
+			m_window->OnFrameEnd();
+		}
+		Renderer::Shutdown();
+	}
+
 	void Application::OnEvent(Event& e)
 	{
 		EventDispatcher dispatcher(e);
@@ -74,26 +95,5 @@ namespace Drifter {
 		}
 
 		return false;
-	}
-
-
-	void Application::Run() {
-		DF_LOG_INFO("Welcome to Drifter!");
-
-		while (m_running) {
-			m_window->OnFrameBegin();
-			Time::Tick();
-			if (!m_IsMinimized) {
-				for (Ref<Layer> layer : m_layerStack) 
-					layer->OnUpdate();
-			}
-
-			m_ImguiLayer->NewFrameGLFW();
-			for (Ref<Layer> layer : m_layerStack)
-				layer->OnImgui();
-			m_ImguiLayer->EndFrameGLFW();
-
-			m_window->OnFrameEnd();
-		}
 	}
 }

@@ -179,6 +179,7 @@
     <ClInclude Include="src\Drifter\Renderer\Shaders\Uniform.h">
       <Filter>src\Drifter\Renderer\Material</Filter>
     </ClInclude>
+    <ClInclude Include="src\Drifter\Renderer\Renderer2D.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\vendors\glm\glm\detail\glm.cpp">
@@ -277,5 +278,6 @@
     <ClCompile Include="src\Drifter\Renderer\Shaders\Uniform.cpp">
       <Filter>src\Drifter\Renderer\Material</Filter>
     </ClCompile>
+    <ClCompile Include="src\Drifter\Renderer\Renderer2D.cpp" />
   </ItemGroup>
 </Project>

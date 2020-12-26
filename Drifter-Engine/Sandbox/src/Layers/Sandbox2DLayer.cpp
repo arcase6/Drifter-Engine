@@ -2,45 +2,17 @@
 
 #include "Platform/OpenGL/Renderer/Shaders/OpenGLShader.h"
 #include "Drifter/Renderer/Cameras/CameraController.h"
+#include "Drifter/Renderer/Renderer2D.h"
 
 #include "imgui.h"
 #include "glm/gtc/type_ptr.hpp"
-namespace Sandbox {
-
-	void Sandbox2DLayer::SetQuadData()
-	{
-		std::vector<float> vertices =
-		{
-			-0.5f, -0.5f,  0.0f,  0.0f, 0.0f,
-			 0.5f, -0.5f,  0.0f,  1.0f, 0.0f,
-			 0.5f,  0.5f,  0.0f,  1.0f, 1.0f,
-						   
-			 0.5f,  0.5f,  0.0f,  1.0f, 1.0f,
-			-0.5f,  0.5f,  0.0f,  0.0f, 1.0f,
-			-0.5f, -0.5f,  0.0f,  0.0f, 0.0f,
-		};
-		std::vector<uint32_t> indices;
-		for (int i = 0; i < vertices.size(); i++) {
-			indices.push_back(i);
-		}
-
-		Drifter::BufferLayout layout = {
-			{ Drifter::ShaderDataType::Float3, "a_Position" },
-			{ Drifter::ShaderDataType::Float2, "a_UV" }
-		};
-		m_Quad.reset(Drifter::VertexArray::Create(vertices, indices, layout));
-	}
-
-	void Sandbox2DLayer::SetupShaders()
-	{
-		m_MainTex = Drifter::Texture2D::Create(glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), 1,1);
-	}
+namespace Sandbox {	
 
 	void Sandbox2DLayer::SetupCameras() {
 
 		//SetupCamera
-		glm::vec3 cameraPosition = glm::vec3(0.0f, 0.0f, -100.0f);
-		glm::vec3 lookVector = glm::vec3(0.0f, 0.0f, 1.0f);
+		glm::vec3 cameraPosition = glm::vec3(0.0f, 0.0f, 100.0f);
+		glm::vec3 lookVector = glm::vec3(0.0f, 0.0f, -1.0f);
 
 		auto camera = Drifter::OrthographicCamera::CreateByAspectRatio(cameraPosition, lookVector, 5.0f);
 		m_Camera = std::static_pointer_cast<Drifter::Camera>(camera);
@@ -62,26 +34,19 @@ namespace Sandbox {
 	{
 
 		using namespace Drifter;
-		static glm::mat4 boxTransform = glm::translate(glm::mat4(1), glm::vec3(0, 0, -5.0f));
-
 		//move camera here
 		m_CameraController->OnUpdate();
 
-		glm::mat4 viewMatrix = m_Camera->GetViewMatrix();
-		glm::mat4 projectionMatrix = m_Camera->GetProjectionMatrix();
+		Renderer2D::BeginScene(*m_Camera);
 
-		glm::mat4 vpMatrix = projectionMatrix * viewMatrix;
+		for (int r = 0; r < 10; r++) {
+			for (int c = 0; c < 10; c++) {
+				Renderer2D::DrawQuad({ 1.1f * c,1.1f * r}, { 1.0f, 1.0f }, m_Tint);
+			}
+		}
 
-		m_Quad->Bind();
+		Renderer2D::EndScene();
 
-		Ref<OpenGLShader> shader = std::dynamic_pointer_cast<OpenGLShader>(Renderer::GetShaderLibrary().FindShader("SpriteShader"));
-
-		shader->Bind();
-		shader->Set("u_ViewProjection", vpMatrix);
-		shader->Set("u_Model", boxTransform);
-		shader->Set("u_Tint", m_Tint);
-		m_MainTex->Bind(0);
-		Renderer::Submit(m_Quad);
 	}
 
 	void Sandbox2DLayer::OnEvent(Drifter::Event& e)

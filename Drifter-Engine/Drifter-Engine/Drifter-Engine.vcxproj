@@ -147,6 +147,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\vendors\stb_image\stb_image.h" />
+    <ClInclude Include="src\Drifter\Renderer\Renderer2D.h" />
     <ClInclude Include="src\Platform\OpenGL\Renderer\Cameras\OpenGLOrthographicCamera.h" />
     <ClInclude Include="src\Drifter\Renderer\Cameras\CameraController.h" />
     <ClInclude Include="src\Drifter.h" />
@@ -193,6 +194,7 @@
   <ItemGroup>
     <ClCompile Include="..\vendors\glm\glm\detail\glm.cpp" />
     <ClCompile Include="..\vendors\stb_image\stb_image.cpp" />
+    <ClCompile Include="src\Drifter\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\Drifter\Renderer\Cameras\PerspectiveCameraController.cpp" />
     <ClCompile Include="src\Platform\OpenGL\Renderer\Cameras\OpenGLOrthographicCamera.cpp" />
     <ClCompile Include="src\Drifter\Renderer\Cameras\OrthographicCameraController.cpp" />

@@ -4,6 +4,7 @@
 #include "Drifter/Renderer/Shaders/Shader.h"
 #include "glm/glm.hpp"
 
+#include "Drifter/Renderer/Cameras/Camera.h"
 namespace Drifter {
 	enum class RendererAPI
 	{
@@ -13,14 +14,15 @@ namespace Drifter {
 	{
 	public:
 		static void Init();
+		static void Shutdown();
 
 		static void SetClearColor(const glm::vec4 color);
 		static void Clear();
 
-		static void BeginScene();
+		static void BeginScene(const Camera& camera);
 		static void EndScene();
 
-		static void Submit(const Ref<VertexArray>& vertexArray);
+		static void Submit(const Ref<Shader>& shader, const Ref<VertexArray>& vertexArray, const glm::mat4& transform);
 
 		static void OnWindowResize(uint32_t width, uint32_t height);
 		
