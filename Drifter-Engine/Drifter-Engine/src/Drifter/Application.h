@@ -5,6 +5,8 @@
 #include "Events/ApplicationEvent.h"
 #include <Drifter/LayerStack.h>
 
+#include "Drifter/EditorUI/IMGUILayer.h"
+
 namespace Drifter {
 	class Application
 	{
@@ -34,6 +36,7 @@ namespace Drifter {
 		bool m_running = true;
 		bool m_IsMinimized = false;
 		LayerStack m_layerStack;
+		Ref<EditorUI::ImguiLayer> m_ImguiLayer;
 
 	private:
 		static Application* s_Instance;

@@ -23,6 +23,9 @@ namespace Drifter {
 
 		Renderer::Init();
 		Renderer::SetClearColor({ 0.0f, 0.0f, 0.05f, 1.0f });
+		m_ImguiLayer = std::make_shared<EditorUI::ImguiLayer>();
+		PushOverlay(m_ImguiLayer);
+
 	}
 
 	void Application::OnEvent(Event& e)
@@ -84,6 +87,12 @@ namespace Drifter {
 				for (Ref<Layer> layer : m_layerStack) 
 					layer->OnUpdate();
 			}
+
+			m_ImguiLayer->NewFrameGLFW();
+			for (Ref<Layer> layer : m_layerStack)
+				layer->OnImgui();
+			m_ImguiLayer->EndFrameGLFW();
+
 			m_window->OnFrameEnd();
 		}
 	}

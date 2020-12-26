@@ -12,8 +12,8 @@
 inline GLFWwindow* GetGLFWwindow(Drifter::Window& window) { return (GLFWwindow*)window.GetNativeWindow(); }
 
 namespace Drifter::EditorUI {
-	ImguiLayer::ImguiLayer(Drifter::Window& window, const std::string& name)
-		:Layer(name), m_window(window)
+	ImguiLayer::ImguiLayer(const std::string& name)
+		:Layer(name), m_window(Application::Get().GetWindow())
 	{
 	}
 
@@ -52,12 +52,10 @@ namespace Drifter::EditorUI {
 		ImGui_ImplGlfw_Shutdown();
 	}
 
-	void ImguiLayer::OnUpdate()
+	void ImguiLayer::OnImgui()
 	{
 		static bool show_demo_window = true;
-		NewFrameGLFW();
 		ImGui::ShowDemoWindow(&show_demo_window);
-		EndFrameGLFW();
 
 	}
 
