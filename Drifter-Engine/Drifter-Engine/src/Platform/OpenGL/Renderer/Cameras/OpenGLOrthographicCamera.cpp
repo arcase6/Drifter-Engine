@@ -7,9 +7,20 @@ namespace Drifter
 {
 	void OpenGLOrthographicCamera::SetRotationEuler(float yaw, float pitch, float roll)
 	{
-		m_ForwardVector = (glm::yawPitchRoll(yaw, pitch, roll) * glm::vec4(0, 0, -1.0f, 0)).xyz;
-		m_UpVector = (glm::yawPitchRoll(yaw, pitch, roll) * glm::vec4(0.0f, 1.0f, 0.0f, 0.0f)).xyz;
-		RecalculateTransforms();
+		//DF_LOG_INFO("Setting... Yaw {0} Pitch {1}. Matrix : {2}", yaw, pitch, glm::to_string(glm::yawPitchRoll(yaw, pitch, roll)));
+		m_ForwardVector = (glm::yawPitchRoll(yaw, pitch * -1, roll) * glm::vec4(0.0f, 0.0f, 1.0f, 0.0f)).xyz;
+		m_UpVector = (glm::yawPitchRoll(yaw, pitch * -1, roll) * glm::vec4(0.0f, 1.0f, 0.0f, 0.0f)).xyz;
+		//GetYawPitchRoll();
+	}
+
+	glm::vec3 OpenGLOrthographicCamera::GetYawPitchRoll() const {
+		float yaw = atan2(m_ForwardVector.x, m_ForwardVector.z);
+		float pitch = glm::asin(m_ForwardVector.y);
+
+		float roll = 0.0f; //TODO - calculate roll
+
+		//DF_LOG_INFO("Yaw {0} Pitch {1}. Forward Vector: {2}" , yaw, pitch, glm::to_string(m_ForwardVector));
+		return glm::vec3(yaw, pitch, roll);
 	}
 
 	void OpenGLOrthographicCamera::RecalculateTransforms()

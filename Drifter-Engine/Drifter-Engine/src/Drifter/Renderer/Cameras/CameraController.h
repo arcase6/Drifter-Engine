@@ -33,9 +33,9 @@ namespace Drifter {
 		OrthorgraphicCameraController(Ref<OrthographicCamera> camera, float speed)
 			:m_Camera(camera),
 			m_Speed(speed),
-			m_ZoomLevel(1.0f),
+			m_ZoomLevel(camera->GetZoomLevel()),
 			m_AspectRatio(camera->GetWidth() / camera->GetHeight()),
-			m_YawPitchRoll(0)
+			m_YawPitchRoll(camera->GetYawPitchRoll())
 		{}
 		virtual void OnUpdate() override;
 		
@@ -62,7 +62,7 @@ namespace Drifter {
 	{
 	public:
 		PerspectiveCameraController(Ref<PerspectiveCamera> camera, float speed)
-			:m_Camera(camera), m_Speed(speed), m_YawPitchRoll(0), m_LastPosition(0)
+			:m_Camera(camera), m_Speed(speed), m_YawPitchRoll(camera->GetYawPitchRoll()), m_LastPosition(0)
 		{}
 
 		virtual void OnUpdate() override;

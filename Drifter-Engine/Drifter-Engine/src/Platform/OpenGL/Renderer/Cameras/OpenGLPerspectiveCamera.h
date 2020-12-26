@@ -33,7 +33,8 @@ namespace Drifter {
 			m_UpVector = glm::cross(rightVector, m_ForwardVector);
 		}
 		virtual void SetRotationEuler(float yaw, float pitch, float roll) override;
-		
+		virtual glm::vec3 GetYawPitchRoll() const override;
+
 		virtual glm::vec3 GetForwardVector() const override { return m_ForwardVector; }
 		virtual glm::vec3 GetUpVector() const override { return m_UpVector; }
 		virtual glm::vec3 GetRightVector() const override { return glm::cross(m_ForwardVector, m_UpVector); }

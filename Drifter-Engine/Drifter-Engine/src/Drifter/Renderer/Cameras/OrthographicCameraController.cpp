@@ -61,6 +61,7 @@ namespace Drifter {
 	}
 
 	bool OrthorgraphicCameraController::OnWindowResize(WindowResizeEvent& e) {
+		
 		m_AspectRatio = (float)e.GetWidth() / (float)e.GetHeight();
 		m_Camera->SetZoomAndAspectRatio(m_ZoomLevel, m_AspectRatio);
 		m_Camera->RecalculateTransforms();
@@ -81,11 +82,11 @@ namespace Drifter {
 	Ref<CameraController> CameraController::CreateOrthographic(Ref<OrthographicCamera> camera, float speed)
 	{
 		CameraController* controller = new OrthorgraphicCameraController(camera, speed);
-		return Scope<CameraController>(controller);
+		return Ref<CameraController>(controller);
 	}
 	Ref<CameraController> CameraController::CreatePerspective(Ref<PerspectiveCamera> camera, float speed)
 	{
 		CameraController* controller = new PerspectiveCameraController(camera, speed);
-		return Scope<CameraController>(controller);
+		return Ref<CameraController>(controller);
 	}
 }
