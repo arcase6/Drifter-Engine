@@ -2,6 +2,7 @@
 
 #include "glm/glm.hpp"
 #include "Drifter/Renderer/Cameras/Camera.h"
+#include "Drifter/Transform.h"
 namespace Drifter {
 	class Renderer2D
 	{
@@ -15,8 +16,7 @@ namespace Drifter {
 
 		//primative draw methods
 
-		static void DrawQuad(const glm::vec2& topLeft, const glm::vec2& size, float rotation, const glm::vec4 color);
-		static void DrawQuad(const glm::vec3& topLeft, const glm::vec2& size, float rotation, const glm::vec4 color);
+		static void DrawQuad(const RectTransform& transform, const glm::vec4 color);
 	};
 
 }

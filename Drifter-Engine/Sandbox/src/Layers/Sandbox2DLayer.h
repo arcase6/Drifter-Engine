@@ -31,6 +31,9 @@ namespace Sandbox{
 		glm::vec4 m_Tint = glm::vec4(1.0f, 0.0f, 0.0f, 1.0f);
 		float m_Rotation = 0.0f; //radians
 		glm::vec2 m_Size { 1.0f , 1.0f};
+
+		glm::ivec2 m_GridSize{ 10,10 };
+		glm::vec2 m_Pivot{0.0f, 0.0f };
 	};
 }
 

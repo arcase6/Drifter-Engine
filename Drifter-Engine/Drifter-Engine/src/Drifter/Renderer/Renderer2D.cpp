@@ -69,16 +69,11 @@ namespace Drifter {
 
 	}
 
-	void Renderer2D::DrawQuad(const glm::vec2& topLeft, const glm::vec2& size, float rotation, const glm::vec4 color) {
-		DrawQuad({ topLeft.x, topLeft.y, 0.0f }, size, rotation, color);
-	}
-	void Renderer2D::DrawQuad(const glm::vec3& topLeft, const glm::vec2& size, float rotation, const glm::vec4 color) {
-		using namespace glm;
+	void Renderer2D::DrawQuad(const RectTransform& transform, const glm::vec4 color) {
 		Data->SpriteShader->Bind();
-		mat4 modelTransform = translate(mat4(1.0f), topLeft) * rotate(mat4(1.0f), rotation, vec3(0,0,1)) *scale(mat4(1.0f), { size.x , size.y, 1.0f });
 
 		Data->SpriteShader->SetMat4("u_ViewProjection", Data->ViewProjectionMatrix);
-		Data->SpriteShader->SetMat4("u_Model", modelTransform);
+		Data->SpriteShader->SetMat4("u_Model", transform.GetTransformMatrix());
 		Data->SpriteShader->SetVec4("u_Tint", color);
 
 		Data->DefaultTexture->Bind(0);
