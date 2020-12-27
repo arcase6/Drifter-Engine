@@ -15,6 +15,23 @@ namespace Drifter {
 		virtual inline uint32_t GetID() override {
 			return m_RendererID;
 		}
+
+		//Direct Setters
+		virtual void SetFloat(const char* name, float value) override { Set(name, value); }
+		virtual void SetVec2(const char* name, const glm::vec2& value) override { Set(name, value); }
+		virtual void SetVec3(const char* name, const glm::vec3& value) override { Set(name, value); }
+		virtual void SetVec4(const char* name, const glm::vec4& value) override { Set(name, value); }
+
+		virtual void SetMat3(const char* name, const glm::mat3& value) override { Set(name, value); }
+		virtual void SetMat4(const char* name, const glm::mat4& value) override { Set(name, value); }
+
+		virtual void SetInt(const char* name, int value) override { Set(name, value); }
+		virtual void SetIVec2(const char* name, const glm::ivec2& value) override { Set(name, value); }
+		virtual void SetIVec3(const char* name, const glm::ivec3& value) override { Set(name, value); }
+		virtual void SetIVec4(const char* name, const glm::ivec4& value) override { Set(name, value); }
+
+		virtual void SetBool(const char* name, bool value) override { Set(name, value); }
+
 	protected:
 		uint32_t m_RendererID;
 	private:
@@ -24,8 +41,8 @@ namespace Drifter {
 		std::unordered_map<uint32_t, std::string> Preprocess(const std::string& filepath) const;
 		void Compile(std::unordered_map<uint32_t, std::string>& shaderSources);
 
-	public:
-		// Wrapper around Uniform
+	private:
+		// InternalFunctions
 		void Set(const char* name, float value) { OpenGLUniform(*this, name).Set(value); }
 		void Set(const char * name, const glm::vec2& value) { OpenGLUniform(*this, name).Set(value); }
 		void Set(const char * name, const glm::vec3& value) { OpenGLUniform(*this, name).Set(value); }

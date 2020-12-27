@@ -119,7 +119,7 @@ namespace Sandbox
 		//move camera here
 		m_CameraController->OnUpdate();
 		
-		Ref<OpenGLShader> shader = std::dynamic_pointer_cast<OpenGLShader>(Renderer::GetShaderLibrary().FindShader("StandardShader"));
+		Ref<Shader> shader = Renderer::GetShaderLibrary().FindShader("StandardShader");
 		
 		m_MainTex->Bind(0);
 
@@ -127,7 +127,7 @@ namespace Sandbox
 		Renderer::Submit(shader, m_Box, boxTransform);
 
 		shader->Bind();
-		shader->Set("u_Time", static_cast<float>(Time::GetTime()));
+		shader->SetFloat("u_Time", static_cast<float>(Time::GetTime()));
 		m_OverlayTex->Bind(0);
 		Renderer::Submit(shader, m_Triangle, triangleTransform);
 

@@ -15,8 +15,8 @@ namespace Drifter {
 
 		//primative draw methods
 
-		static void DrawQuad(const glm::vec2& topLeft, const glm::vec2& size, const glm::vec4 color);
-		static void DrawQuad(const glm::vec3& topLeft, const glm::vec2& size, const glm::vec4 color);
+		static void DrawQuad(const glm::vec2& topLeft, const glm::vec2& size, float rotation, const glm::vec4 color);
+		static void DrawQuad(const glm::vec3& topLeft, const glm::vec2& size, float rotation, const glm::vec4 color);
 	};
 
 }

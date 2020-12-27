@@ -1,7 +1,6 @@
 #pragma once
 #include "Drifter.h"
 
-#include "Platform/OpenGL/Renderer/Shaders/OpenGLShader.h"
 #include "Drifter/Renderer/Cameras/CameraController.h"
 
 namespace Sandbox{
@@ -30,6 +29,8 @@ namespace Sandbox{
 		Drifter::Ref<Drifter::Camera> m_Camera;
 		Drifter::Ref<Drifter::CameraController> m_CameraController;
 		glm::vec4 m_Tint = glm::vec4(1.0f, 0.0f, 0.0f, 1.0f);
+		float m_Rotation = 0.0f; //radians
+		glm::vec2 m_Size { 1.0f , 1.0f};
 	};
 }
 

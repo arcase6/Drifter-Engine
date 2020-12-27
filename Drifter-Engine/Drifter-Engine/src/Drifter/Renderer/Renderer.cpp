@@ -2,7 +2,6 @@
 #include "Renderer.h"
 
 #include "RenderCommand.h"
-#include "Platform/OpenGL/Renderer/Shaders/OpenGLShader.h"
 #include "Drifter/Renderer/Renderer2D.h"
 namespace Drifter {
 	RendererAPI Renderer::s_RendererAPI = RendererAPI::OpenGL;
@@ -51,8 +50,8 @@ namespace Drifter {
 	void Renderer::Submit(const Ref<Shader>& shader, const Ref<VertexArray>& vertexArray, const glm::mat4& transform)
 	{
 		shader->Bind();
-		std::dynamic_pointer_cast<OpenGLShader>(shader)->Set("u_ViewProjection", Data->ViewProjectionMatrix);
-		std::dynamic_pointer_cast<OpenGLShader>(shader)->Set("u_Model", transform);
+		shader->SetMat4("u_ViewProjection", Data->ViewProjectionMatrix);
+		shader->SetMat4("u_Model", transform);
 
 		RenderCommand::DrawIndexedTriangles(vertexArray);
 	}
