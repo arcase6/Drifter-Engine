@@ -16,6 +16,8 @@ namespace Sandbox{
 		virtual void OnEvent(Drifter::Event& e) override;
 
 		virtual void OnAttach() override {
+			//m_MainTex = Drifter::Texture2D::Create("./assets/textures/Checkerboard.png");
+			m_MainTex = Drifter::Texture2D::Create("./assets/textures/Spiral.png");
 			SetupCameras();
 		}
 		

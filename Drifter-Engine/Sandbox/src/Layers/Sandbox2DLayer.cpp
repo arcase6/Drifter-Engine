@@ -50,7 +50,7 @@ namespace Sandbox {
 		for (int r = 0; r < m_GridSize.x; r++) {
 			for (int c = 0; c < m_GridSize.y; c++) {
 				RectTransform transform({ m_Size.x * 1.1f * c, m_Size.y * 1.1f * r}, m_Size, m_Rotation,m_Pivot);
-				Renderer2D::DrawQuad(transform, m_Tint);
+				Renderer2D::DrawQuad(transform, m_Tint, m_MainTex);
 			}
 		}
 

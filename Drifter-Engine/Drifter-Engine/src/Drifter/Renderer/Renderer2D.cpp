@@ -4,7 +4,6 @@
 #include "Drifter/Renderer/RenderCommand.h"
 
 #include "Platform/OpenGL/Renderer/Shaders/OpenGLShader.h"
-#include "Drifter/Renderer/Shaders/Texture.h"
 
 #include "glm/gtc/matrix_transform.hpp"
 namespace Drifter {
@@ -68,15 +67,19 @@ namespace Drifter {
 	void Renderer2D::OnWindowResize(uint32_t width, uint32_t height) {
 
 	}
+	void Renderer2D::DrawQuad(const RectTransform& transform, const glm::vec4& color) {
+		Renderer2D::DrawQuad(transform , color, Data->DefaultTexture);
+	}
 
-	void Renderer2D::DrawQuad(const RectTransform& transform, const glm::vec4 color) {
+
+	void Renderer2D::DrawQuad(const RectTransform& transform, const glm::vec4& tint, const Ref<const Texture> texture) {
 		Data->SpriteShader->Bind();
 
 		Data->SpriteShader->SetMat4("u_ViewProjection", Data->ViewProjectionMatrix);
 		Data->SpriteShader->SetMat4("u_Model", transform.GetTransformMatrix());
-		Data->SpriteShader->SetVec4("u_Tint", color);
+		Data->SpriteShader->SetVec4("u_Tint", tint);
 
-		Data->DefaultTexture->Bind(0);
+		texture->Bind(0);
 
 		RenderCommand::DrawIndexedTriangles(Data->QuadVertexArray);
 	}

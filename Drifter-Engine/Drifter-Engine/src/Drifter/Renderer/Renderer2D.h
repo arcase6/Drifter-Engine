@@ -1,8 +1,10 @@
 #pragma once
 
-#include "glm/glm.hpp"
 #include "Drifter/Renderer/Cameras/Camera.h"
+#include "Drifter/Renderer/Shaders/Texture.h"
 #include "Drifter/Transform.h"
+#include "glm/glm.hpp"
+
 namespace Drifter {
 	class Renderer2D
 	{
@@ -16,7 +18,8 @@ namespace Drifter {
 
 		//primative draw methods
 
-		static void DrawQuad(const RectTransform& transform, const glm::vec4 color);
+		static void DrawQuad(const RectTransform& transform, const glm::vec4& color);
+		static void DrawQuad(const RectTransform& transform, const glm::vec4& tint, const Ref<const Texture> texture);
 	};
 
 }
