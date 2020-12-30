@@ -2,6 +2,7 @@
 #include "Drifter.h"
 
 #include "Drifter/Renderer/Cameras/CameraController.h"
+#include "Benchmarking/Timer.h"
 
 namespace Sandbox{
 	class Sandbox2DLayer : public Drifter::Layer
@@ -23,6 +24,7 @@ namespace Sandbox{
 		
 	private:
 		void SetupCameras();
+		void DrawGrid();
 	private:
 
 		//OpenGL data for rendering -- likely to be removed later
@@ -36,6 +38,8 @@ namespace Sandbox{
 
 		glm::ivec2 m_GridSize{ 10,10 };
 		glm::vec2 m_Pivot{0.0f, 0.0f };
+
+		std::vector<Benchmarking::ProfileResult> m_ProfileResults;
 	};
 }
 

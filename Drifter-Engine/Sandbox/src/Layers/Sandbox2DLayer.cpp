@@ -6,7 +6,12 @@
 
 #include "imgui.h"
 #include "glm/gtc/type_ptr.hpp"
-namespace Sandbox {	
+
+#include <string>
+namespace Sandbox {
+
+#define BENCHMARK_SCOPE(name) PROFILE_SCOPE( name ,m_ProfileResults )
+#define BENCHMARK_FUNCTION PROFILE_FUNCTION( m_ProfileResults )
 
 	void Sandbox2DLayer::SetupCameras() {
 
@@ -29,33 +34,52 @@ namespace Sandbox {
 		ImGui::ColorEdit4("Quad Tint", glm::value_ptr(m_Tint));
 
 		ImGui::SliderInt2("Grid Size", glm::value_ptr(m_GridSize), 0, 100);
-		
+
 		ImGui::Text("Quad Transform Settings");
 		ImGui::SliderAngle("Quad Rotation", &m_Rotation);
 		ImGui::SliderFloat2("Quad Size", glm::value_ptr(m_Size), .1, 10);
-		ImGui::SliderFloat2("Quad Pivot", glm::value_ptr(m_Pivot),0.0f, 1.0f);
+		ImGui::SliderFloat2("Quad Pivot", glm::value_ptr(m_Pivot), 0.0f, 1.0f);
 
+		ImGui::End();
+
+		ImGui::Begin("Profiler");
+
+		for (const auto& result : m_ProfileResults) {
+			std::string message = result.Name + std::string(":") + std::to_string(result.Duration);
+			ImGui::Text(message.c_str());
+		}
+		m_ProfileResults.clear();
 		ImGui::End();
 	}
 
 	void Sandbox2DLayer::OnUpdate()
 	{
-
 		using namespace Drifter;
+		BENCHMARK_FUNCTION;
 		//move camera here
-		m_CameraController->OnUpdate();
+		{
+			BENCHMARK_SCOPE("Camera Controller Movement");
+			m_CameraController->OnUpdate();
+		}
 
 		Renderer2D::BeginScene(*m_Camera);
+		DrawGrid();
+		Renderer2D::EndScene();
 
+	}
+
+	void Sandbox2DLayer::DrawGrid()
+	{
+		BENCHMARK_FUNCTION;
+		using namespace Drifter;
+		m_MainTex->Bind(0);
+		RectTransform transform({0,0 }, m_Size, m_Rotation, m_Pivot);
 		for (int r = 0; r < m_GridSize.x; r++) {
 			for (int c = 0; c < m_GridSize.y; c++) {
-				RectTransform transform({ m_Size.x * 1.1f * c, m_Size.y * 1.1f * r}, m_Size, m_Rotation,m_Pivot);
+				transform.SetPosition({ m_Size.x * 1.1f * c, m_Size.y * 1.1f * r , 0});
 				Renderer2D::DrawQuad(transform, m_Tint, m_MainTex);
 			}
 		}
-
-		Renderer2D::EndScene();
-
 	}
 
 	void Sandbox2DLayer::OnEvent(Drifter::Event& e)

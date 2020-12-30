@@ -73,7 +73,7 @@ namespace Drifter {
 
 
 	void Renderer2D::DrawQuad(const RectTransform& transform, const glm::vec4& tint, const Ref<const Texture> texture) {
-		texture->Bind(0);
+		//texture->Bind(0);
 
 		Data->SpriteShader->SetMat4("u_ViewProjection", Data->ViewProjectionMatrix);
 		Data->SpriteShader->SetMat4("u_Model", transform.GetTransformMatrix());

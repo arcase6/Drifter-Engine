@@ -19,7 +19,7 @@ namespace Drifter {
 
 		virtual glm::vec3 GetForwardVector() const = 0;
 		virtual glm::vec3 GetUpVector() const = 0;
-		virtual glm::vec3 GetRightVector() const const = 0;
+		virtual glm::vec3 GetRightVector() const = 0;
 
 		virtual glm::mat4 GetViewMatrix() const = 0;
 		virtual glm::mat4 GetProjectionMatrix() const = 0;
