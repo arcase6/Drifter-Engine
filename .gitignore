@@ -109,6 +109,9 @@ ipch/
 *.VC.db
 *.VC.VC.opendb
 
+#Benchmarks
+**/.Benchmarking/*.json
+
 # Visual Studio profiler
 *.psess
 *.vsp

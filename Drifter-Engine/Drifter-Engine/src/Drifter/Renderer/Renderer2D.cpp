@@ -53,7 +53,6 @@ namespace Drifter {
 
 	void Renderer2D::Shutdown() {
 		delete Data;
-
 	}
 
 	void Renderer2D::BeginScene(const Camera& camera)
