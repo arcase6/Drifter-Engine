@@ -8,9 +8,11 @@
 #include "glm/gtc/constants.hpp"
 #include "glm/gtx/string_cast.hpp"
 
+#include "Debug/Instrumentation.h"
 namespace Drifter {
 	void OrthorgraphicCameraController::OnUpdate()
 	{
+		PROFILE_FUNCTION();
 		glm::vec3 posDelta = glm::vec3(0.0f, 0.0f, 0.0f);
 		float rotDelta = 0.0f;
 		//DF_LOG_INFO("Right Vector : {0} , Up Vector : {1}", glm::to_string(m_Camera->GetRightVector()), glm::to_string(m_Camera->GetUpVector()));
@@ -45,6 +47,7 @@ namespace Drifter {
 	}
 	void OrthorgraphicCameraController::OnEvent(Event& e)
 	{
+		PROFILE_FUNCTION();
 		EventDispatcher d(e);
 		d.Dispatch<MouseScrolledEvent>(std::bind(&OrthorgraphicCameraController::OnMouseScrolled, this, std::placeholders::_1));
 		d.Dispatch<WindowResizeEvent>(std::bind(&OrthorgraphicCameraController::OnWindowResize, this, std::placeholders::_1));
@@ -62,6 +65,7 @@ namespace Drifter {
 
 	bool OrthorgraphicCameraController::OnWindowResize(WindowResizeEvent& e) {
 		
+		PROFILE_FUNCTION();
 		m_AspectRatio = (float)e.GetWidth() / (float)e.GetHeight();
 		m_Camera->SetZoomAndAspectRatio(m_ZoomLevel, m_AspectRatio);
 		m_Camera->RecalculateTransforms();
@@ -70,6 +74,7 @@ namespace Drifter {
 
 	bool OrthorgraphicCameraController::OnKeyPressed(KeyPressedEvent& e) {
 
+		PROFILE_FUNCTION();
 		if (e.GetKeyCode() == KeyCodes::NUM_1()) {
 			m_YawPitchRoll.z = 0.0f;
 			return true;
@@ -82,11 +87,6 @@ namespace Drifter {
 	Ref<CameraController> CameraController::CreateOrthographic(Ref<OrthographicCamera> camera, float speed)
 	{
 		CameraController* controller = new OrthorgraphicCameraController(camera, speed);
-		return Ref<CameraController>(controller);
-	}
-	Ref<CameraController> CameraController::CreatePerspective(Ref<PerspectiveCamera> camera, float speed)
-	{
-		CameraController* controller = new PerspectiveCameraController(camera, speed);
 		return Ref<CameraController>(controller);
 	}
 }

@@ -7,6 +7,7 @@ namespace Drifter {
 	class OpenGLContext : public GraphicsContext
 	{
 	public:
+		OpenGLContext(GLFWwindow* window);
 		void SetTarget(GLFWwindow * window);
 		virtual void SwapBuffers() override;
 

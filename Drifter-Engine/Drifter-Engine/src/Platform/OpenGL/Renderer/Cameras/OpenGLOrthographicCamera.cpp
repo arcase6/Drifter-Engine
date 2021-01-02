@@ -3,10 +3,13 @@
 
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtx/euler_angles.hpp"
+
+#include "Debug/Instrumentation.h"
 namespace Drifter
 {
 	void OpenGLOrthographicCamera::SetRotationEuler(float yaw, float pitch, float roll)
 	{
+		PROFILE_RENDERER_FUNCTION();
 		//DF_LOG_INFO("Setting... Yaw {0} Pitch {1}. Matrix : {2}", yaw, pitch, glm::to_string(glm::yawPitchRoll(yaw, pitch, roll)));
 		m_ForwardVector = (glm::yawPitchRoll(yaw, pitch * -1, roll) * glm::vec4(0.0f, 0.0f, 1.0f, 0.0f)).xyz;
 		m_UpVector = (glm::yawPitchRoll(yaw, pitch * -1, roll) * glm::vec4(0.0f, 1.0f, 0.0f, 0.0f)).xyz;
@@ -14,6 +17,7 @@ namespace Drifter
 	}
 
 	glm::vec3 OpenGLOrthographicCamera::GetYawPitchRoll() const {
+		PROFILE_RENDERER_FUNCTION();
 		float yaw = atan2(m_ForwardVector.x, m_ForwardVector.z);
 		float pitch = glm::asin(m_ForwardVector.y);
 
@@ -25,6 +29,7 @@ namespace Drifter
 
 	void OpenGLOrthographicCamera::RecalculateTransforms()
 	{
+		PROFILE_RENDERER_FUNCTION();
 		glm::vec3 target = m_Position + m_ForwardVector;
 		m_ViewMatrix = glm::lookAt(
 			m_Position,

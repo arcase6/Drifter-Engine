@@ -6,6 +6,7 @@
 #include "Platform/OpenGL/Renderer/Shaders/OpenGLShader.h"
 
 #include "glm/gtc/matrix_transform.hpp"
+#include "Debug/Instrumentation.h"
 namespace Drifter {
 
 	struct SceneData2D {
@@ -23,6 +24,7 @@ namespace Drifter {
 	static SceneData2D* Data;
 
 	void Renderer2D::Init() {
+		PROFILE_RENDERER_FUNCTION();
 		Data = new SceneData2D();
 		Data->SpriteShader = Renderer::GetShaderLibrary().FindShader("SpriteShader");
 		Data->DefaultTexture = Texture2D::Create(glm::vec4(1.0f, 1.0f, 1.0f, 1.0f), 1, 1);
@@ -56,11 +58,13 @@ namespace Drifter {
 
 	void Renderer2D::BeginScene(const Camera& camera)
 	{
+		PROFILE_RENDERER_FUNCTION();
 		Data->ViewProjectionMatrix = camera.GetProjectionMatrix() * camera.GetViewMatrix();
 		Data->SpriteShader->Bind();
 	}
 	void Renderer2D::EndScene()
 	{
+		PROFILE_RENDERER_FUNCTION();
 
 	}
 
@@ -73,7 +77,8 @@ namespace Drifter {
 
 
 	void Renderer2D::DrawQuad(const RectTransform& transform, const glm::vec4& tint, const Ref<const Texture> texture) {
-		//texture->Bind(0);
+		PROFILE_RENDERER_FUNCTION();
+		texture->Bind(0);
 
 		Data->SpriteShader->SetMat4("u_ViewProjection", Data->ViewProjectionMatrix);
 		Data->SpriteShader->SetMat4("u_Model", transform.GetTransformMatrix());

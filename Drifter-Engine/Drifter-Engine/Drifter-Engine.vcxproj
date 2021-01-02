@@ -147,7 +147,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\vendors\stb_image\stb_image.h" />
-    <ClInclude Include="src\Benchmarking\Timer.h" />
+    <ClInclude Include="src\Debug\Instrumentation.h" />
     <ClInclude Include="src\Drifter\Renderer\Renderer2D.h" />
     <ClInclude Include="src\Platform\OpenGL\Renderer\Cameras\OpenGLOrthographicCamera.h" />
     <ClInclude Include="src\Drifter\Renderer\Cameras\CameraController.h" />

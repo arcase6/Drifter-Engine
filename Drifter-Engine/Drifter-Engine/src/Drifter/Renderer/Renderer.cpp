@@ -3,6 +3,8 @@
 
 #include "RenderCommand.h"
 #include "Drifter/Renderer/Renderer2D.h"
+
+#include "Debug/Instrumentation.h"
 namespace Drifter {
 	RendererAPI Renderer::s_RendererAPI = RendererAPI::OpenGL;
 	ShaderLibrary Renderer::s_ShaderLibrary;
@@ -28,6 +30,7 @@ namespace Drifter {
 	}
 
 	void Renderer::LoadStartupShaders() {
+		PROFILE_RENDERER_FUNCTION();
 		s_ShaderLibrary.LoadNewShader("./assets/shaders/StandardShader.glsl");
 		s_ShaderLibrary.LoadNewShader("./assets/shaders/SpriteShader.glsl");
 	}
@@ -42,13 +45,16 @@ namespace Drifter {
 	}
 	void Renderer::BeginScene(const Camera& camera)
 	{
+		PROFILE_RENDERER_FUNCTION();
 		Data->ViewProjectionMatrix = camera.GetProjectionMatrix() * camera.GetViewMatrix();
 	}
 	void Renderer::EndScene()
 	{
+		PROFILE_RENDERER_FUNCTION();
 	}
 	void Renderer::Submit(const Ref<Shader>& shader, const Ref<VertexArray>& vertexArray, const glm::mat4& transform)
 	{
+		PROFILE_RENDERER_FUNCTION();
 		shader->Bind();
 		shader->SetMat4("u_ViewProjection", Data->ViewProjectionMatrix);
 		shader->SetMat4("u_Model", transform);

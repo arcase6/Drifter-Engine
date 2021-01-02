@@ -2,6 +2,7 @@
 
 #include "OpenGLVertexArray.h"
 #include "glad/glad.h"
+#include "Debug/Instrumentation.h"
 
 namespace Drifter {
 
@@ -28,6 +29,7 @@ namespace Drifter {
 
 	OpenGLVertexArray::OpenGLVertexArray()
 	{
+		PROFILE_RENDERER_FUNCTION();
 		glCreateVertexArrays(1, &m_RendererID);
 	}
 	OpenGLVertexArray::~OpenGLVertexArray()
@@ -36,6 +38,7 @@ namespace Drifter {
 	}
 	void OpenGLVertexArray::Bind() const
 	{
+		PROFILE_RENDERER_FUNCTION();
 		glBindVertexArray(m_RendererID);
 	}
 	void OpenGLVertexArray::Unbind() const
@@ -44,6 +47,7 @@ namespace Drifter {
 	}
 	void OpenGLVertexArray::AddVertexBuffer(const Ref<VertexBuffer> vertexBuffer)
 	{
+		PROFILE_RENDERER_FUNCTION();
 		DF_CORE_ASSERT(vertexBuffer->GetLayout().GetElements().size(), "Vertex Buffer Layout not set!");
 		
 		glBindVertexArray(m_RendererID);
@@ -69,7 +73,7 @@ namespace Drifter {
 	}
 	void OpenGLVertexArray::SetIndexBuffer(const Ref<IndexBuffer> indexBuffer)
 	{
-
+		PROFILE_RENDERER_FUNCTION();
 		glBindVertexArray(m_RendererID);
 		indexBuffer->Bind();
 

@@ -7,6 +7,7 @@
 #include "Drifter/Core/Time.h"
 
 #include "Drifter/Renderer/Renderer.h"
+#include "Debug/Instrumentation.h"
 
 namespace Drifter {
 #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
@@ -32,25 +33,43 @@ namespace Drifter {
 		DF_LOG_INFO("Welcome to Drifter!");
 
 		while (m_running) {
+			PROFILE_SCOPE("One Frame");
 			m_window->OnFrameBegin();
-			Time::Tick();
-			if (!m_IsMinimized) {
-				for (Ref<Layer> layer : m_layerStack)
-					layer->OnUpdate();
-			}
+			UpdateLayers();
 
-			m_ImguiLayer->NewFrameGLFW();
-			for (Ref<Layer> layer : m_layerStack)
-				layer->OnImgui();
-			m_ImguiLayer->EndFrameGLFW();
+			UpdateImgui();
 
 			m_window->OnFrameEnd();
+			if (Instrumentor::HasActiveSession()) {
+				Instrumentor::GetActiveSession()->FlushLog();
+			}
 		}
 		Renderer::Shutdown();
 	}
 
+	void Application::UpdateLayers()
+	{
+		Time::Tick();
+		PROFILE_FUNCTION();
+		if (!m_IsMinimized) {
+			for (Ref<Layer> layer : m_layerStack)
+				layer->OnUpdate();
+		}
+	}
+
+	void Application::UpdateImgui()
+	{
+		PROFILE_FUNCTION();
+		m_ImguiLayer->NewFrameGLFW();
+		for (Ref<Layer> layer : m_layerStack)
+			layer->OnImgui();
+		m_ImguiLayer->EndFrameGLFW();
+	}
+
+
 	void Application::OnEvent(Event& e)
 	{
+		PROFILE_FUNCTION();
 		EventDispatcher dispatcher(e);
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 		dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FN(OnWindowResize));

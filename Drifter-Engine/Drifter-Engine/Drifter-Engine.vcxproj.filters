@@ -180,7 +180,7 @@
       <Filter>src\Drifter\Renderer\Material</Filter>
     </ClInclude>
     <ClInclude Include="src\Drifter\Renderer\Renderer2D.h" />
-    <ClInclude Include="src\Benchmarking\Timer.h" />
+    <ClInclude Include="src\Debug\Instrumentation.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\vendors\glm\glm\detail\glm.cpp">

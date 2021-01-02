@@ -1,7 +1,6 @@
 #include "dfpch.h"
 
 #include "LayerStack.h"
-
 namespace Drifter {
 	LayerStack::LayerStack()
 	{

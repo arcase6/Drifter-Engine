@@ -1,4 +1,5 @@
 #include "OpenGLBuffer.h"
+#include "Debug/Instrumentation.h"
 
 #include <glad/glad.h>
 namespace Drifter {
@@ -6,6 +7,7 @@ namespace Drifter {
 
 	OpenGLVertexBuffer::OpenGLVertexBuffer(float* vertices, uint32_t size, const BufferLayout& layout)
 	{
+		PROFILE_RENDERER_FUNCTION();
 		glGenBuffers(1, &m_RendererID);
 		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
 		glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);
@@ -21,6 +23,7 @@ namespace Drifter {
 
 	void OpenGLVertexBuffer::Bind() const
 	{
+		PROFILE_RENDERER_FUNCTION();
 		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
 	}
 	void OpenGLVertexBuffer::Unbind() const
@@ -32,6 +35,7 @@ namespace Drifter {
 	OpenGLIndexBuffer::OpenGLIndexBuffer(uint32_t* indices, uint32_t count)
 		:m_Count(count)
 	{
+		PROFILE_RENDERER_FUNCTION();
 		glGenBuffers(1, &m_RendererID);
 		Bind();
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER,count * sizeof(uint32_t), indices, GL_STATIC_DRAW);
@@ -42,6 +46,7 @@ namespace Drifter {
 	}
 	void OpenGLIndexBuffer::Bind() const
 	{
+		PROFILE_RENDERER_FUNCTION();
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_RendererID);
 	}
 	void OpenGLIndexBuffer::Unbind() const

@@ -1,4 +1,5 @@
 #include "Sandbox2DLayer.h"
+#include "Drifter.h"
 
 #include "Platform/OpenGL/Renderer/Shaders/OpenGLShader.h"
 #include "Drifter/Renderer/Cameras/CameraController.h"
@@ -10,11 +11,8 @@
 #include <string>
 namespace Sandbox {
 
-#define BENCHMARK_SCOPE(name) PROFILE_SCOPE( name ,m_ProfileResults )
-#define BENCHMARK_FUNCTION PROFILE_FUNCTION( m_ProfileResults )
-
 	void Sandbox2DLayer::SetupCameras() {
-
+		PROFILE_FUNCTION();
 		//SetupCamera
 		glm::vec3 cameraPosition = glm::vec3(0.0f, 0.0f, 100.0f);
 		glm::vec3 lookVector = glm::vec3(0.0f, 0.0f, -1.0f);
@@ -42,23 +40,24 @@ namespace Sandbox {
 
 		ImGui::End();
 
+		if (!Drifter::Instrumentor::HasActiveSession()) {
+			return;
+		}
 		ImGui::Begin("Profiler");
-
-		for (const auto& result : m_ProfileResults) {
-			std::string message = result.Name + std::string(":") + std::to_string(result.Duration);
+		auto profileResults = Drifter::Instrumentor::GetActiveSession()->GetLog();
+		for (const auto& result : profileResults) {
+			std::string message = result.Name + std::string(":") + std::to_string(result.GetDuration());
 			ImGui::Text(message.c_str());
 		}
-		m_ProfileResults.clear();
 		ImGui::End();
 	}
 
 	void Sandbox2DLayer::OnUpdate()
 	{
+		PROFILE_FUNCTION();
 		using namespace Drifter;
-		BENCHMARK_FUNCTION;
 		//move camera here
 		{
-			BENCHMARK_SCOPE("Camera Controller Movement");
 			m_CameraController->OnUpdate();
 		}
 
@@ -70,7 +69,7 @@ namespace Sandbox {
 
 	void Sandbox2DLayer::DrawGrid()
 	{
-		BENCHMARK_FUNCTION;
+		PROFILE_FUNCTION();
 		using namespace Drifter;
 		m_MainTex->Bind(0);
 		RectTransform transform({0,0 }, m_Size, m_Rotation, m_Pivot);

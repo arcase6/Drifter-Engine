@@ -3,6 +3,7 @@
 #include "OpenGLShader.h"
 
 #include <fstream>
+#include "Debug/Instrumentation.h"
 namespace Drifter
 {
 	static GLenum GetType(std::string& type) {
@@ -40,6 +41,7 @@ namespace Drifter
 	OpenGLShader::OpenGLShader(const std::string& filepath) :
 		m_RendererID(0), m_Name(GetFilename(filepath))
 	{
+		PROFILE_RENDERER_FUNCTION();
 		std::string fileContents = ReadFile(filepath);
 		std::unordered_map<uint32_t, std::string> shaderSources = Preprocess(fileContents);
 		this->Compile(shaderSources);
@@ -48,6 +50,7 @@ namespace Drifter
 	OpenGLShader::OpenGLShader(const std::string& name, const std::string& vert, const std::string& frag) :
 		m_RendererID(0), m_Name(name)
 	{
+		PROFILE_RENDERER_FUNCTION();
 		std::unordered_map<uint32_t, std::string> shaderSources;
 		shaderSources[GL_VERTEX_SHADER] = vert;
 		shaderSources[GL_FRAGMENT_SHADER] = frag;
@@ -55,6 +58,7 @@ namespace Drifter
 	}
 
 	std::string OpenGLShader::ReadFile(const std::string& filepath) const{
+		PROFILE_RENDERER_FUNCTION();
 		std::string result;
 		std::ifstream stream;
 		stream.open(filepath, std::ios::in, std::ios::binary);
@@ -72,6 +76,7 @@ namespace Drifter
 	}
 
 	std::unordered_map<uint32_t, std::string> OpenGLShader::Preprocess(const std::string& source) const {
+		PROFILE_RENDERER_FUNCTION();
 		std::unordered_map<uint32_t, std::string> sourceMap;
 
 		std::vector<std::string> tokens;
@@ -100,6 +105,7 @@ namespace Drifter
 
 	GLuint CompileShader(std::string& source, GLenum shaderType)
 	{
+		PROFILE_RENDERER_FUNCTION();
 		GLuint shader = glCreateShader(shaderType);
 		const GLchar* sourceCStr = source.c_str();
 		glShaderSource(shader, 1, &sourceCStr, 0);
@@ -126,6 +132,7 @@ namespace Drifter
 	}
 
 	void OpenGLShader::Compile(std::unordered_map<uint32_t, std::string>& shaderSources) {
+		PROFILE_RENDERER_FUNCTION();
 		bool success = true;
 		std::vector<int> shaders;
 		for (auto& shaderSource : shaderSources) {
@@ -140,33 +147,36 @@ namespace Drifter
 			}
 			shaders.push_back(shader);
 		}
-
-		m_RendererID = glCreateProgram();
-		for (auto it = shaders.begin(); it != shaders.end(); it++) {
-			glAttachShader(m_RendererID, *it);
-		}
-		glLinkProgram(m_RendererID);
-
-		int linkSuccess = 0;
-		glGetProgramiv(m_RendererID, GL_LINK_STATUS, &linkSuccess);
-		if (!linkSuccess) {
-			PrintLinkingErrorLog(m_RendererID);
-			glDeleteProgram(m_RendererID);
+		{
+			PROFILE_RENDERER_SCOPE("LINK SHADERS");
+			m_RendererID = glCreateProgram();
 			for (auto it = shaders.begin(); it != shaders.end(); it++) {
+				glAttachShader(m_RendererID, *it);
+			}
+			glLinkProgram(m_RendererID);
+
+			int linkSuccess = 0;
+			glGetProgramiv(m_RendererID, GL_LINK_STATUS, &linkSuccess);
+			if (!linkSuccess) {
+				PrintLinkingErrorLog(m_RendererID);
+				glDeleteProgram(m_RendererID);
+				for (auto it = shaders.begin(); it != shaders.end(); it++) {
+					glDeleteShader(*it);
+				}
+				m_RendererID = 0;
+				return;
+			}
+
+			for (auto it = shaders.begin(); it != shaders.end(); it++) {
+				glDetachShader(m_RendererID, *it);
 				glDeleteShader(*it);
 			}
-			m_RendererID = 0;
-			return;
-		}
-
-		for (auto it = shaders.begin(); it != shaders.end(); it++) {
-			glDetachShader(m_RendererID, *it);
-			glDeleteShader(*it);
 		}
 	}
 
 	void OpenGLShader::Bind()
 	{
+		PROFILE_RENDERER_FUNCTION();
 		glUseProgram(m_RendererID);
 	}
 	void OpenGLShader::UnBind()

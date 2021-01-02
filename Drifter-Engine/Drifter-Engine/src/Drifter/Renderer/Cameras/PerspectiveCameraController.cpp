@@ -6,11 +6,12 @@
 #include "Drifter/Events/MouseEvent.h"
 
 #include "glm/gtc/constants.hpp"
-
+#include "Debug/Instrumentation.h"
 namespace Drifter {
 
 	void PerspectiveCameraController::OnUpdate()
 	{
+		PROFILE_FUNCTION();
 		if (!Application::Get().GetWindow().GetCaptureMouseFlag()) {
 			return;
 		}
@@ -61,6 +62,7 @@ namespace Drifter {
 	}
 	void PerspectiveCameraController::OnEvent(Event& e)
 	{
+		PROFILE_FUNCTION();
 		EventDispatcher d(e);
 		d.Dispatch<MouseMovedEvent>(std::bind(&PerspectiveCameraController::OnMouseMoved, this, std::placeholders::_1));
 		d.Dispatch<MouseButtonPressedEvent>(std::bind(&PerspectiveCameraController::OnMouseButton, this, std::placeholders::_1));
@@ -69,6 +71,7 @@ namespace Drifter {
 	}
 	bool PerspectiveCameraController::OnMouseMoved(MouseMovedEvent& e)
 	{
+		PROFILE_FUNCTION();
 		auto window = &Application::Get().GetWindow();
 		if (!window->GetCaptureMouseFlag()) {
 			return false;
@@ -89,6 +92,7 @@ namespace Drifter {
 		return false;
 	}
 	bool PerspectiveCameraController::OnMouseButton(MouseButtonPressedEvent& e) {
+		PROFILE_FUNCTION();
 		auto window = &Application::Get().GetWindow();
 		if (e.GetMouseButton() == MouseCodes::BUTTON_1() && !window->GetCaptureMouseFlag()) {
 			m_LastPosition = glm::vec2(Input::GetMouseX(), Input::GetMouseY());
@@ -100,6 +104,7 @@ namespace Drifter {
 		return false;
 	}
 	bool PerspectiveCameraController::OnKeyPressed(KeyPressedEvent& e) {
+		PROFILE_FUNCTION();
 		auto window = &Application::Get().GetWindow();
 		if (e.GetKeyCode() == KeyCodes::ESCAPE() && window->GetCaptureMouseFlag()) {
 			window->SetCaptureMouseFlag(false);
@@ -115,9 +120,16 @@ namespace Drifter {
 	}
 
 	bool PerspectiveCameraController::OnWindowResize(WindowResizeEvent& e) {
+		PROFILE_FUNCTION();
 		float aspectRatio = Application::Get().GetWindow().GetAspectRatio();
 		m_Camera->SetAspectRatio(aspectRatio);
 		m_Camera->RecalculateTransforms();
 		return false;
+	}
+
+	Ref<CameraController> CameraController::CreatePerspective(Ref<PerspectiveCamera> camera, float speed)
+	{
+		CameraController* controller = new PerspectiveCameraController(camera, speed);
+		return Ref<CameraController>(controller);
 	}
 }

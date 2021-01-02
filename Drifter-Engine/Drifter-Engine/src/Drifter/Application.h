@@ -17,6 +17,10 @@ namespace Drifter {
 
 		void Run();
 
+		void UpdateImgui();
+
+		void UpdateLayers();
+
 
 		void OnEvent(Event& e);
 

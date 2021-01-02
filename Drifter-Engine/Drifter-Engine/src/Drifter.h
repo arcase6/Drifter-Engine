@@ -3,9 +3,6 @@
 // For use by Drifter application
 #include "Drifter/Application.h"
 
-//Logging
-#include "Drifter/Core/Log.h"
-
 //Layers
 #include "Drifter/Layer.h"
 #include "Drifter/EditorUI/ImguiLayer.h"
@@ -29,3 +26,7 @@
 #include "Drifter/Renderer/Shaders/Texture.h"
 #include "Drifter/Renderer/Cameras/Camera.h"
 #include "Drifter/Renderer/Renderer.h"
+
+//Debug Functionality
+#include "Debug/Instrumentation.h"
+#include "Drifter/Core/Log.h"

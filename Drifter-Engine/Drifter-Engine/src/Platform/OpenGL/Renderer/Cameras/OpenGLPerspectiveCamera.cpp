@@ -5,10 +5,13 @@
 #include "glm/gtx/euler_angles.hpp"
 
 #include "glm/gtx/string_cast.hpp"
+
+#include "Debug/Instrumentation.h"
 namespace Drifter
 {
 	void OpenGLPerspectiveCamera::SetRotationEuler(float yaw, float pitch, float roll)
 	{
+		PROFILE_RENDERER_FUNCTION();
 		//DF_LOG_INFO("Setting... Yaw {0} Pitch {1}. Matrix : {2}", yaw, pitch, glm::to_string(glm::yawPitchRoll(yaw, pitch, roll)));
 		m_ForwardVector = (glm::yawPitchRoll(yaw, pitch* -1, roll) * glm::vec4(0.0f, 0.0f, 1.0f, 0.0f)).xyz;
 		m_UpVector      = (glm::yawPitchRoll(yaw, pitch * -1, roll) * glm::vec4(0.0f, 1.0f, 0.0f, 0.0f)).xyz;
@@ -16,6 +19,7 @@ namespace Drifter
 	}
 
 	glm::vec3 OpenGLPerspectiveCamera::GetYawPitchRoll() const{
+		PROFILE_RENDERER_FUNCTION();
 		float yaw = atan2(m_ForwardVector.x, m_ForwardVector.z);
 		float pitch = glm::asin(m_ForwardVector.y);
 
@@ -27,6 +31,7 @@ namespace Drifter
 
 	void OpenGLPerspectiveCamera::RecalculateTransforms()
 	{
+		PROFILE_RENDERER_FUNCTION();
 		m_ViewMatrix = glm::lookAt(
 			m_Position,
 			m_Position + m_ForwardVector,

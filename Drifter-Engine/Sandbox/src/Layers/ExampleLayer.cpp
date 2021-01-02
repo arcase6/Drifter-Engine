@@ -4,6 +4,7 @@ namespace Sandbox
 {
 	void ExampleLayer::SetTriangleData()
 	{
+		PROFILE_FUNCTION();
 		std::vector<float> vertices =
 		{
 			-0.5f, -0.5f, 0.0f,	 0.0f, 0.0f,
@@ -23,6 +24,7 @@ namespace Sandbox
 
 	void ExampleLayer::SetBoxData()
 	{
+		PROFILE_FUNCTION();
 		std::vector<float> vertices =
 		{
 			//bottom face
@@ -95,6 +97,7 @@ namespace Sandbox
 
 	void ExampleLayer::SetupCameras() {
 
+		PROFILE_FUNCTION();
 		//SetupCamera
 		glm::vec3 cameraPosition = glm::vec3(0.0f, 0.0f, -20.0f);
 		glm::vec3 lookVector = glm::vec3(0.0f, 0.0f, 1.0f);
@@ -112,6 +115,7 @@ namespace Sandbox
 
 	void ExampleLayer::OnUpdate()
 	{
+		PROFILE_FUNCTION();
 		using namespace Drifter;
 		static glm::mat4 triangleTransform = glm::mat4(1);
 		static glm::mat4 boxTransform = glm::translate(glm::mat4(1), {0, 0, -5.0f});

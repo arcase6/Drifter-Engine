@@ -1,11 +1,15 @@
 #include "OpenGLContext.h"
 
+#include "Debug/Instrumentation.h"
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
 namespace Drifter {
 
-	
+	OpenGLContext::OpenGLContext(GLFWwindow* window) {
+		PROFILE_FUNCTION();
+		SetTarget(window);
+	}
 
 	void OpenGLContext::SetTarget(GLFWwindow* target)
 	{
@@ -22,6 +26,7 @@ namespace Drifter {
 
 	void OpenGLContext::SwapBuffers()
 	{
+		PROFILE_RENDERER_FUNCTION();
 		if (m_window != nullptr) {
 			glfwSwapBuffers(m_window);
 		}

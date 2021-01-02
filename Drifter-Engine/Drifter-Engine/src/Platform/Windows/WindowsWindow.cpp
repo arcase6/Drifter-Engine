@@ -6,6 +6,7 @@
 #include <Platform/OpenGL/OpenGLContext.h>
 
 #include "Drifter/Renderer/Renderer.h"
+#include "Debug/Instrumentation.h"
 
 namespace Drifter
 {
@@ -26,6 +27,7 @@ namespace Drifter
 	}
 
 	void WindowsWindow::Init(const WindowProps& props) {
+		PROFILE_FUNCTION();
 		m_data.Title = props.Title;
 		m_data.Width = props.Width;
 		m_data.Height = props.Height;
@@ -43,9 +45,7 @@ namespace Drifter
 
 		m_window = glfwCreateWindow((int)m_data.Width, (int)m_data.Height, m_data.Title.c_str(), nullptr, nullptr);
 		
-		OpenGLContext * openGLContext = new OpenGLContext();
-		openGLContext->SetTarget(m_window);
-		m_context = static_cast<GraphicsContext *>(openGLContext);
+		m_context = static_cast<GraphicsContext *>(new OpenGLContext(m_window));
 
 
 		glfwSetWindowUserPointer(m_window, &m_data);
@@ -140,21 +140,25 @@ namespace Drifter
 
 	void WindowsWindow::Shutdown()
 	{
+		PROFILE_FUNCTION();
 		glfwDestroyWindow(m_window);
 		delete(m_context);
 	}
 
 
 	void WindowsWindow::OnFrameBegin() {
+		PROFILE_FUNCTION();
 		Renderer::Clear();
 	}
 
 	void WindowsWindow::OnFrameEnd() {
+		PROFILE_FUNCTION();
 		glfwPollEvents();
 		m_context->SwapBuffers();
 	}
 
 	void WindowsWindow::SetVSync(bool enabled) {
+		PROFILE_FUNCTION();
 		glfwSwapInterval(enabled ? 1 : 0);
 		m_data.VSync = enabled;
 	}

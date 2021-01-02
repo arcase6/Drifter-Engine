@@ -18,6 +18,7 @@ namespace Sandbox {
 }
 	
 Drifter::Application* Drifter::CreateApplication() {
+	PROFILE_FUNCTION();
 	DF_LOG_INFO("Creating Application\n");
 	return new Sandbox::SandboxApplication();
 }
