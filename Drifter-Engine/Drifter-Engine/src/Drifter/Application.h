@@ -2,8 +2,10 @@
 
 #include "Core.h"
 #include "Window.h"
-#include "Events/ApplicationEvent.h"
 #include <Drifter/LayerStack.h>
+
+#include "Events/ApplicationEvent.h"
+#include "Events/KeyEvent.h"
 
 #include "Drifter/EditorUI/IMGUILayer.h"
 
@@ -35,6 +37,8 @@ namespace Drifter {
 	private:
 		bool OnWindowClose(WindowCloseEvent& e);
 		bool OnWindowResize(WindowResizeEvent& e);
+		bool HandleProfileCallback(KeyPressedEvent& e);
+
 
 		Scope<Window> m_window;
 		bool m_running = true;

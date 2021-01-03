@@ -1,10 +1,13 @@
 #include "dfpch.h"
 
 #include "Application.h"
-#include <stdio.h>
 #include "Core/Log.h"
 #include "Drifter/Input/Input.h"
 #include "Drifter/Core/Time.h"
+
+#include "Drifter/Events/ApplicationEvent.h"
+#include "Drifter/Events/KeyEvent.h"
+#include "Drifter/Events/MouseEvent.h"
 
 #include "Drifter/Renderer/Renderer.h"
 #include "Debug/Instrumentation.h"
@@ -71,6 +74,9 @@ namespace Drifter {
 	{
 		PROFILE_FUNCTION();
 		EventDispatcher dispatcher(e);
+#if DF_PROFILE_LEVEL >= DF_PROFILE_LEVEL_BASIC
+		dispatcher.Dispatch<KeyPressedEvent>(BIND_EVENT_FN(HandleProfileCallback));
+#endif
 		dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 		dispatcher.Dispatch<WindowResizeEvent>(BIND_EVENT_FN(OnWindowResize));
 
@@ -111,6 +117,23 @@ namespace Drifter {
 		m_IsMinimized = e.GetWidth() == 0 || e.GetHeight() == 0;
 		if (!m_IsMinimized) {
 			Renderer::OnWindowResize(e.GetWidth(), e.GetHeight());
+		}
+
+		return false;
+	}
+
+	bool Application::HandleProfileCallback(KeyPressedEvent& e)
+	{
+		static int sessionID = 1;
+		if (e.GetKeyCode() == KeyCodes::BACKSLASH()) {
+			if (Instrumentor::HasActiveSession() == false) {
+				std::string filename = "Session_" + std::to_string(sessionID++) + "_Frame_" + std::to_string(Time::GetFrame()) + ".json";
+				BEGIN_PROFILING_SESSION(filename);
+			}
+			else {
+				END_PROFILING_SESSION();
+			}
+			return true;
 		}
 
 		return false;

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Event.h"
+#include "Drifter/Events/Event.h"
 
 namespace Drifter {
 	class WindowResizeEvent : public Event

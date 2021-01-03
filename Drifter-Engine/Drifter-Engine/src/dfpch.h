@@ -3,12 +3,14 @@
 #include <Drifter/Core/Log.h>
 #include <Core.h>
 
+//utility
 #include <iostream>
 #include <memory>
 #include <utility>
 #include <algorithm>
 #include <functional>
 
+//datastructures
 #include <string>
 #include <sstream>
 #include <vector>

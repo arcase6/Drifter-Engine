@@ -14,9 +14,7 @@ int main() {
 	auto app = Drifter::CreateApplication();
 	END_PROFILING_SESSION();
 	
-	BEGIN_PROFILING_SESSION("Runtime.json");
 	app->Run();
-	END_PROFILING_SESSION();
 
 	BEGIN_PROFILING_SESSION("Cleanup.json");
 	delete app;

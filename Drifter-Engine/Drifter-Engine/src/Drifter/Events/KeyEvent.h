@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Drifter/Events/Event.h>
+#include "Drifter/Events/Event.h"
 
 namespace Drifter {
 	class KeyEvent : public Event
