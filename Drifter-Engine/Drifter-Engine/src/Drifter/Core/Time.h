@@ -30,11 +30,13 @@ namespace Drifter {
 		inline static Timestep GetDeltaTime() { return s_Instance->GetDeltaTimeImpl(); }
 		inline static double GetTime() { return s_Instance->GetTimeImpl(); }
 		inline static void Tick() { s_Instance->TickImpl(); }
+		inline static long long GetFrame() { return s_Instance->GetFrameImpl(); }
 
 	protected:
 		virtual Timestep GetDeltaTimeImpl() = 0;
 		virtual double GetTimeImpl() = 0;
 		virtual void TickImpl() = 0;
+		virtual long long GetFrameImpl() = 0;
 	private:
 		static Time* s_Instance;
 

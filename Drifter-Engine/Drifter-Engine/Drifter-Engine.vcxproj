@@ -189,12 +189,14 @@
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRenderCommandParser.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsTime.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\vendors\glm\glm\detail\glm.cpp" />
     <ClCompile Include="..\vendors\stb_image\stb_image.cpp" />
+    <ClCompile Include="src\Drifter\Core\Time.cpp" />
     <ClCompile Include="src\Drifter\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\Drifter\Renderer\Cameras\PerspectiveCameraController.cpp" />
     <ClCompile Include="src\Platform\OpenGL\Renderer\Cameras\OpenGLOrthographicCamera.cpp" />

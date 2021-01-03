@@ -181,6 +181,7 @@
     </ClInclude>
     <ClInclude Include="src\Drifter\Renderer\Renderer2D.h" />
     <ClInclude Include="src\Debug\Instrumentation.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsTime.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\vendors\glm\glm\detail\glm.cpp">
@@ -280,5 +281,6 @@
       <Filter>src\Drifter\Renderer\Material</Filter>
     </ClCompile>
     <ClCompile Include="src\Drifter\Renderer\Renderer2D.cpp" />
+    <ClCompile Include="src\Drifter\Core\Time.cpp" />
   </ItemGroup>
 </Project>
