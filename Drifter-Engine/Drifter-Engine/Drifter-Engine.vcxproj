@@ -76,7 +76,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;DF_CORE;DF_PLATFORM_WINDOWS;DRIFTER_BUILD_DLL;DF_DEBUG;DF_ENABLE_ASSERTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;..\vendors\spdlogger\include;..\vendors\glfw\include;..\vendors\glad\include;..\vendors\imgui;..\vendors\glm;..\vendors\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;..\vendors\spdlogger\include;..\vendors\glfw\include;..\vendors\glad\include;..\vendors\imgui;..\vendors\glm;..\vendors\stb_image;..\vendors\fmt\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -98,7 +98,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;DF_CORE;DF_PLATFORM_WINDOWS;DRIFTER_BUILD_DLL;DF_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;..\vendors\spdlogger\include;..\vendors\glfw\include;..\vendors\glad\include;..\vendors\imgui;..\vendors\glm;..\vendors\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;..\vendors\spdlogger\include;..\vendors\glfw\include;..\vendors\glad\include;..\vendors\imgui;..\vendors\glm;..\vendors\stb_image;..\vendors\fmt\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -124,7 +124,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;DF_CORE;DF_PLATFORM_WINDOWS;DRIFTER_BUILD_DLL;DF_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;..\vendors\spdlogger\include;..\vendors\glfw\include;..\vendors\glad\include;..\vendors\imgui;..\vendors\glm;..\vendors\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;..\vendors\spdlogger\include;..\vendors\glfw\include;..\vendors\glad\include;..\vendors\imgui;..\vendors\glm;..\vendors\stb_image;..\vendors\fmt\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -147,17 +147,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\vendors\stb_image\stb_image.h" />
+    <ClInclude Include="src\Core.h" />
+    <ClInclude Include="src\Debug\DebugAssert.h" />
     <ClInclude Include="src\Debug\Instrumentation.h" />
-    <ClInclude Include="src\Drifter\Renderer\Renderer2D.h" />
-    <ClInclude Include="src\Platform\OpenGL\Renderer\Cameras\OpenGLOrthographicCamera.h" />
-    <ClInclude Include="src\Drifter\Renderer\Cameras\CameraController.h" />
     <ClInclude Include="src\Drifter.h" />
     <ClInclude Include="src\Drifter\Application.h" />
-    <ClInclude Include="src\Core.h" />
-    <ClInclude Include="src\EntryPoint.h" />
     <ClInclude Include="src\Drifter\Core\Log.h" />
     <ClInclude Include="src\Drifter\Core\Time.h" />
-    <ClInclude Include="src\dfpch.h" />
     <ClInclude Include="src\Drifter\EditorUI\IMGUILayer.h" />
     <ClInclude Include="src\Drifter\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Drifter\Events\Event.h" />
@@ -170,66 +166,71 @@
     <ClInclude Include="src\Drifter\LayerStack.h" />
     <ClInclude Include="src\Drifter\Renderer\Buffer.h" />
     <ClInclude Include="src\Drifter\Renderer\Cameras\Camera.h" />
+    <ClInclude Include="src\Drifter\Renderer\Cameras\CameraController.h" />
     <ClInclude Include="src\Drifter\Renderer\GraphicsContext.h" />
+    <ClInclude Include="src\Drifter\Renderer\RenderCommand.h" />
+    <ClInclude Include="src\Drifter\Renderer\Renderer.h" />
+    <ClInclude Include="src\Drifter\Renderer\Renderer2D.h" />
     <ClInclude Include="src\Drifter\Renderer\Shaders\Material.h" />
     <ClInclude Include="src\Drifter\Renderer\Shaders\Shader.h" />
     <ClInclude Include="src\Drifter\Renderer\Shaders\ShaderDataType.h" />
     <ClInclude Include="src\Drifter\Renderer\Shaders\Texture.h" />
     <ClInclude Include="src\Drifter\Renderer\Shaders\Uniform.h" />
-    <ClInclude Include="src\Drifter\Renderer\RenderCommand.h" />
-    <ClInclude Include="src\Drifter\Renderer\Renderer.h" />
     <ClInclude Include="src\Drifter\Renderer\VertexArray.h" />
     <ClInclude Include="src\Drifter\Transform.h" />
     <ClInclude Include="src\Drifter\Window.h" />
-    <ClInclude Include="src\Platform\OpenGL\Renderer\Shaders\OpenGLShader.h" />
-    <ClInclude Include="src\Platform\OpenGL\Renderer\Shaders\OpenGLTexture.h" />
-    <ClInclude Include="src\Platform\OpenGL\Renderer\Shaders\OpenGLUniform.h" />
+    <ClInclude Include="src\EntryPoint.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h" />
-    <ClInclude Include="src\Platform\OpenGL\Renderer\Cameras\OpenGLPerspectiveCamera.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLRenderCommandParser.h" />
     <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h" />
-    <ClInclude Include="src\Platform\Windows\WindowsTime.h" />
+    <ClInclude Include="src\Platform\OpenGL\Renderer\Cameras\OpenGLOrthographicCamera.h" />
+    <ClInclude Include="src\Platform\OpenGL\Renderer\Cameras\OpenGLPerspectiveCamera.h" />
+    <ClInclude Include="src\Platform\OpenGL\Renderer\Shaders\OpenGLShader.h" />
+    <ClInclude Include="src\Platform\OpenGL\Renderer\Shaders\OpenGLTexture.h" />
+    <ClInclude Include="src\Platform\OpenGL\Renderer\Shaders\OpenGLUniform.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
+    <ClInclude Include="src\Platform\Windows\WindowsTime.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
+    <ClInclude Include="src\dfpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\vendors\glm\glm\detail\glm.cpp" />
     <ClCompile Include="..\vendors\stb_image\stb_image.cpp" />
-    <ClCompile Include="src\Drifter\Core\Time.cpp" />
-    <ClCompile Include="src\Drifter\Renderer\Renderer2D.cpp" />
-    <ClCompile Include="src\Drifter\Renderer\Cameras\PerspectiveCameraController.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\Renderer\Cameras\OpenGLOrthographicCamera.cpp" />
-    <ClCompile Include="src\Drifter\Renderer\Cameras\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Drifter\Application.cpp" />
     <ClCompile Include="src\Drifter\Core\Log.cpp" />
-    <ClCompile Include="src\dfpch.cpp" />
+    <ClCompile Include="src\Drifter\Core\Time.cpp" />
     <ClCompile Include="src\Drifter\EditorUI\IMGUILayer.cpp" />
     <ClCompile Include="src\Drifter\Layer.cpp" />
     <ClCompile Include="src\Drifter\LayerStack.cpp" />
     <ClCompile Include="src\Drifter\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Drifter\Renderer\Cameras\Camera.cpp" />
+    <ClCompile Include="src\Drifter\Renderer\Cameras\OrthographicCameraController.cpp" />
+    <ClCompile Include="src\Drifter\Renderer\Cameras\PerspectiveCameraController.cpp" />
+    <ClCompile Include="src\Drifter\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\Drifter\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Drifter\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\Drifter\Renderer\Shaders\Material.cpp" />
     <ClCompile Include="src\Drifter\Renderer\Shaders\Shader.cpp" />
     <ClCompile Include="src\Drifter\Renderer\Shaders\Texture.cpp" />
     <ClCompile Include="src\Drifter\Renderer\Shaders\Uniform.cpp" />
-    <ClCompile Include="src\Drifter\Renderer\RenderCommand.cpp" />
-    <ClCompile Include="src\Drifter\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Drifter\Renderer\VertexArray.cpp" />
     <ClCompile Include="src\Drifter\Transform.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\Renderer\Shaders\OpenGLShader.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\Renderer\Shaders\OpenGLTexture.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\Renderer\Shaders\OpenGLUniform.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\Renderer\Cameras\OpenGLPerspectiveCamera.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLRenderCommandParser.cpp" />
     <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\Renderer\Cameras\OpenGLOrthographicCamera.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\Renderer\Cameras\OpenGLPerspectiveCamera.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\Renderer\Shaders\OpenGLShader.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\Renderer\Shaders\OpenGLTexture.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\Renderer\Shaders\OpenGLUniform.cpp" />
     <ClCompile Include="src\Platform\Windows\KeyCodes.cpp" />
     <ClCompile Include="src\Platform\Windows\MouseCodes.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsTime.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
+    <ClCompile Include="src\dfpch.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\vendors\glfw\glfw.vcxproj">
@@ -240,6 +241,9 @@
     </ProjectReference>
     <ProjectReference Include="..\vendors\imgui\imgui.vcxproj">
       <Project>{0098A80F-6CAC-D0C0-352E-7420A101CDF1}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\vendors\fmt\fmt.vcxproj">
+      <Project>{4C73880B-B87C-887C-41F8-9E7CAD00947C}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

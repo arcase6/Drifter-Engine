@@ -1,6 +1,5 @@
 #pragma once
 
-#include <Drifter/Core/Log.h>
 #include <Core.h>
 
 //utility
@@ -9,6 +8,7 @@
 #include <utility>
 #include <algorithm>
 #include <functional>
+//#include <fmt/core.h>
 
 //datastructures
 #include <string>
@@ -16,6 +16,9 @@
 #include <vector>
 #include <unordered_map>
 #include <unordered_set>
+
+//debug
+#include <Drifter/Core/Log.h>
 
 #ifdef DF_PLATFORM_WINDOWS
 #include <Windows.h>

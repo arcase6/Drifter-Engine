@@ -12,12 +12,15 @@
 #include "Drifter/Renderer/Renderer.h"
 #include "Debug/Instrumentation.h"
 
+#include <fmt/core.h>
+
 namespace Drifter {
 #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 
 	Application* Application::s_Instance = nullptr;
 
 	Application::Application() {
+		//DF_CORE_ASSERT(!s_Instance);
 		DF_CORE_ASSERT(!s_Instance, "Application instance already exists!");
 		s_Instance = this;
 
@@ -125,10 +128,11 @@ namespace Drifter {
 	bool Application::HandleProfileCallback(KeyPressedEvent& e)
 	{
 		static int sessionID = 1;
-		if (e.GetKeyCode() == KeyCodes::BACKSLASH()) {
+		if (e.GetKeyCode() == KeyCodes::PERIOD()) {
 			if (Instrumentor::HasActiveSession() == false) {
-				std::string filename = "Session_" + std::to_string(sessionID++) + "_Frame_" + std::to_string(Time::GetFrame()) + ".json";
-				BEGIN_PROFILING_SESSION(filename);
+				std::string file = fmt::format("Session_{0}_Frame_{1}.json", sessionID++, Time::GetFrame());
+				DF_LOG_INFO("Starting Profile Session: ", file);
+				BEGIN_PROFILING_SESSION(file);
 			}
 			else {
 				END_PROFILING_SESSION();
