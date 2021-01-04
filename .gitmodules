@@ -10,3 +10,6 @@
 [submodule "Drifter-Engine/vendors/glm"]
 	path = Drifter-Engine/vendors/glm
 	url = https://github.com/g-truc/glm
+[submodule "Drifter-Engine/vendors/fmt"]
+	path = Drifter-Engine/vendors/fmt
+	url = https://github.com/fmtlib/fmt

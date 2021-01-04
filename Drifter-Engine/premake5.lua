@@ -17,10 +17,12 @@ workspace "Drifter-Engine"
 	IncludeDir["imgui"] = "vendors/imgui"
 	IncludeDir["glm"] = "vendors/glm"
 	IncludeDir["stb_image"] = "vendors/stb_image"
+	IncludeDir["fmt"] = "vendors/fmt/include"
 
 	include "/vendors/glfw"
 	include "/vendors/glad"
 	include "/vendors/imgui"
+	include "/vendors/fmt"
 
 project "Drifter-Engine"
 	location "Drifter-Engine"
@@ -52,12 +54,14 @@ project "Drifter-Engine"
 		"%{IncludeDir.imgui}",
 		"%{IncludeDir.glm}",
 		"%{IncludeDir.stb_image}",
+		"%{IncludeDir.fmt}"
 	}
 
 	links{
 		"glfw",
 		"glad",
 		"imgui",
+		"fmt",
 		"opengl32.lib"
 	}
 
@@ -113,7 +117,8 @@ project "Sandbox"
 		"vendors/spdlogger/include",
 		"Drifter-Engine/src",
 		"%{IncludeDir.imgui}",
-		"%{IncludeDir.glm}"
+		"%{IncludeDir.glm}",
+		"%{IncludeDir.fmt}"
 	}
 
 	links
