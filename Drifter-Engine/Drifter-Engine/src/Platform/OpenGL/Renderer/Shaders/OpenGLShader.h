@@ -1,6 +1,8 @@
 #pragma once
 #include "Drifter/Renderer/Shaders/Shader.h"
 #include "OpenGLUniform.h"
+
+#include "Debug/Instrumentation.h"
 namespace Drifter {
 	class OpenGLShader : public Shader
 	{
@@ -17,20 +19,20 @@ namespace Drifter {
 		}
 
 		//Direct Setters
-		virtual void SetFloat(const char* name, float value) override { Set(name, value); }
-		virtual void SetVec2(const char* name, const glm::vec2& value) override { Set(name, value); }
-		virtual void SetVec3(const char* name, const glm::vec3& value) override { Set(name, value); }
-		virtual void SetVec4(const char* name, const glm::vec4& value) override { Set(name, value); }
+		virtual void SetFloat(const char* name, float value) override { PROFILE_RENDERER_FUNCTION(); Set(name, value); }
+		virtual void SetVec2(const char* name, const glm::vec2& value) override { PROFILE_RENDERER_FUNCTION(); Set(name, value); }
+		virtual void SetVec3(const char* name, const glm::vec3& value) override { PROFILE_RENDERER_FUNCTION(); Set(name, value); }
+		virtual void SetVec4(const char* name, const glm::vec4& value) override { PROFILE_RENDERER_FUNCTION(); Set(name, value); }
 
-		virtual void SetMat3(const char* name, const glm::mat3& value) override { Set(name, value); }
-		virtual void SetMat4(const char* name, const glm::mat4& value) override { Set(name, value); }
+		virtual void SetMat3(const char* name, const glm::mat3& value) override { PROFILE_RENDERER_FUNCTION(); Set(name, value); }
+		virtual void SetMat4(const char* name, const glm::mat4& value) override { PROFILE_RENDERER_FUNCTION(); Set(name, value); }
 
-		virtual void SetInt(const char* name, int value) override { Set(name, value); }
-		virtual void SetIVec2(const char* name, const glm::ivec2& value) override { Set(name, value); }
-		virtual void SetIVec3(const char* name, const glm::ivec3& value) override { Set(name, value); }
-		virtual void SetIVec4(const char* name, const glm::ivec4& value) override { Set(name, value); }
+		virtual void SetInt(const char* name, int value) override { PROFILE_RENDERER_FUNCTION(); Set(name, value); }
+		virtual void SetIVec2(const char* name, const glm::ivec2& value) override { PROFILE_RENDERER_FUNCTION(); Set(name, value); }
+		virtual void SetIVec3(const char* name, const glm::ivec3& value) override { PROFILE_RENDERER_FUNCTION(); Set(name, value); }
+		virtual void SetIVec4(const char* name, const glm::ivec4& value) override { PROFILE_RENDERER_FUNCTION(); Set(name, value); }
 
-		virtual void SetBool(const char* name, bool value) override { Set(name, value); }
+		virtual void SetBool(const char* name, bool value) override { PROFILE_RENDERER_FUNCTION(); Set(name, value); }
 
 	protected:
 		uint32_t m_RendererID;

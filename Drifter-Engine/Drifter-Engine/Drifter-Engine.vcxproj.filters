@@ -7,6 +7,9 @@
     <Filter Include="src\Debug">
       <UniqueIdentifier>{63A3C3B2-CF0D-7829-184C-29CF84F5557E}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Debug\internal">
+      <UniqueIdentifier>{0FC5FA3B-FBA8-BB91-6409-B6E4500CA613}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Drifter">
       <UniqueIdentifier>{ECCE0391-5884-7C86-E178-765D4D2D738A}</UniqueIdentifier>
     </Filter>
@@ -72,8 +75,17 @@
     <ClInclude Include="src\Core.h">
       <Filter>src</Filter>
     </ClInclude>
+    <ClInclude Include="src\Debug\Assert.h">
+      <Filter>src\Debug</Filter>
+    </ClInclude>
     <ClInclude Include="src\Debug\Instrumentation.h">
       <Filter>src\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Debug\Log.h">
+      <Filter>src\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Debug\internal\DebugAssert.h">
+      <Filter>src\Debug\internal</Filter>
     </ClInclude>
     <ClInclude Include="src\Drifter.h">
       <Filter>src</Filter>
@@ -201,13 +213,6 @@
     <ClInclude Include="src\dfpch.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Debug\internal\DebugAssert.h">
-      <Filter>src\Debug</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Debug\Assert.h" />
-    <ClInclude Include="src\Debug\Log.h">
-      <Filter>src\Drifter\Core</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\vendors\glm\glm\detail\glm.cpp">
@@ -215,6 +220,9 @@
     </ClCompile>
     <ClCompile Include="..\vendors\stb_image\stb_image.cpp">
       <Filter>vendors\stb_image</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Debug\Log.cpp">
+      <Filter>src\Debug</Filter>
     </ClCompile>
     <ClCompile Include="src\Drifter\Application.cpp">
       <Filter>src\Drifter</Filter>
@@ -314,9 +322,6 @@
     </ClCompile>
     <ClCompile Include="src\dfpch.cpp">
       <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Debug\Log.cpp">
-      <Filter>src\Drifter\Core</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

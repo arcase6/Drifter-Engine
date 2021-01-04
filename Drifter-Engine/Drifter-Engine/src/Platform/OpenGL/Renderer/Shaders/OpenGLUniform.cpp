@@ -4,6 +4,8 @@
 #include "glad/glad.h"
 
 #include <glm/gtc/type_ptr.hpp>
+
+
 namespace Drifter {
 
 	OpenGLUniform::OpenGLUniform(Shader& shader, const char* name) 

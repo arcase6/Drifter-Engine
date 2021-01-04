@@ -5,7 +5,7 @@
 #include "Platform/OpenGL/Renderer/Shaders/OpenGLShader.h"
 namespace Drifter {
 	Ref<Shader> Shader::Create(const std::string& filepath) {
-		std::shared_ptr<Shader> result;
+		Ref<Shader> result;
 		switch (Renderer::GetAPI()) {
 		case RendererAPI::None:
 			DF_LOG_ERROR("RendererAPI::None is not currently implemented!");
@@ -13,7 +13,7 @@ namespace Drifter {
 		case RendererAPI::OpenGL:
 			//result.reset(static_cast<Shader *>(new OpenGLShader(filepath)));
 			//return result;
-			return std::shared_ptr<Shader>(static_cast<Shader*>(new OpenGLShader(filepath)));
+			return Ref<Shader>(static_cast<Shader*>(new OpenGLShader(filepath)));
 		}
 		DF_CORE_ASSERT_UNREACHABLE_LV1("Unsupported RendererAPI received!");
 		return nullptr;
@@ -21,7 +21,7 @@ namespace Drifter {
 
 
 	Ref<Shader> Shader::Create(const std::string& name, const std::string& vert, const std::string& frag) {
-		std::shared_ptr<Shader> result;
+		Ref<Shader> result;
 		switch (Renderer::GetAPI()) {
 		case RendererAPI::None:
 			DF_LOG_ERROR("RendererAPI::None is not currently implemented!");
@@ -31,7 +31,7 @@ namespace Drifter {
 			//return result;
 			return std::shared_ptr<Shader>(static_cast<Shader*>(new OpenGLShader(name, vert, frag)));
 		}
-		DF_LOG_ERROR("Unsupported RendererAPI received!");
+		DF_CORE_ASSERT_UNREACHABLE_LV1("Unsupported RendererAPI received!");
 		return nullptr;
 	}
 
