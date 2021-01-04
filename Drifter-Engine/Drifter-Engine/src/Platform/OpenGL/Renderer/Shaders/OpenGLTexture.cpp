@@ -13,7 +13,7 @@ namespace Drifter {
 		int width, height, channels;
 		stbi_set_flip_vertically_on_load(1);
 		stbi_uc* data = stbi_load(filePath.c_str(), &width, &height, &channels, 0);
-		DF_ASSERT(data, "Failed to load image!");
+		DF_ASSERT_LV1(data, "Failed to load image!");
 		m_Width = width;
 		m_Height = height;
 

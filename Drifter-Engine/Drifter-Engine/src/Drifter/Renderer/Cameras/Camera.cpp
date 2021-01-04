@@ -19,7 +19,7 @@ namespace Drifter {
 			camera = static_cast<PerspectiveCamera*>(new OpenGLPerspectiveCamera(aspectRatio, fovDegrees));
 			break;
 		}
-		DF_ASSERT(camera,"Unsupported RendererAPI received!");
+		DF_ASSERT_LV1(camera,"Unsupported RendererAPI received!");
 		
 		if (camera) {
 			camera->SetPosition(position);
@@ -72,7 +72,7 @@ namespace Drifter {
 			camera = static_cast<OrthographicCamera*>(new OpenGLOrthographicCamera(width, height));
 			break;
 		}
-		DF_ASSERT(camera, "Unsupported RendererAPI received!");
+		DF_ASSERT_LV1(camera, "Unsupported RendererAPI received!");
 
 		if (camera) {
 			camera->SetPosition(position);

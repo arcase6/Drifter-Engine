@@ -15,7 +15,7 @@ namespace Drifter {
 			//return result;
 			return std::shared_ptr<Shader>(static_cast<Shader*>(new OpenGLShader(filepath)));
 		}
-		DF_LOG_ERROR("Unsupported RendererAPI received!");
+		DF_CORE_ASSERT_UNREACHABLE_LV1("Unsupported RendererAPI received!");
 		return nullptr;
 	}
 
@@ -37,7 +37,7 @@ namespace Drifter {
 
 
 	void ShaderLibrary::RegisterExistingShader(const Ref<Shader> shader) {
-		DF_CORE_ASSERT(!Exists(shader->GetName()), "Shader already exists : " + shader->GetName());
+		DF_CORE_ASSERT_LV2(!Exists(shader->GetName()), "Shader already exists");
 		m_shaders[shader->GetName()] = shader;
 	}
 
@@ -47,7 +47,7 @@ namespace Drifter {
 	}
 
 	Ref<Shader>  ShaderLibrary::FindShader(const std::string& name) {
-		DF_CORE_ASSERT(Exists(name), "Shader not found : " + name);
+		DF_CORE_ASSERT_LV2(Exists(name), "Shader not found");
 		return m_shaders[name];
 	}
 

@@ -14,7 +14,7 @@ namespace Drifter
 		if (type == "fragment" || type == "pixel") {
 			glType = GL_FRAGMENT_SHADER;
 		}
-		DF_ASSERT(glType != -1, "Unknown Shader Type!");
+		DF_ASSERT_LV1(glType != -1, "Unknown Shader Type!");
 		return glType;
 	}
 

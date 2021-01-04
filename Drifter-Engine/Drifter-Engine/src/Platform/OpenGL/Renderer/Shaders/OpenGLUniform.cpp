@@ -11,7 +11,7 @@ namespace Drifter {
 	{
 		m_Shader.Bind();
 		m_UniformID = glGetUniformLocation(m_Shader.GetID(), name);
-		//DF_ASSERT(m_UniformID != -1, "Failed to find uniform of name " + std::string(name) + " Invalid ID returned");
+		//DF_ASSERT_LV1(m_UniformID != -1, "Failed to find uniform of name " + std::string(name) + " Invalid ID returned");
 		
 	}
 	void OpenGLUniform::Set(float value)

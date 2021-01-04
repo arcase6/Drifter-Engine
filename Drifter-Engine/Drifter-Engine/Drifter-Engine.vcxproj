@@ -76,7 +76,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;DF_CORE;DF_PLATFORM_WINDOWS;DRIFTER_BUILD_DLL;DF_DEBUG;DF_ENABLE_ASSERTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;..\vendors\spdlogger\include;..\vendors\glfw\include;..\vendors\glad\include;..\vendors\imgui;..\vendors\glm;..\vendors\stb_image;..\vendors\fmt\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;..\vendors\spdlogger\include;..\vendors\glfw\include;..\vendors\glad\include;..\vendors\imgui;..\vendors\glm;..\vendors\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -98,7 +98,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;DF_CORE;DF_PLATFORM_WINDOWS;DRIFTER_BUILD_DLL;DF_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;..\vendors\spdlogger\include;..\vendors\glfw\include;..\vendors\glad\include;..\vendors\imgui;..\vendors\glm;..\vendors\stb_image;..\vendors\fmt\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;..\vendors\spdlogger\include;..\vendors\glfw\include;..\vendors\glad\include;..\vendors\imgui;..\vendors\glm;..\vendors\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -124,7 +124,7 @@
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;DF_CORE;DF_PLATFORM_WINDOWS;DRIFTER_BUILD_DLL;DF_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>src;..\vendors\spdlogger\include;..\vendors\glfw\include;..\vendors\glad\include;..\vendors\imgui;..\vendors\glm;..\vendors\stb_image;..\vendors\fmt\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;..\vendors\spdlogger\include;..\vendors\glfw\include;..\vendors\glad\include;..\vendors\imgui;..\vendors\glm;..\vendors\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -148,11 +148,12 @@
   <ItemGroup>
     <ClInclude Include="..\vendors\stb_image\stb_image.h" />
     <ClInclude Include="src\Core.h" />
-    <ClInclude Include="src\Debug\DebugAssert.h" />
+    <ClInclude Include="src\Debug\Assert.h" />
+    <ClInclude Include="src\Debug\internal\DebugAssert.h" />
     <ClInclude Include="src\Debug\Instrumentation.h" />
     <ClInclude Include="src\Drifter.h" />
     <ClInclude Include="src\Drifter\Application.h" />
-    <ClInclude Include="src\Drifter\Core\Log.h" />
+    <ClInclude Include="src\Debug\Log.h" />
     <ClInclude Include="src\Drifter\Core\Time.h" />
     <ClInclude Include="src\Drifter\EditorUI\IMGUILayer.h" />
     <ClInclude Include="src\Drifter\Events\ApplicationEvent.h" />
@@ -198,7 +199,7 @@
     <ClCompile Include="..\vendors\glm\glm\detail\glm.cpp" />
     <ClCompile Include="..\vendors\stb_image\stb_image.cpp" />
     <ClCompile Include="src\Drifter\Application.cpp" />
-    <ClCompile Include="src\Drifter\Core\Log.cpp" />
+    <ClCompile Include="src\Debug\Log.cpp" />
     <ClCompile Include="src\Drifter\Core\Time.cpp" />
     <ClCompile Include="src\Drifter\EditorUI\IMGUILayer.cpp" />
     <ClCompile Include="src\Drifter\Layer.cpp" />
@@ -241,9 +242,6 @@
     </ProjectReference>
     <ProjectReference Include="..\vendors\imgui\imgui.vcxproj">
       <Project>{0098A80F-6CAC-D0C0-352E-7420A101CDF1}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\vendors\fmt\fmt.vcxproj">
-      <Project>{4C73880B-B87C-887C-41F8-9E7CAD00947C}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

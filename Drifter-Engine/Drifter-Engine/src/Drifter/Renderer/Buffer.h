@@ -1,6 +1,6 @@
 #pragma once
 #include <cstdint>
-#include <Drifter/Core/Log.h>
+#include <Core.h>
 
 #include "Drifter/Renderer/Shaders/ShaderDataType.h"
 namespace Drifter {
@@ -20,7 +20,7 @@ namespace Drifter {
 		case ShaderDataType::Int4:     return 4 * 4;
 		case ShaderDataType::Bool:     return 1;
 		}
-		DF_CORE_ASSERT(false, "Unknown ShaderDataType!");
+		DF_CORE_ASSERT_LV1(false, "Unknown ShaderDataType!");
 		return 0;
 	}
 
@@ -53,7 +53,7 @@ namespace Drifter {
 			case ShaderDataType::Bool:    return 1;
 			}
 
-			DF_CORE_ASSERT(false, "Unknown ShaderDataType!");
+			DF_CORE_ASSERT_LV1(false, "Unknown ShaderDataType!");
 			return 0;
 		}
 	};

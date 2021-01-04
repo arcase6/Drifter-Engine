@@ -81,9 +81,6 @@
     <ClInclude Include="src\Drifter\Application.h">
       <Filter>src\Drifter</Filter>
     </ClInclude>
-    <ClInclude Include="src\Drifter\Core\Log.h">
-      <Filter>src\Drifter\Core</Filter>
-    </ClInclude>
     <ClInclude Include="src\Drifter\Core\Time.h">
       <Filter>src\Drifter\Core</Filter>
     </ClInclude>
@@ -204,7 +201,13 @@
     <ClInclude Include="src\dfpch.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Debug\DebugAssert.h" />
+    <ClInclude Include="src\Debug\internal\DebugAssert.h">
+      <Filter>src\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Debug\Assert.h" />
+    <ClInclude Include="src\Debug\Log.h">
+      <Filter>src\Drifter\Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\vendors\glm\glm\detail\glm.cpp">
@@ -215,9 +218,6 @@
     </ClCompile>
     <ClCompile Include="src\Drifter\Application.cpp">
       <Filter>src\Drifter</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Drifter\Core\Log.cpp">
-      <Filter>src\Drifter\Core</Filter>
     </ClCompile>
     <ClCompile Include="src\Drifter\Core\Time.cpp">
       <Filter>src\Drifter\Core</Filter>
@@ -314,6 +314,9 @@
     </ClCompile>
     <ClCompile Include="src\dfpch.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Debug\Log.cpp">
+      <Filter>src\Drifter\Core</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

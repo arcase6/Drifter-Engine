@@ -17,9 +17,6 @@
 #include <unordered_map>
 #include <unordered_set>
 
-//debug
-#include <Drifter/Core/Log.h>
-
 #ifdef DF_PLATFORM_WINDOWS
 #include <Windows.h>
 #endif

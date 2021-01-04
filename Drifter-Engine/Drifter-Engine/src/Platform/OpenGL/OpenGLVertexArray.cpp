@@ -23,7 +23,7 @@ namespace Drifter {
 		case Drifter::ShaderDataType::Bool:     return GL_BOOL;
 		}
 
-		DF_CORE_ASSERT(false, "Unknown ShaderDataType!");
+		DF_CORE_ASSERT_LV1(false, "Unknown ShaderDataType!");
 		return 0;
 	}
 
@@ -48,7 +48,7 @@ namespace Drifter {
 	void OpenGLVertexArray::AddVertexBuffer(const Ref<VertexBuffer> vertexBuffer)
 	{
 		PROFILE_RENDERER_FUNCTION();
-		DF_CORE_ASSERT(vertexBuffer->GetLayout().GetElements().size(), "Vertex Buffer Layout not set!");
+		DF_CORE_ASSERT_LV1(vertexBuffer->GetLayout().GetElements().size(), "Vertex Buffer Layout not set!");
 		
 		glBindVertexArray(m_RendererID);
 		vertexBuffer->Bind();

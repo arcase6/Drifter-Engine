@@ -15,7 +15,7 @@ namespace Drifter {
 	{
 		glfwMakeContextCurrent(target);
 		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		DF_ASSERT(status, "Failed to initialize glad!");
+		DF_ASSERT_LV1(status, "Failed to initialize glad!");
 
 		m_window = target;
 

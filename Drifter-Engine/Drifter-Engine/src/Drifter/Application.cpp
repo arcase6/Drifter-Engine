@@ -1,7 +1,7 @@
 #include "dfpch.h"
 
 #include "Application.h"
-#include "Core/Log.h"
+#include "Core.h"
 #include "Drifter/Input/Input.h"
 #include "Drifter/Core/Time.h"
 
@@ -12,18 +12,18 @@
 #include "Drifter/Renderer/Renderer.h"
 #include "Debug/Instrumentation.h"
 
-#include <fmt/core.h>
+#include "spdlog/fmt/bundled/format.h"
 
 namespace Drifter {
+
 #define BIND_EVENT_FN(x) std::bind(&Application::x, this, std::placeholders::_1)
 
 	Application* Application::s_Instance = nullptr;
 
 	Application::Application() {
-		//DF_CORE_ASSERT(!s_Instance);
-		DF_CORE_ASSERT(!s_Instance, "Application instance already exists!");
+		DF_CORE_ASSERT_LV1(!s_Instance, "Application instance already exists!");
 		s_Instance = this;
-
+		
 		WindowProps windowProps("Drifter Engine", 720,720);
 		m_window = Scope<Window>(Window::Create(windowProps));
 		m_window->SetEventCallback(BIND_EVENT_FN(OnEvent));

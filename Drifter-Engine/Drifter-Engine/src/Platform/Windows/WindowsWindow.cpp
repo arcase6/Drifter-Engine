@@ -38,7 +38,7 @@ namespace Drifter
 		{
 			// TODO: glfwTerminate on sstem shutdown
 			int success = glfwInit();
-			DF_ASSERT(success, "Could not initialize GLFW");
+			DF_ASSERT_LV1(success, "Could not initialize GLFW");
 			glfwSetErrorCallback(GLFWErrorCallback);
 			s_GLFWInitialized = true;
 		}
