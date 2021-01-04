@@ -6,7 +6,7 @@
 #include "Platform/OpenGL/Renderer/Shaders/OpenGLShader.h"
 
 #include "glm/gtc/matrix_transform.hpp"
-#include "Debug/Instrumentation.h"
+#include "DebugUtil/Instrumentation.h"
 namespace Drifter {
 
 	struct SceneData2D {

@@ -17,5 +17,5 @@ namespace Drifter {
 	using Ref = std::shared_ptr<T>;
 }
 
-#include "Debug/Log.h"
-#include "Debug/Assert.h"
+#include "DebugUtil/Log.h"
+#include "DebugUtil/Assert.h"

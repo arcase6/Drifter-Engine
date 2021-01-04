@@ -4,7 +4,7 @@
 #include "RenderCommand.h"
 #include "Drifter/Renderer/Renderer2D.h"
 
-#include "Debug/Instrumentation.h"
+#include "DebugUtil/Instrumentation.h"
 namespace Drifter {
 	RendererAPI Renderer::s_RendererAPI = RendererAPI::OpenGL;
 	ShaderLibrary Renderer::s_ShaderLibrary;

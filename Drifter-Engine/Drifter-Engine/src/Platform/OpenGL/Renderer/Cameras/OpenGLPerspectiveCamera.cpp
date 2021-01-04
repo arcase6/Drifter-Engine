@@ -6,7 +6,7 @@
 
 #include "glm/gtx/string_cast.hpp"
 
-#include "Debug/Instrumentation.h"
+#include "DebugUtil/Instrumentation.h"
 namespace Drifter
 {
 	void OpenGLPerspectiveCamera::SetRotationEuler(float yaw, float pitch, float roll)

@@ -8,7 +8,7 @@
 #include "glm/gtc/constants.hpp"
 #include "glm/gtx/string_cast.hpp"
 
-#include "Debug/Instrumentation.h"
+#include "DebugUtil/Instrumentation.h"
 namespace Drifter {
 	void OrthorgraphicCameraController::OnUpdate()
 	{

@@ -4,7 +4,7 @@
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtx/euler_angles.hpp"
 
-#include "Debug/Instrumentation.h"
+#include "DebugUtil/Instrumentation.h"
 namespace Drifter
 {
 	void OpenGLOrthographicCamera::SetRotationEuler(float yaw, float pitch, float roll)

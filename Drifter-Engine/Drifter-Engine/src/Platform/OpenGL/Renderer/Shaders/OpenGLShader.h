@@ -2,7 +2,7 @@
 #include "Drifter/Renderer/Shaders/Shader.h"
 #include "OpenGLUniform.h"
 
-#include "Debug/Instrumentation.h"
+#include "DebugUtil/Instrumentation.h"
 namespace Drifter {
 	class OpenGLShader : public Shader
 	{

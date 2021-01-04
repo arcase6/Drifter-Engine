@@ -3,7 +3,7 @@
 #include "OpenGLShader.h"
 
 #include <fstream>
-#include "Debug/Instrumentation.h"
+#include "DebugUtil/Instrumentation.h"
 namespace Drifter
 {
 	static GLenum GetType(std::string& type) {

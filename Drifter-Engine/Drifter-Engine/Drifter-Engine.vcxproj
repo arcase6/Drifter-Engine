@@ -148,10 +148,10 @@
   <ItemGroup>
     <ClInclude Include="..\vendors\stb_image\stb_image.h" />
     <ClInclude Include="src\Core.h" />
-    <ClInclude Include="src\Debug\Assert.h" />
-    <ClInclude Include="src\Debug\Instrumentation.h" />
-    <ClInclude Include="src\Debug\Log.h" />
-    <ClInclude Include="src\Debug\internal\DebugAssert.h" />
+    <ClInclude Include="src\DebugUtil\Assert.h" />
+    <ClInclude Include="src\DebugUtil\Instrumentation.h" />
+    <ClInclude Include="src\DebugUtil\Log.h" />
+    <ClInclude Include="src\DebugUtil\internal\DebugAssert.h" />
     <ClInclude Include="src\Drifter.h" />
     <ClInclude Include="src\Drifter\Application.h" />
     <ClInclude Include="src\Drifter\Core\Time.h" />
@@ -198,7 +198,7 @@
   <ItemGroup>
     <ClCompile Include="..\vendors\glm\glm\detail\glm.cpp" />
     <ClCompile Include="..\vendors\stb_image\stb_image.cpp" />
-    <ClCompile Include="src\Debug\Log.cpp" />
+    <ClCompile Include="src\DebugUtil\Log.cpp" />
     <ClCompile Include="src\Drifter\Application.cpp" />
     <ClCompile Include="src\Drifter\Core\Time.cpp" />
     <ClCompile Include="src\Drifter\EditorUI\IMGUILayer.cpp" />

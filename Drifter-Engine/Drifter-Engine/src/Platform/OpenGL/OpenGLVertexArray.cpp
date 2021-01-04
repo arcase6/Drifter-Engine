@@ -2,7 +2,7 @@
 
 #include "OpenGLVertexArray.h"
 #include "glad/glad.h"
-#include "Debug/Instrumentation.h"
+#include "DebugUtil/Instrumentation.h"
 
 namespace Drifter {
 

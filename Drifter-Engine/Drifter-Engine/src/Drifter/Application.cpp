@@ -10,7 +10,7 @@
 #include "Drifter/Events/MouseEvent.h"
 
 #include "Drifter/Renderer/Renderer.h"
-#include "Debug/Instrumentation.h"
+#include "DebugUtil/Instrumentation.h"
 
 #include "spdlog/fmt/bundled/format.h"
 

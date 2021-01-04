@@ -3,7 +3,7 @@
 // For use by Drifter application
 #include "Core.h"
 #include "Drifter/Application.h"
-#include "Debug/Instrumentation.h"
+#include "DebugUtil/Instrumentation.h"
 
 //Layers
 #include "Drifter/Layer.h"

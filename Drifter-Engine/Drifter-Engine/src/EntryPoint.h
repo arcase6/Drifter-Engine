@@ -5,6 +5,7 @@
 extern Drifter::Application* Drifter::CreateApplication();
 
 int main() {
+	Drifter::Instrumentor::DeleteLogs(".Benchmarking");
 	BEGIN_PROFILING_SESSION("Setup.json");
 	{
 		PROFILE_SCOPE("Setup Logger");

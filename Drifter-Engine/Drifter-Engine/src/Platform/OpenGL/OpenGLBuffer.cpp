@@ -1,5 +1,5 @@
 #include "OpenGLBuffer.h"
-#include "Debug/Instrumentation.h"
+#include "DebugUtil/Instrumentation.h"
 
 #include <glad/glad.h>
 namespace Drifter {
