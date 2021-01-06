@@ -27,18 +27,35 @@ namespace Drifter {
 		virtual const std::vector<Ref<VertexBuffer>>& GetVertexBuffers() const = 0;
 		virtual const Ref<IndexBuffer>& GetIndexBuffer() const = 0;
 
-		static VertexArray* Create();
+		static Ref<VertexArray> Create();
 
-		static VertexArray* Create(std::vector<float> verts, std::vector<uint32_t> indices, BufferLayout layout)
+		template<typename T>
+		static Ref<VertexArray> Create(std::vector<T> verts, std::vector<uint32_t> indices, BufferLayout layout)
 		{
-			VertexArray* array = VertexArray::Create();
+			Ref<VertexArray> array = VertexArray::Create();
 			array->Bind();
 
 			array->AddVertexBuffer(
-				VertexBuffer::Create(&verts[0], static_cast<uint32_t>(verts.size() * sizeof(float)), layout)
+				VertexBuffer::Create(&verts[0], verts.size(), layout)
 			);
 			array->SetIndexBuffer(
-				IndexBuffer::Create(&indices[0], static_cast<uint32_t>(indices.size()))
+				IndexBuffer::Create(&indices[0], indices.size())
+			);
+
+			return array;
+		}
+
+		template<typename T>
+		static Ref<VertexArray> Create(Ref<T[]> verts, Ref<uint32_t[]> indices, uint32_t vertexCount, uint32_t IndexCount, BufferLayout layout)
+		{
+			Ref<VertexArray> array = VertexArray::Create();
+			array->Bind();
+
+			array->AddVertexBuffer(
+				VertexBuffer::Create(verts.get(), vertexCount, layout)
+			);
+			array->SetIndexBuffer(
+				IndexBuffer::Create(indices.get(), IndexCount)
 			);
 
 			return array;

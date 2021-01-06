@@ -1,4 +1,6 @@
+#include "dfpch.h"
 #include "ExampleLayer.h"
+#include "Core.h"
 
 namespace Sandbox
 {
@@ -11,15 +13,17 @@ namespace Sandbox
 			0.5f, -0.5f, 0.0f,	 1.0f, 0.0f,
 			0.0f, 0.5f, 0.0f,    0.5f, 1.0f,
 		};
+
 		std::vector<uint32_t> indices = {
 			0, 1, 2
 		};
+
 		Drifter::BufferLayout layout = {
 			{ Drifter::ShaderDataType::Float3, "a_Position" },
 			{ Drifter::ShaderDataType::Float2, "a_UV" }
 
 		};
-		m_Triangle.reset(Drifter::VertexArray::Create(vertices, indices, layout));
+		m_Triangle = Drifter::VertexArray::Create(vertices, indices, layout);
 	}
 
 	void ExampleLayer::SetBoxData()
@@ -86,7 +90,7 @@ namespace Sandbox
 			{ Drifter::ShaderDataType::Float3, "a_Position" },
 			{ Drifter::ShaderDataType::Float2, "a_UV" }
 		};
-		m_Box.reset(Drifter::VertexArray::Create(vertices, indices, layout));
+		m_Box = Drifter::VertexArray::Create(vertices, indices, layout);
 	}
 
 	void ExampleLayer::SetupShaders()

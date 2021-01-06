@@ -8,31 +8,73 @@
 
 namespace Drifter {
 
-	VertexBuffer* VertexBuffer::Create(float* vertices, uint32_t size, const BufferLayout& layout)
-	{
-		switch (Renderer::GetAPI())
-		{
-			case RendererAPI::None:
-				DF_LOG_ERROR("RendererAPI::None is not currently implemented!");
-				return nullptr;
-			case RendererAPI::OpenGL:
-				return static_cast<VertexBuffer *>(new OpenGLVertexBuffer(vertices, size, layout));
-		}
-		DF_LOG_ERROR("Unsupported RendererAPI received!");
-		return nullptr;
-	}
-
-	IndexBuffer* IndexBuffer::Create(uint32_t* indices, uint32_t count)
+	Ref<VertexBuffer> VertexBuffer::Create(uint32_t count, const BufferLayout& layout)
 	{
 		switch (Renderer::GetAPI())
 		{
 		case RendererAPI::None:
 			DF_LOG_ERROR("RendererAPI::None is not currently implemented!");
-			return nullptr;
+			break;
 		case RendererAPI::OpenGL:
-			return static_cast<IndexBuffer *>(new OpenGLIndexBuffer(indices, count));
+			return std::shared_ptr<VertexBuffer>(new OpenGLVertexBuffer(count, layout));
 		}
-		DF_LOG_ERROR("Unsupported RendererAPI received!");
+		DF_ASSERT_UNREACHABLE_LV1("Unsupported RendererAPI received!");
+		return nullptr;
+	}
+
+	Ref<VertexBuffer> VertexBuffer::Create(Ref<float[]> vertices, uint32_t count, const BufferLayout& layout)
+	{
+		switch (Renderer::GetAPI())
+		{
+			case RendererAPI::None:
+				DF_LOG_ERROR("RendererAPI::None is not currently implemented!");
+				break;
+			case RendererAPI::OpenGL:
+				return std::shared_ptr<VertexBuffer>(new OpenGLVertexBuffer(vertices.get(), count, layout));
+		}
+		DF_ASSERT_UNREACHABLE_LV1("Unsupported RendererAPI received!");
+		return nullptr;
+	}
+
+	Ref<VertexBuffer> VertexBuffer::Create(float* vertices, uint32_t count, const BufferLayout& layout)
+	{
+		switch (Renderer::GetAPI())
+		{
+		case RendererAPI::None:
+			DF_LOG_ERROR("RendererAPI::None is not currently implemented!");
+			break;
+		case RendererAPI::OpenGL:
+			return std::shared_ptr<VertexBuffer>(new OpenGLVertexBuffer(vertices, count, layout));
+		}
+		DF_ASSERT_UNREACHABLE_LV1("Unsupported RendererAPI received!");
+		return nullptr;
+	}
+
+	Ref<IndexBuffer> IndexBuffer::Create(Ref<uint32_t[]> indices, uint32_t count)
+	{
+		switch (Renderer::GetAPI())
+		{
+		case RendererAPI::None:
+			DF_LOG_ERROR("RendererAPI::None is not currently implemented!");
+			break;
+		case RendererAPI::OpenGL:
+			return std::shared_ptr<IndexBuffer>(new OpenGLIndexBuffer(indices.get(), count));
+		}
+		DF_ASSERT_UNREACHABLE_LV1("Unsupported RendererAPI received!");
+		return nullptr;
+	}
+
+	Ref<IndexBuffer> IndexBuffer::Create(uint32_t * indices, uint32_t count)
+	{
+		switch (Renderer::GetAPI())
+		{
+		case RendererAPI::None:
+			DF_LOG_ERROR("RendererAPI::None is not currently implemented!");
+			break;
+		case RendererAPI::OpenGL:
+			return std::shared_ptr<IndexBuffer>(new OpenGLIndexBuffer(indices, count));
+		}
+		DF_ASSERT_UNREACHABLE_LV1("Unsupported RendererAPI received!");
 		return nullptr;
 	}
 }

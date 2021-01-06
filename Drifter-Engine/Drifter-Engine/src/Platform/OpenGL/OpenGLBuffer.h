@@ -5,6 +5,7 @@ namespace Drifter {
 	class OpenGLVertexBuffer : public VertexBuffer
 	{
 	public:
+		OpenGLVertexBuffer(uint32_t size, const BufferLayout& layout);
 		OpenGLVertexBuffer(float* vertices, uint32_t size, const BufferLayout& layout);
 		
 		// Inherited via VertexBuffer
@@ -13,6 +14,8 @@ namespace Drifter {
 		virtual void Unbind() const override;
 		virtual const BufferLayout& GetLayout() const override { return m_Layout; }
 		virtual void SetLayout(const BufferLayout& layout) override { m_Layout = layout; }
+		
+		virtual void SetData(const void* vertices, uint32_t zie, uint32_t offset) override;
 
 	private:
 		uint32_t m_RendererID;

@@ -18,10 +18,13 @@ namespace Drifter {
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 
-	void OpenGLRenderCommandParser::DrawIndexedTriangles(const std::shared_ptr<VertexArray>& vertexArray)
+	void OpenGLRenderCommandParser::DrawIndexedTriangles(const std::shared_ptr<VertexArray>& vertexArray, uint32_t indexCount)
 	{
 		vertexArray->Bind();
-		glDrawElements(GL_TRIANGLES, vertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, 0);
+		if (indexCount == 0)
+			indexCount = vertexArray->GetIndexBuffer()->GetCount();
+
+		glDrawElements(GL_TRIANGLES, indexCount, GL_UNSIGNED_INT, 0);
 	}
 
 	void OpenGLRenderCommandParser::SetViewport(uint32_t x, uint32_t y,uint32_t width, uint32_t height) {

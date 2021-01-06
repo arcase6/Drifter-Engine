@@ -5,13 +5,23 @@
 namespace Drifter {
 ////////////////// VertexBuffer //////////////////////////////////////////
 
+	OpenGLVertexBuffer::OpenGLVertexBuffer(uint32_t size, const BufferLayout& layout)
+	{
+		PROFILE_RENDERER_FUNCTION();
+		glGenBuffers(1, &m_RendererID);
+		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
+		glBufferData(GL_ARRAY_BUFFER, size, nullptr, GL_DYNAMIC_DRAW);
+
+		SetLayout(layout);
+	}
+	
 	OpenGLVertexBuffer::OpenGLVertexBuffer(float* vertices, uint32_t size, const BufferLayout& layout)
 	{
 		PROFILE_RENDERER_FUNCTION();
 		glGenBuffers(1, &m_RendererID);
 		glBindBuffer(GL_ARRAY_BUFFER, m_RendererID);
 		glBufferData(GL_ARRAY_BUFFER, size, vertices, GL_STATIC_DRAW);
-		
+
 		SetLayout(layout);
 	}
 
@@ -29,6 +39,11 @@ namespace Drifter {
 	void OpenGLVertexBuffer::Unbind() const
 	{
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
+	}
+
+	void OpenGLVertexBuffer::SetData(const void* vertices, uint32_t size, uint32_t offset) {
+		Bind();
+		glBufferSubData(GL_ARRAY_BUFFER, offset, size, vertices);
 	}
 
 ////////////////// IndexBuffer //////////////////////////////////////////
