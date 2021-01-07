@@ -12,9 +12,9 @@ namespace Drifter {
 		virtual ~OpenGLShader() = default;
 		virtual const std::string& GetName() const override { return m_Name; }
 		virtual void Bind() override;
-		virtual void UnBind() override;
+		virtual void Unbind() override;
 
-		virtual inline uint32_t GetID() override {
+		virtual inline uint32_t GetRendererID() const override {
 			return m_RendererID;
 		}
 

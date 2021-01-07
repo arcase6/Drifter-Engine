@@ -160,6 +160,7 @@
     <ClInclude Include="src\Drifter\Events\Event.h" />
     <ClInclude Include="src\Drifter\Events\KeyEvent.h" />
     <ClInclude Include="src\Drifter\Events\MouseEvent.h" />
+    <ClInclude Include="src\Drifter\Graphics\GraphicsInterfaces.h" />
     <ClInclude Include="src\Drifter\Input\Input.h" />
     <ClInclude Include="src\Drifter\Input\KeyCodes.h" />
     <ClInclude Include="src\Drifter\Input\MouseCodes.h" />

@@ -36,12 +36,12 @@ namespace Drifter {
 	{
 		glDeleteVertexArrays(1, &m_RendererID);
 	}
-	void OpenGLVertexArray::Bind() const
+	void OpenGLVertexArray::Bind()
 	{
 		PROFILE_RENDERER_FUNCTION();
 		glBindVertexArray(m_RendererID);
 	}
-	void OpenGLVertexArray::Unbind() const
+	void OpenGLVertexArray::Unbind()
 	{
 		glBindVertexArray(0);
 	}

@@ -210,6 +210,7 @@
     <ClInclude Include="src\Drifter\Graphics\Uniform.h">
       <Filter>src\Drifter\Renderer\Shaders</Filter>
     </ClInclude>
+    <ClInclude Include="src\Drifter\Graphics\GraphicsInterfaces.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\vendors\glm\glm\detail\glm.cpp">
