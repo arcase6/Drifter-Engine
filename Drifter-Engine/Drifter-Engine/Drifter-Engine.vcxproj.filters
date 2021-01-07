@@ -114,45 +114,6 @@
     <ClInclude Include="src\Drifter\LayerStack.h">
       <Filter>src\Drifter</Filter>
     </ClInclude>
-    <ClInclude Include="src\Drifter\Renderer\Buffer.h">
-      <Filter>src\Drifter\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drifter\Renderer\Cameras\Camera.h">
-      <Filter>src\Drifter\Renderer\Cameras</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drifter\Renderer\Cameras\CameraController.h">
-      <Filter>src\Drifter\Renderer\Cameras</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drifter\Renderer\GraphicsContext.h">
-      <Filter>src\Drifter\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drifter\Renderer\RenderCommand.h">
-      <Filter>src\Drifter\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drifter\Renderer\Renderer.h">
-      <Filter>src\Drifter\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drifter\Renderer\Renderer2D.h">
-      <Filter>src\Drifter\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drifter\Renderer\Shaders\Material.h">
-      <Filter>src\Drifter\Renderer\Shaders</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drifter\Renderer\Shaders\Shader.h">
-      <Filter>src\Drifter\Renderer\Shaders</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drifter\Renderer\Shaders\ShaderDataType.h">
-      <Filter>src\Drifter\Renderer\Shaders</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drifter\Renderer\Shaders\Texture.h">
-      <Filter>src\Drifter\Renderer\Shaders</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drifter\Renderer\Shaders\Uniform.h">
-      <Filter>src\Drifter\Renderer\Shaders</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drifter\Renderer\VertexArray.h">
-      <Filter>src\Drifter\Renderer</Filter>
-    </ClInclude>
     <ClInclude Include="src\Drifter\Transform.h">
       <Filter>src\Drifter</Filter>
     </ClInclude>
@@ -213,6 +174,42 @@
     <ClInclude Include="src\DebugUtil\Log.h">
       <Filter>src\Debug</Filter>
     </ClInclude>
+    <ClInclude Include="src\Drifter\Renderer\RenderCommand.h">
+      <Filter>src\Drifter\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Renderer\Renderer.h">
+      <Filter>src\Drifter\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Renderer\Renderer2D.h">
+      <Filter>src\Drifter\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Graphics\Buffer.h">
+      <Filter>src\Drifter\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Graphics\VertexArray.h">
+      <Filter>src\Drifter\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Graphics\GraphicsContext.h">
+      <Filter>src\Drifter\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Camera\Camera.h">
+      <Filter>src\Drifter\Renderer\Cameras</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Camera\CameraController.h">
+      <Filter>src\Drifter\Renderer\Cameras</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Graphics\Shader.h">
+      <Filter>src\Drifter\Renderer\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Graphics\ShaderDataType.h">
+      <Filter>src\Drifter\Renderer\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Graphics\Texture.h">
+      <Filter>src\Drifter\Renderer\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Graphics\Uniform.h">
+      <Filter>src\Drifter\Renderer\Shaders</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\vendors\glm\glm\detail\glm.cpp">
@@ -235,42 +232,6 @@
     </ClCompile>
     <ClCompile Include="src\Drifter\LayerStack.cpp">
       <Filter>src\Drifter</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Drifter\Renderer\Buffer.cpp">
-      <Filter>src\Drifter\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Drifter\Renderer\Cameras\Camera.cpp">
-      <Filter>src\Drifter\Renderer\Cameras</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Drifter\Renderer\Cameras\OrthographicCameraController.cpp">
-      <Filter>src\Drifter\Renderer\Cameras</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Drifter\Renderer\Cameras\PerspectiveCameraController.cpp">
-      <Filter>src\Drifter\Renderer\Cameras</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Drifter\Renderer\RenderCommand.cpp">
-      <Filter>src\Drifter\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Drifter\Renderer\Renderer.cpp">
-      <Filter>src\Drifter\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Drifter\Renderer\Renderer2D.cpp">
-      <Filter>src\Drifter\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Drifter\Renderer\Shaders\Material.cpp">
-      <Filter>src\Drifter\Renderer\Shaders</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Drifter\Renderer\Shaders\Shader.cpp">
-      <Filter>src\Drifter\Renderer\Shaders</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Drifter\Renderer\Shaders\Texture.cpp">
-      <Filter>src\Drifter\Renderer\Shaders</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Drifter\Renderer\Shaders\Uniform.cpp">
-      <Filter>src\Drifter\Renderer\Shaders</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Drifter\Renderer\VertexArray.cpp">
-      <Filter>src\Drifter\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Drifter\Transform.cpp">
       <Filter>src\Drifter</Filter>
@@ -322,6 +283,39 @@
     </ClCompile>
     <ClCompile Include="src\DebugUtil\Log.cpp">
       <Filter>src\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drifter\Renderer\RenderCommand.cpp">
+      <Filter>src\Drifter\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drifter\Renderer\Renderer.cpp">
+      <Filter>src\Drifter\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drifter\Renderer\Renderer2D.cpp">
+      <Filter>src\Drifter\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drifter\Graphics\Buffer.cpp">
+      <Filter>src\Drifter\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drifter\Graphics\VertexArray.cpp">
+      <Filter>src\Drifter\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drifter\Camera\Camera.cpp">
+      <Filter>src\Drifter\Renderer\Cameras</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drifter\Camera\OrthographicCameraController.cpp">
+      <Filter>src\Drifter\Renderer\Cameras</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drifter\Camera\PerspectiveCameraController.cpp">
+      <Filter>src\Drifter\Renderer\Cameras</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drifter\Graphics\Shader.cpp">
+      <Filter>src\Drifter\Renderer\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drifter\Graphics\Texture.cpp">
+      <Filter>src\Drifter\Renderer\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drifter\Graphics\Uniform.cpp">
+      <Filter>src\Drifter\Renderer\Shaders</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Drifter/Renderer/Cameras/Camera.h"
-#include "Drifter/Renderer/Shaders/Texture.h"
+#include "Drifter/Camera/Camera.h"
+#include "Drifter/Graphics/Texture.h"
 #include "Drifter/Transform.h"
 #include "glm/glm.hpp"
 

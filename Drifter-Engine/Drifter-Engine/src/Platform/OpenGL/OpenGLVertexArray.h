@@ -1,5 +1,5 @@
 #pragma once
-#include "Drifter/Renderer/VertexArray.h"
+#include "Drifter/Graphics/VertexArray.h"
 
 namespace Drifter {
 	class OpenGLVertexArray : public VertexArray

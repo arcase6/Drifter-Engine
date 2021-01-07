@@ -3,7 +3,7 @@
 
 #include <Core.h>
 #include <Drifter/Events/Event.h>
-#include <Drifter/Renderer/GraphicsContext.h>
+#include <Drifter/Graphics/GraphicsContext.h>
 
 
 namespace Drifter {

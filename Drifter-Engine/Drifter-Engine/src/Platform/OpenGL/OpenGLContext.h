@@ -1,5 +1,5 @@
 #pragma once
-#include "Drifter/Renderer/GraphicsContext.h"
+#include "Drifter/Graphics/GraphicsContext.h"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 

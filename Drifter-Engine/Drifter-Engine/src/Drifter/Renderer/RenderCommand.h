@@ -1,6 +1,6 @@
 #pragma once
 #include <glm/glm.hpp>
-#include "VertexArray.h"
+#include "Drifter/Graphics/VertexArray.h"
 namespace Drifter {
 
 	class RenderCommandParser

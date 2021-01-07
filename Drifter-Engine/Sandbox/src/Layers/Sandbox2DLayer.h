@@ -1,7 +1,7 @@
 #pragma once
 #include "Drifter.h"
 
-#include "Drifter/Renderer/Cameras/CameraController.h"
+#include "Drifter/Camera/CameraController.h"
 
 namespace Sandbox{
 	class Sandbox2DLayer : public Drifter::Layer

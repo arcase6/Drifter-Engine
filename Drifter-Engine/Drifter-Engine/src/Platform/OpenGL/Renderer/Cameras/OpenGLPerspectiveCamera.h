@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Drifter/Renderer/Cameras/Camera.h"
+#include "Drifter/Camera/Camera.h"
 #include "Drifter/Application.h"
 
 namespace Drifter {

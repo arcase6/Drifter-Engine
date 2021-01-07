@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Drifter/Renderer/Buffer.h>
+#include <Drifter/Graphics/Buffer.h>
 namespace Drifter {
 	class OpenGLVertexBuffer : public VertexBuffer
 	{

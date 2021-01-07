@@ -1,5 +1,5 @@
 #pragma once
-#include "Drifter/Renderer/Shaders/Shader.h"
+#include "Drifter/Graphics/Shader.h"
 #include "OpenGLUniform.h"
 
 #include "DebugUtil/Instrumentation.h"

@@ -2,7 +2,7 @@
 #include "Drifter.h"
 
 #include "Platform/OpenGL/Renderer/Shaders/OpenGLShader.h"
-#include "Drifter/Renderer/Cameras/CameraController.h"
+#include "Drifter/Camera/CameraController.h"
 #include "Drifter/Renderer/Renderer2D.h"
 
 #include "imgui.h"

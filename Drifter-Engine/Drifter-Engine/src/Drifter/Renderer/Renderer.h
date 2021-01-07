@@ -1,10 +1,10 @@
 #pragma once
 
-#include "VertexArray.h"
-#include "Drifter/Renderer/Shaders/Shader.h"
+#include "Drifter/Graphics/VertexArray.h"
+#include "Drifter/Graphics/Shader.h"
 #include "glm/glm.hpp"
 
-#include "Drifter/Renderer/Cameras/Camera.h"
+#include "Drifter/Camera/Camera.h"
 namespace Drifter {
 	enum class RendererAPI
 	{
