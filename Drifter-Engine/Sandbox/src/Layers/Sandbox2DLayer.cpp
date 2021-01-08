@@ -36,9 +36,13 @@ namespace Sandbox {
 
 		ImGui::Text("Quad Transform Settings");
 		ImGui::SliderAngle("Quad Rotation", &m_Rotation);
-		ImGui::SliderFloat2("Quad Size", glm::value_ptr(m_Size), .1, 10);
-		ImGui::SliderFloat2("Quad Pivot", glm::value_ptr(m_Pivot), 0.0f, 1.0f);
+		ImGui::DragFloat2("Quad Size", glm::value_ptr(m_Size),.01f, .1f, 10.0f);
+		ImGui::DragFloat2("Quad Pivot", glm::value_ptr(m_Pivot),.01f, 0.0f, 1.0f);
 
+		ImGui::Spacing();
+		ImGui::Text("Tiling Properties");
+		ImGui::DragFloat2("Tiling", glm::value_ptr(m_Tiling), .01f, -1000.0f, 1000.0f);
+		ImGui::DragFloat2("Offset", glm::value_ptr(m_Offset), .01f, -1000.0f, 1000.0f);
 		ImGui::End();
 
 
@@ -105,6 +109,8 @@ namespace Sandbox {
 
 	void Sandbox2DLayer::DrawGrid()
 	{
+
+		Drifter::Sprite sprite{ m_MainTex, {m_Tiling, m_Offset}, m_Tint };
 		PROFILE_FUNCTION();
 		using namespace Drifter;
 		m_MainTex->Bind(0);
@@ -112,7 +118,7 @@ namespace Sandbox {
 		for (int r = 0; r < m_GridSize.x; r++) {
 			for (int c = 0; c < m_GridSize.y; c++) {
 				transform.SetPosition({ m_Size.x * 1.1f * c, m_Size.y * 1.1f * r , 0 });
-				Renderer2D::DrawQuad(transform, m_Tint, m_MainTex);
+				Renderer2D::DrawSprite(transform, sprite);
 			}
 		}
 	}

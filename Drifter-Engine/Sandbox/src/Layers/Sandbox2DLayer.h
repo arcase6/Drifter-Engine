@@ -39,6 +39,10 @@ namespace Sandbox{
 
 		glm::ivec2 m_GridSize{ 10,10 };
 		glm::vec2 m_Pivot{0.0f, 0.0f };
+
+		glm::vec2 m_Tiling{ 1.0f, 1.0f };
+		glm::vec2 m_Offset{ 0.0f, 0.0f };
+
 	};
 }
 
