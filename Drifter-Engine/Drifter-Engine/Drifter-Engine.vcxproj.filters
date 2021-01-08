@@ -211,6 +211,7 @@
       <Filter>src\Drifter\Renderer\Shaders</Filter>
     </ClInclude>
     <ClInclude Include="src\Drifter\Graphics\GraphicsInterfaces.h" />
+    <ClInclude Include="src\Drifter\Renderer\RendererStatistics.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\vendors\glm\glm\detail\glm.cpp">

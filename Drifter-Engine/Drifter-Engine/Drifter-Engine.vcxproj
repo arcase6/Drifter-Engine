@@ -178,6 +178,7 @@
     <ClInclude Include="src\Drifter\Graphics\Texture.h" />
     <ClInclude Include="src\Drifter\Graphics\Uniform.h" />
     <ClInclude Include="src\Drifter\Graphics\VertexArray.h" />
+    <ClInclude Include="src\Drifter\Renderer\RendererStatistics.h" />
     <ClInclude Include="src\Drifter\Transform.h" />
     <ClInclude Include="src\Drifter\Window.h" />
     <ClInclude Include="src\EntryPoint.h" />

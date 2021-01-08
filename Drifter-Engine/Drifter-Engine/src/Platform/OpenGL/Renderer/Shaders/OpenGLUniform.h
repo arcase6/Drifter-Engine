@@ -17,10 +17,12 @@ namespace Drifter {
 		virtual void Set(const glm::mat3x3& value) override;
 		virtual void Set(const glm::mat4& value) override;
 
-		virtual void Set(int value) override;
+		virtual void Set(int32_t value) override;
 		virtual void Set(const glm::ivec2& value) override;
 		virtual void Set(const glm::ivec3& value) override;
 		virtual void Set(const glm::ivec4& value) override;
+		virtual void Set(const int32_t* value, uint32_t count) override;
+
 
 		virtual void Set(bool value) override;
 

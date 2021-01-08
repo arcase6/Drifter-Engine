@@ -13,6 +13,7 @@ namespace Sandbox{
 		//Inheritted from Layer
 		virtual void OnUpdate() override;
 		virtual void OnImgui() override;
+
 		virtual void OnEvent(Drifter::Event& e) override;
 
 		virtual void OnAttach() override {
@@ -24,6 +25,7 @@ namespace Sandbox{
 	private:
 		void SetupCameras();
 		void DrawGrid();
+		void DrawImguiProfiling();
 	private:
 
 		//OpenGL data for rendering -- likely to be removed later

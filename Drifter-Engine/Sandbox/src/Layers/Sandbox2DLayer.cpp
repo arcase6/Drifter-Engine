@@ -7,6 +7,7 @@
 
 #include "imgui.h"
 #include "glm/gtc/type_ptr.hpp"
+#include "spdlog/fmt/bundled/format.h"
 
 #include <string>
 namespace Sandbox {
@@ -40,16 +41,51 @@ namespace Sandbox {
 
 		ImGui::End();
 
-		if (!Drifter::Instrumentor::HasActiveSession()) {
-			return;
+
+		ImGui::Begin("Stats");
+
+		auto& stats = Drifter::Renderer2D::GetStats();
+		if (ImGui::CollapsingHeader("Renderer2D")) {
+			ImGui::Text(fmt::format("Draw   Count: {0}", stats.DrawCount).c_str());
+			ImGui::Text(fmt::format("Quad   Count: {0}", stats.QuadCount).c_str());
+			ImGui::Text(fmt::format("Vertex Count: {0}", stats.GetVertexCount()).c_str());
+			ImGui::Text(fmt::format("Index  Count: {0}", stats.GetIndexCount()).c_str());
 		}
-		ImGui::Begin("Profiler");
-		auto profileResults = Drifter::Instrumentor::GetActiveSession()->GetLog();
-		for (const auto& result : profileResults) {
-			std::string message = result.Name + std::string(":") + std::to_string(result.GetDuration());
-			ImGui::Text(message.c_str());
-		}
+		stats.Reset();
+#if DF_PROFILE_LEVEL >= DF_PROFILE_LEVEL_BASIC
+		DrawImguiProfiling();
+#endif
 		ImGui::End();
+	}
+
+	void Sandbox2DLayer::DrawImguiProfiling() {
+		static int ProfilingFramesRemaining = -1000;
+		static int profilingDuration = 10;
+
+
+		if (ProfilingFramesRemaining <= 0 && Drifter::Instrumentor::HasActiveSession()) {
+			if (ProfilingFramesRemaining == -1000) {
+				ProfilingFramesRemaining = profilingDuration;
+			}
+			else {
+				END_PROFILING_SESSION();
+			}
+		}
+		if (ImGui::CollapsingHeader("Profiler")) {
+			if (!Drifter::Instrumentor::HasActiveSession()) {
+				ImGui::Text("Press the . key to start a session");
+				ImGui::InputInt("Frame Count", &profilingDuration);
+				ProfilingFramesRemaining = -1000;
+			}
+			else {
+				--ProfilingFramesRemaining;
+				auto profileResults = Drifter::Instrumentor::GetActiveSession()->GetLog();
+				for (const auto& result : profileResults) {
+					std::string message = result.Name + std::string(":") + std::to_string(result.GetDuration());
+					ImGui::Text(message.c_str());
+				}
+			}
+		}
 	}
 
 	void Sandbox2DLayer::OnUpdate()
@@ -72,10 +108,10 @@ namespace Sandbox {
 		PROFILE_FUNCTION();
 		using namespace Drifter;
 		m_MainTex->Bind(0);
-		RectTransform transform({0,0 }, m_Size, m_Rotation, m_Pivot);
+		RectTransform transform({ 0,0 }, m_Size, m_Rotation, m_Pivot);
 		for (int r = 0; r < m_GridSize.x; r++) {
 			for (int c = 0; c < m_GridSize.y; c++) {
-				transform.SetPosition({ m_Size.x * 1.1f * c, m_Size.y * 1.1f * r , 0});
+				transform.SetPosition({ m_Size.x * 1.1f * c, m_Size.y * 1.1f * r , 0 });
 				Renderer2D::DrawQuad(transform, m_Tint, m_MainTex);
 			}
 		}

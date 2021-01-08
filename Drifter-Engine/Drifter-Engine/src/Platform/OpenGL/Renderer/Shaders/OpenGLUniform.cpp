@@ -46,7 +46,7 @@ namespace Drifter {
 		if (m_UniformID == -1) { return; }
 		glUniformMatrix4fv(m_UniformID, 1, GL_FALSE, glm::value_ptr(value));
 	}
-	void OpenGLUniform::Set(int value)
+	void OpenGLUniform::Set(int32_t value)
 	{
 		if (m_UniformID == -1) { return; }
 		glUniform1i(m_UniformID, value);
@@ -66,6 +66,13 @@ namespace Drifter {
 		if (m_UniformID == -1) { return; }
 		glUniform4i(m_UniformID, value.r, value.g, value.b, value.a);
 	}
+
+	void OpenGLUniform::Set(const int32_t * value, uint32_t count)
+	{
+		if (m_UniformID == -1) { return; }
+		glUniform1iv(m_UniformID, count, value);
+	}
+
 	void OpenGLUniform::Set(bool value)
 	{
 		if (m_UniformID == -1) { return; }

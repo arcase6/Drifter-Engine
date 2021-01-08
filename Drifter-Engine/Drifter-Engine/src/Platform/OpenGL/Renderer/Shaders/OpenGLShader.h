@@ -27,10 +27,12 @@ namespace Drifter {
 		virtual void SetMat3(const char* name, const glm::mat3& value) override { PROFILE_RENDERER_FUNCTION(); Set(name, value); }
 		virtual void SetMat4(const char* name, const glm::mat4& value) override { PROFILE_RENDERER_FUNCTION(); Set(name, value); }
 
-		virtual void SetInt(const char* name, int value) override { PROFILE_RENDERER_FUNCTION(); Set(name, value); }
+		virtual void SetInt(const char* name, int32_t value) override { PROFILE_RENDERER_FUNCTION(); Set(name, value); }
 		virtual void SetIVec2(const char* name, const glm::ivec2& value) override { PROFILE_RENDERER_FUNCTION(); Set(name, value); }
 		virtual void SetIVec3(const char* name, const glm::ivec3& value) override { PROFILE_RENDERER_FUNCTION(); Set(name, value); }
 		virtual void SetIVec4(const char* name, const glm::ivec4& value) override { PROFILE_RENDERER_FUNCTION(); Set(name, value); }
+		virtual void SetIntArray(const char* name, const int32_t * value, uint32_t count) override { PROFILE_RENDERER_FUNCTION(); Set(name, value, count); }
+
 
 		virtual void SetBool(const char* name, bool value) override { PROFILE_RENDERER_FUNCTION(); Set(name, value); }
 
@@ -55,7 +57,11 @@ namespace Drifter {
 		void Set(const char * name, const glm::ivec2& value) { OpenGLUniform(*this, name).Set(value); }
 		void Set(const char * name, const glm::ivec3& value) { OpenGLUniform(*this, name).Set(value); }
 		void Set(const char * name, const glm::ivec4& value) { OpenGLUniform(*this, name).Set(value); }
+		void Set(const char* name, const int32_t* value, uint32_t count) { OpenGLUniform(*this, name).Set(value, count); }
 		void Set(const char * name, bool value) { OpenGLUniform(*this, name).Set(value); }
+
+
+
 		float GetFloat(const char* name) { return OpenGLUniform(*this, name).GetFloat(); }
 		glm::vec2 GetVec2(const char * name){ return OpenGLUniform(*this, name).GetVec2(); }
 		glm::vec3 GetVec3(const char * name){ return OpenGLUniform(*this, name).GetVec3(); }
