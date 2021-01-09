@@ -7,7 +7,7 @@ namespace Drifter {
 	{
 	public:
 		inline int GetKeyCode() const { return m_keyCode; }
-		EVENT_CLASS_CATEGORY(EventCategory::EventCategoryInput | EventCategory::EventCategoryKeyboard)
+		EVENT_CLASS_CATEGORY(EventCategory::Input | EventCategory::Keyboard)
 	protected:
 		KeyEvent(int keyCode) : m_keyCode(keyCode) {}
 		int m_keyCode;

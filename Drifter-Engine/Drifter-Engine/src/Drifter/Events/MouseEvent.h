@@ -20,7 +20,7 @@ namespace Drifter {
 			return ss.str();
 		}
 		EVENT_CLASS_TYPE(MouseMoved)
-		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
+		EVENT_CLASS_CATEGORY(EventCategory::Mouse | EventCategory::Input)
 	private:
 		float m_mouseX, m_mouseY;
 	};
@@ -41,7 +41,7 @@ namespace Drifter {
 			return ss.str();
 		}
 		EVENT_CLASS_TYPE(MouseScrolled)
-		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
+		EVENT_CLASS_CATEGORY(EventCategory::Mouse | EventCategory::Input)
 	private:
 		float m_xOffset, m_yOffset;
 	};
@@ -50,7 +50,7 @@ namespace Drifter {
 	{
 	public:
 		inline int GetMouseButton() const { return m_button; }
-		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
+		EVENT_CLASS_CATEGORY(EventCategory::Mouse | EventCategory::Input)
 	protected:
 		MouseButtonEvent(int button) : m_button(button) {}
 		int m_button;
