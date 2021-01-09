@@ -3,7 +3,7 @@
 #include "Drifter/Renderer/Renderer.h"
 #include "Drifter/Renderer/RenderCommand.h"
 
-#include "Platform/OpenGL/Renderer/Shaders/OpenGLShader.h"
+#include "Platform/OpenGL/Graphics/OpenGLShader.h"
 
 #include "glm/gtc/matrix_transform.hpp"
 #include "DebugUtil/Instrumentation.h"

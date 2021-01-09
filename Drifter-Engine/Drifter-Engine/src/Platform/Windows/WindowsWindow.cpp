@@ -3,7 +3,7 @@
 #include "Drifter/Events/ApplicationEvent.h"
 #include "Drifter/Events/KeyEvent.h"
 #include "Drifter/Events/MouseEvent.h"
-#include <Platform/OpenGL/OpenGLContext.h>
+#include <Platform/OpenGL/Graphics/OpenGLContext.h>
 
 #include "Drifter/Renderer/Renderer.h"
 #include "DebugUtil/Instrumentation.h"

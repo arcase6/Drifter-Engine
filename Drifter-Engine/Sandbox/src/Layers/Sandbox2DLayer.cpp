@@ -1,7 +1,7 @@
 #include "Sandbox2DLayer.h"
 #include "Drifter.h"
 
-#include "Platform/OpenGL/Renderer/Shaders/OpenGLShader.h"
+#include "Platform/OpenGL/Graphics/OpenGLShader.h"
 #include "Drifter/Camera/CameraController.h"
 #include "Drifter/Renderer/Renderer2D.h"
 

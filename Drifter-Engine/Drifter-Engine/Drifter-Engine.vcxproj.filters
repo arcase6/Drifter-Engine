@@ -123,33 +123,6 @@
     <ClInclude Include="src\EntryPoint.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\OpenGLBuffer.h">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\OpenGLContext.h">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\OpenGLRenderCommandParser.h">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\OpenGLVertexArray.h">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\Renderer\Cameras\OpenGLOrthographicCamera.h">
-      <Filter>src\Platform\OpenGL\Renderer\Cameras</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\Renderer\Cameras\OpenGLPerspectiveCamera.h">
-      <Filter>src\Platform\OpenGL\Renderer\Cameras</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\Renderer\Shaders\OpenGLShader.h">
-      <Filter>src\Platform\OpenGL\Renderer\Shaders</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\Renderer\Shaders\OpenGLTexture.h">
-      <Filter>src\Platform\OpenGL\Renderer\Shaders</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\Renderer\Shaders\OpenGLUniform.h">
-      <Filter>src\Platform\OpenGL\Renderer\Shaders</Filter>
-    </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
       <Filter>src\Platform\Windows</Filter>
     </ClInclude>
@@ -212,6 +185,34 @@
     </ClInclude>
     <ClInclude Include="src\Drifter\Graphics\GraphicsInterfaces.h" />
     <ClInclude Include="src\Drifter\Renderer\RendererStatistics.h" />
+    <ClInclude Include="src\Drifter\Graphics\Sprite.h" />
+    <ClInclude Include="src\Platform\OpenGL\Graphics\OpenGLBuffer.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\Graphics\OpenGLContext.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\Graphics\OpenGLShader.h">
+      <Filter>src\Platform\OpenGL\Renderer\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\Graphics\OpenGLTexture.h">
+      <Filter>src\Platform\OpenGL\Renderer\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\Graphics\OpenGLUniform.h">
+      <Filter>src\Platform\OpenGL\Renderer\Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\Camera\OpenGLOrthographicCamera.h">
+      <Filter>src\Platform\OpenGL\Renderer\Cameras</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\Camera\OpenGLPerspectiveCamera.h">
+      <Filter>src\Platform\OpenGL\Renderer\Cameras</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\Renderer\OpenGLRenderCommandParser.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\Graphics\OpenGLVertexArray.h">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\vendors\glm\glm\detail\glm.cpp">
@@ -237,33 +238,6 @@
     </ClCompile>
     <ClCompile Include="src\Drifter\Transform.cpp">
       <Filter>src\Drifter</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\OpenGLBuffer.cpp">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\OpenGLContext.cpp">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\OpenGLRenderCommandParser.cpp">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\OpenGLVertexArray.cpp">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\Renderer\Cameras\OpenGLOrthographicCamera.cpp">
-      <Filter>src\Platform\OpenGL\Renderer\Cameras</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\Renderer\Cameras\OpenGLPerspectiveCamera.cpp">
-      <Filter>src\Platform\OpenGL\Renderer\Cameras</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\Renderer\Shaders\OpenGLShader.cpp">
-      <Filter>src\Platform\OpenGL\Renderer\Shaders</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\Renderer\Shaders\OpenGLTexture.cpp">
-      <Filter>src\Platform\OpenGL\Renderer\Shaders</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\Renderer\Shaders\OpenGLUniform.cpp">
-      <Filter>src\Platform\OpenGL\Renderer\Shaders</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\KeyCodes.cpp">
       <Filter>src\Platform\Windows</Filter>
@@ -318,6 +292,33 @@
     </ClCompile>
     <ClCompile Include="src\Drifter\Graphics\Uniform.cpp">
       <Filter>src\Drifter\Renderer\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\Graphics\OpenGLBuffer.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\Graphics\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\Graphics\OpenGLShader.cpp">
+      <Filter>src\Platform\OpenGL\Renderer\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\Graphics\OpenGLTexture.cpp">
+      <Filter>src\Platform\OpenGL\Renderer\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\Graphics\OpenGLUniform.cpp">
+      <Filter>src\Platform\OpenGL\Renderer\Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\Camera\OpenGLOrthographicCamera.cpp">
+      <Filter>src\Platform\OpenGL\Renderer\Cameras</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\Camera\OpenGLPerspectiveCamera.cpp">
+      <Filter>src\Platform\OpenGL\Renderer\Cameras</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\Renderer\OpenGLRenderCommandParser.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\Graphics\OpenGLVertexArray.cpp">
+      <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
