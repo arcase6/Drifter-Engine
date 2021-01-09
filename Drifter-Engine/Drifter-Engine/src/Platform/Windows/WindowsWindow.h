@@ -42,8 +42,8 @@ namespace Drifter {
 		GLFWwindow* m_window;
 		struct WindowData {
 			std::string Title;
-			unsigned int Width, Height;
-			bool VSync;
+			unsigned int Width = 0, Height = 0;
+			bool VSync = false;
 
 			EventCallbackFn EventCallback;
 		};

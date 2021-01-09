@@ -4,6 +4,7 @@
 #include "Drifter/Core/Base.h"
 #include "Drifter/Application.h"
 #include "DebugUtil/Debug.h"
+#include "Drifter/Core/Format.h"
 
 //Layers
 #include "Drifter/Layer.h"

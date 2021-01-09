@@ -7,7 +7,6 @@
 
 #include "imgui.h"
 #include "glm/gtc/type_ptr.hpp"
-#include "spdlog/fmt/bundled/format.h"
 
 #include <string>
 namespace Sandbox {
@@ -83,7 +82,7 @@ namespace Sandbox {
 			}
 			else {
 				--ProfilingFramesRemaining;
-				auto profileResults = Drifter::Instrumentor::GetActiveSession()->GetLog();
+				auto& profileResults = Drifter::Instrumentor::GetActiveSession()->GetLog();
 				for (const auto& result : profileResults) {
 					std::string message = result.Name + std::string(":") + std::to_string(result.GetDuration());
 					ImGui::Text(message.c_str());

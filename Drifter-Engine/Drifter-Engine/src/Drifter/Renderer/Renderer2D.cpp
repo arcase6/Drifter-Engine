@@ -57,7 +57,7 @@ namespace Drifter {
 		Ref<uint32_t[]> indices(new uint32_t[s_Data.MaxIndices]);
 
 		uint32_t offset = 0;
-		for (uint32_t i = 0; i < s_Data.MaxIndices; i += 6) {
+		for (uint64_t i = 0; i < (uint64_t)s_Data.MaxIndices; i += 6) {
 			indices[i + 0] = offset + 0;
 			indices[i + 1] = offset + 1;
 			indices[i + 2] = offset + 2;
@@ -131,11 +131,11 @@ namespace Drifter {
 	}
 
 	void Renderer2D::FlushBatch() {
-		uint32_t dataSize = (QuadVertex*)s_Data.QuadVertexDataBufferOffset - (QuadVertex*)s_Data.QuadVertexDataBuffer;
-		if (dataSize == 0) {
+		auto dataSize = (QuadVertex*)s_Data.QuadVertexDataBufferOffset - (QuadVertex*)s_Data.QuadVertexDataBuffer;
+		if (dataSize <= 0) {
 			return;
 		}
-		s_Data.BatchVertexBuffer->SetData(s_Data.QuadVertexDataBuffer, dataSize, 0);
+		s_Data.BatchVertexBuffer->SetData(s_Data.QuadVertexDataBuffer, static_cast<uint32_t>(dataSize), 0);
 		for (uint32_t i = 0; i < s_Data.TextureSlotIndex; ++i) {
 			s_Data.TextureSlots[i]->Bind(i);
 		}
