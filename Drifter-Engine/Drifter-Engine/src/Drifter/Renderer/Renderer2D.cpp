@@ -199,7 +199,7 @@ namespace Drifter {
 	uint32_t GetTextureSlot(const Ref<Texture2D> texture) {
 		uint32_t textureSlot = 0;
 		for (textureSlot = 0; textureSlot < s_Data.TextureSlotIndex; textureSlot++) {
-			if (CompareSharedPtrs(s_Data.TextureSlots[textureSlot], texture)) {
+			if (CompareRefs(s_Data.TextureSlots[textureSlot], texture)) {
 				break;
 			}
 		}

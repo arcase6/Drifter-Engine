@@ -14,7 +14,7 @@ namespace Drifter
 			DF_LOG_ERROR("RendererAPI::None is not currently implemented!");
 			return nullptr;
 		case RendererAPI::OpenGL:
-			return std::make_shared<OpenGLTexture2D>(filepath);
+			return CreateRef<OpenGLTexture2D>(filepath);
 
 		}
 		DF_LOG_ERROR("Unsupported RendererAPI received!");
@@ -27,7 +27,7 @@ namespace Drifter
 			DF_LOG_ERROR("RendererAPI::None is not currently implemented!");
 			return nullptr;
 		case RendererAPI::OpenGL:
-			return std::make_shared<OpenGLTexture2D>(flatColor, width, height);
+			return CreateRef<OpenGLTexture2D>(flatColor, width, height);
 
 		}
 		DF_LOG_ERROR("Unsupported RendererAPI received!");

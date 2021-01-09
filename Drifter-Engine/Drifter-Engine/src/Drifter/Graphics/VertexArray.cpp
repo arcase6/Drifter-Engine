@@ -14,7 +14,7 @@ namespace Drifter {
 			DF_LOG_ERROR("RendererAPI is not supported");
 			return nullptr;
 		case RendererAPI::OpenGL:
-			return std::shared_ptr<VertexArray>(new OpenGLVertexArray());
+			return CreateRef<OpenGLVertexArray>();
 		}
 		DF_LOG_ERROR("RendererAPI is not supported");
 			return nullptr;

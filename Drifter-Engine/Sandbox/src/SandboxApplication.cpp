@@ -8,8 +8,8 @@ namespace Sandbox {
 	{
 	public:
 		SandboxApplication() {
-			//PushLayer(std::make_shared<ExampleLayer>());
-			PushLayer(std::make_shared<Sandbox2DLayer>());
+			//PushLayer(CreateRef());
+			PushLayer(Drifter::CreateRef<Sandbox2DLayer>());
 		}
 		~SandboxApplication() = default;
 	};

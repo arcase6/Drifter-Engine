@@ -16,7 +16,7 @@ namespace Drifter {
 			DF_LOG_ERROR("RendererAPI::None is not currently implemented!");
 			break;
 		case RendererAPI::OpenGL:
-			return std::shared_ptr<VertexBuffer>(new OpenGLVertexBuffer(size, layout));
+			return CreateRef <OpenGLVertexBuffer>(size, layout);
 		}
 		DF_ASSERT_UNREACHABLE_LV1("Unsupported RendererAPI received!");
 		return nullptr;
@@ -30,7 +30,7 @@ namespace Drifter {
 				DF_LOG_ERROR("RendererAPI::None is not currently implemented!");
 				break;
 			case RendererAPI::OpenGL:
-				return std::shared_ptr<VertexBuffer>(new OpenGLVertexBuffer(vertices.get(), count, layout));
+				return CreateRef<OpenGLVertexBuffer>(vertices.get(), count, layout);
 		}
 		DF_ASSERT_UNREACHABLE_LV1("Unsupported RendererAPI received!");
 		return nullptr;
@@ -44,7 +44,7 @@ namespace Drifter {
 			DF_LOG_ERROR("RendererAPI::None is not currently implemented!");
 			break;
 		case RendererAPI::OpenGL:
-			return std::shared_ptr<VertexBuffer>(new OpenGLVertexBuffer(vertices, count, layout));
+			return CreateRef<OpenGLVertexBuffer>(vertices, count, layout);
 		}
 		DF_ASSERT_UNREACHABLE_LV1("Unsupported RendererAPI received!");
 		return nullptr;
@@ -58,7 +58,7 @@ namespace Drifter {
 			DF_LOG_ERROR("RendererAPI::None is not currently implemented!");
 			break;
 		case RendererAPI::OpenGL:
-			return std::shared_ptr<IndexBuffer>(new OpenGLIndexBuffer(indices.get(), count));
+			return CreateRef<OpenGLIndexBuffer>(indices.get(), count);
 		}
 		DF_ASSERT_UNREACHABLE_LV1("Unsupported RendererAPI received!");
 		return nullptr;
@@ -72,7 +72,7 @@ namespace Drifter {
 			DF_LOG_ERROR("RendererAPI::None is not currently implemented!");
 			break;
 		case RendererAPI::OpenGL:
-			return std::shared_ptr<IndexBuffer>(new OpenGLIndexBuffer(indices, count));
+			return CreateRef<OpenGLIndexBuffer>(indices, count);
 		}
 		DF_ASSERT_UNREACHABLE_LV1("Unsupported RendererAPI received!");
 		return nullptr;

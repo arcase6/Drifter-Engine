@@ -124,7 +124,7 @@ namespace Drifter {
             if (HasActiveSession()) {
                 EndSession();
             }
-            GetActiveSession() = std::make_shared<ProfileSession>(filepath);
+            GetActiveSession() = CreateRef<ProfileSession>(filepath);
             return GetActiveSession();
         }
 

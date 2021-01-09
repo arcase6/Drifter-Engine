@@ -24,12 +24,10 @@ namespace Drifter {
 		Ref<Shader> result;
 		switch (Renderer::GetAPI()) {
 		case RendererAPI::None:
-			DF_LOG_ERROR("RendererAPI::None is not currently implemented!");
+			DF_CORE_ASSERT_UNREACHABLE_LV1("RendererAPI::None is not currently implemented!");
 			return nullptr;
 		case RendererAPI::OpenGL:
-			//result.reset(static_cast<Shader*>(new OpenGLShader(vert, frag)));
-			//return result;
-			return std::shared_ptr<Shader>(static_cast<Shader*>(new OpenGLShader(name, vert, frag)));
+			return CreateRef<OpenGLShader>(name, vert, frag);
 		}
 		DF_CORE_ASSERT_UNREACHABLE_LV1("Unsupported RendererAPI received!");
 		return nullptr;
