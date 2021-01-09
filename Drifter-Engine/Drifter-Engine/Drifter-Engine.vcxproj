@@ -73,13 +73,16 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>dfpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;DF_CORE;DF_PLATFORM_WINDOWS;DRIFTER_BUILD_DLL;DF_DEBUG;DF_ENABLE_ASSERTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;DF_CORE;DF_PLATFORM_WINDOWS;DF_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;..\vendors\spdlogger\include;..\vendors\glfw\include;..\vendors\glad\include;..\vendors\imgui;..\vendors\glm;..\vendors\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
+      <MinimalRebuild>false</MinimalRebuild>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -89,15 +92,13 @@
     <Lib>
       <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
-    <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Debug-windows-x86_64\Drifter-Engine\Drifter-Engine.lib\ (xcopy /Q /E /Y /I ..\bin\Debug-windows-x86_64\Drifter-Engine\Drifter-Engine.lib "..\bin\Debug-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Debug-windows-x86_64\Drifter-Engine\Drifter-Engine.lib "..\bin\Debug-windows-x86_64\Sandbox\" &gt; nul)</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>dfpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;DF_CORE;DF_PLATFORM_WINDOWS;DRIFTER_BUILD_DLL;DF_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;DF_CORE;DF_PLATFORM_WINDOWS;DF_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;..\vendors\spdlogger\include;..\vendors\glfw\include;..\vendors\glad\include;..\vendors\imgui;..\vendors\glm;..\vendors\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -105,6 +106,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -115,15 +117,13 @@
     <Lib>
       <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
-    <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Release-windows-x86_64\Drifter-Engine\Drifter-Engine.lib\ (xcopy /Q /E /Y /I ..\bin\Release-windows-x86_64\Drifter-Engine\Drifter-Engine.lib "..\bin\Release-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Release-windows-x86_64\Drifter-Engine\Drifter-Engine.lib "..\bin\Release-windows-x86_64\Sandbox\" &gt; nul)</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Dist|x64'">
     <ClCompile>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>dfpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
-      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;DF_CORE;DF_PLATFORM_WINDOWS;DRIFTER_BUILD_DLL;DF_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;GLFW_INCLUDE_NONE;DF_CORE;DF_PLATFORM_WINDOWS;DF_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>src;..\vendors\spdlogger\include;..\vendors\glfw\include;..\vendors\glad\include;..\vendors\imgui;..\vendors\glm;..\vendors\stb_image;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -131,6 +131,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -141,57 +142,57 @@
     <Lib>
       <AdditionalDependencies>opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
-    <PostBuildEvent>
-      <Command>IF EXIST ..\bin\Dist-windows-x86_64\Drifter-Engine\Drifter-Engine.lib\ (xcopy /Q /E /Y /I ..\bin\Dist-windows-x86_64\Drifter-Engine\Drifter-Engine.lib "..\bin\Dist-windows-x86_64\Sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\Dist-windows-x86_64\Drifter-Engine\Drifter-Engine.lib "..\bin\Dist-windows-x86_64\Sandbox\" &gt; nul)</Command>
-    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\vendors\stb_image\stb_image.h" />
-    <ClInclude Include="src\Core.h" />
     <ClInclude Include="src\DebugUtil\Assert.h" />
+    <ClInclude Include="src\DebugUtil\Debug.h" />
     <ClInclude Include="src\DebugUtil\Instrumentation.h" />
     <ClInclude Include="src\DebugUtil\Log.h" />
     <ClInclude Include="src\DebugUtil\internal\DebugAssert.h" />
     <ClInclude Include="src\Drifter.h" />
     <ClInclude Include="src\Drifter\Application.h" />
+    <ClInclude Include="src\Drifter\Camera\Camera.h" />
+    <ClInclude Include="src\Drifter\Camera\CameraController.h" />
+    <ClInclude Include="src\Drifter\Core\Base.h" />
+    <ClInclude Include="src\Drifter\Core\Format.h" />
     <ClInclude Include="src\Drifter\Core\Time.h" />
     <ClInclude Include="src\Drifter\EditorUI\IMGUILayer.h" />
     <ClInclude Include="src\Drifter\Events\ApplicationEvent.h" />
     <ClInclude Include="src\Drifter\Events\Event.h" />
+    <ClInclude Include="src\Drifter\Events\EventCategory.h" />
     <ClInclude Include="src\Drifter\Events\KeyEvent.h" />
     <ClInclude Include="src\Drifter\Events\MouseEvent.h" />
+    <ClInclude Include="src\Drifter\Graphics\Buffer.h" />
+    <ClInclude Include="src\Drifter\Graphics\GraphicsContext.h" />
     <ClInclude Include="src\Drifter\Graphics\GraphicsInterfaces.h" />
+    <ClInclude Include="src\Drifter\Graphics\Shader.h" />
+    <ClInclude Include="src\Drifter\Graphics\ShaderDataType.h" />
     <ClInclude Include="src\Drifter\Graphics\Sprite.h" />
+    <ClInclude Include="src\Drifter\Graphics\Texture.h" />
+    <ClInclude Include="src\Drifter\Graphics\Uniform.h" />
+    <ClInclude Include="src\Drifter\Graphics\VertexArray.h" />
     <ClInclude Include="src\Drifter\Input\Input.h" />
     <ClInclude Include="src\Drifter\Input\KeyCodes.h" />
     <ClInclude Include="src\Drifter\Input\MouseCodes.h" />
     <ClInclude Include="src\Drifter\Layer.h" />
     <ClInclude Include="src\Drifter\LayerStack.h" />
-    <ClInclude Include="src\Drifter\Graphics\Buffer.h" />
-    <ClInclude Include="src\Drifter\Camera\Camera.h" />
-    <ClInclude Include="src\Drifter\Camera\CameraController.h" />
-    <ClInclude Include="src\Drifter\Graphics\GraphicsContext.h" />
     <ClInclude Include="src\Drifter\Renderer\RenderCommand.h" />
     <ClInclude Include="src\Drifter\Renderer\Renderer.h" />
     <ClInclude Include="src\Drifter\Renderer\Renderer2D.h" />
-    <ClInclude Include="src\Drifter\Graphics\Shader.h" />
-    <ClInclude Include="src\Drifter\Graphics\ShaderDataType.h" />
-    <ClInclude Include="src\Drifter\Graphics\Texture.h" />
-    <ClInclude Include="src\Drifter\Graphics\Uniform.h" />
-    <ClInclude Include="src\Drifter\Graphics\VertexArray.h" />
     <ClInclude Include="src\Drifter\Renderer\RendererStatistics.h" />
     <ClInclude Include="src\Drifter\Transform.h" />
     <ClInclude Include="src\Drifter\Window.h" />
     <ClInclude Include="src\EntryPoint.h" />
-    <ClInclude Include="src\Platform\OpenGL\Graphics\OpenGLBuffer.h" />
-    <ClInclude Include="src\Platform\OpenGL\Graphics\OpenGLContext.h" />
-    <ClInclude Include="src\Platform\OpenGL\Renderer\OpenGLRenderCommandParser.h" />
-    <ClInclude Include="src\Platform\OpenGL\Graphics\OpenGLVertexArray.h" />
     <ClInclude Include="src\Platform\OpenGL\Camera\OpenGLOrthographicCamera.h" />
     <ClInclude Include="src\Platform\OpenGL\Camera\OpenGLPerspectiveCamera.h" />
+    <ClInclude Include="src\Platform\OpenGL\Graphics\OpenGLBuffer.h" />
+    <ClInclude Include="src\Platform\OpenGL\Graphics\OpenGLContext.h" />
     <ClInclude Include="src\Platform\OpenGL\Graphics\OpenGLShader.h" />
     <ClInclude Include="src\Platform\OpenGL\Graphics\OpenGLTexture.h" />
     <ClInclude Include="src\Platform\OpenGL\Graphics\OpenGLUniform.h" />
+    <ClInclude Include="src\Platform\OpenGL\Graphics\OpenGLVertexArray.h" />
+    <ClInclude Include="src\Platform\OpenGL\Renderer\OpenGLRenderCommandParser.h" />
     <ClInclude Include="src\Platform\Windows\WindowsInput.h" />
     <ClInclude Include="src\Platform\Windows\WindowsTime.h" />
     <ClInclude Include="src\Platform\Windows\WindowsWindow.h" />
@@ -202,37 +203,39 @@
     <ClCompile Include="..\vendors\stb_image\stb_image.cpp" />
     <ClCompile Include="src\DebugUtil\Log.cpp" />
     <ClCompile Include="src\Drifter\Application.cpp" />
-    <ClCompile Include="src\Drifter\Core\Time.cpp" />
-    <ClCompile Include="src\Drifter\EditorUI\IMGUILayer.cpp" />
-    <ClCompile Include="src\Drifter\Layer.cpp" />
-    <ClCompile Include="src\Drifter\LayerStack.cpp" />
-    <ClCompile Include="src\Drifter\Graphics\Buffer.cpp" />
     <ClCompile Include="src\Drifter\Camera\Camera.cpp" />
     <ClCompile Include="src\Drifter\Camera\OrthographicCameraController.cpp" />
     <ClCompile Include="src\Drifter\Camera\PerspectiveCameraController.cpp" />
-    <ClCompile Include="src\Drifter\Renderer\RenderCommand.cpp" />
-    <ClCompile Include="src\Drifter\Renderer\Renderer.cpp" />
-    <ClCompile Include="src\Drifter\Renderer\Renderer2D.cpp" />
+    <ClCompile Include="src\Drifter\Core\Time.cpp" />
+    <ClCompile Include="src\Drifter\EditorUI\IMGUILayer.cpp" />
+    <ClCompile Include="src\Drifter\Graphics\Buffer.cpp" />
     <ClCompile Include="src\Drifter\Graphics\Shader.cpp" />
     <ClCompile Include="src\Drifter\Graphics\Texture.cpp" />
     <ClCompile Include="src\Drifter\Graphics\Uniform.cpp" />
     <ClCompile Include="src\Drifter\Graphics\VertexArray.cpp" />
+    <ClCompile Include="src\Drifter\Layer.cpp" />
+    <ClCompile Include="src\Drifter\LayerStack.cpp" />
+    <ClCompile Include="src\Drifter\Renderer\RenderCommand.cpp" />
+    <ClCompile Include="src\Drifter\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Drifter\Renderer\Renderer2D.cpp" />
     <ClCompile Include="src\Drifter\Transform.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\Graphics\OpenGLBuffer.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\Graphics\OpenGLContext.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\Renderer\OpenGLRenderCommandParser.cpp" />
-    <ClCompile Include="src\Platform\OpenGL\Graphics\OpenGLVertexArray.cpp" />
     <ClCompile Include="src\Platform\OpenGL\Camera\OpenGLOrthographicCamera.cpp" />
     <ClCompile Include="src\Platform\OpenGL\Camera\OpenGLPerspectiveCamera.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\Graphics\OpenGLBuffer.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\Graphics\OpenGLContext.cpp" />
     <ClCompile Include="src\Platform\OpenGL\Graphics\OpenGLShader.cpp" />
     <ClCompile Include="src\Platform\OpenGL\Graphics\OpenGLTexture.cpp" />
     <ClCompile Include="src\Platform\OpenGL\Graphics\OpenGLUniform.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\Graphics\OpenGLVertexArray.cpp" />
+    <ClCompile Include="src\Platform\OpenGL\Renderer\OpenGLRenderCommandParser.cpp" />
     <ClCompile Include="src\Platform\Windows\KeyCodes.cpp" />
     <ClCompile Include="src\Platform\Windows\MouseCodes.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsInput.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsTime.cpp" />
     <ClCompile Include="src\Platform\Windows\WindowsWindow.cpp" />
-    <ClCompile Include="src\dfpch.cpp" />
+    <ClCompile Include="src\dfpch.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\vendors\glfw\glfw.vcxproj">

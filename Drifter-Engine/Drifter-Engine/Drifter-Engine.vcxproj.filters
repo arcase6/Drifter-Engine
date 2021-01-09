@@ -4,14 +4,17 @@
     <Filter Include="src">
       <UniqueIdentifier>{2DAB880B-99B4-887C-2230-9F7C8E38947C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Debug">
-      <UniqueIdentifier>{63A3C3B2-CF0D-7829-184C-29CF84F5557E}</UniqueIdentifier>
+    <Filter Include="src\DebugUtil">
+      <UniqueIdentifier>{81340DE9-EDF4-881F-B62F-D29C22AFCDFB}</UniqueIdentifier>
     </Filter>
-    <Filter Include="src\Debug\internal">
-      <UniqueIdentifier>{0FC5FA3B-FBA8-BB91-6409-B6E4500CA613}</UniqueIdentifier>
+    <Filter Include="src\DebugUtil\internal">
+      <UniqueIdentifier>{ED77D409-D971-FD5B-C2DE-936CAE7763C8}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Drifter">
       <UniqueIdentifier>{ECCE0391-5884-7C86-E178-765D4D2D738A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Drifter\Camera">
+      <UniqueIdentifier>{E4E1F37A-D0C5-B4D0-3926-AF2325299F52}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Drifter\Core">
       <UniqueIdentifier>{C4268F5B-B01F-AEAD-D951-9332C5A98DB9}</UniqueIdentifier>
@@ -22,17 +25,14 @@
     <Filter Include="src\Drifter\Events">
       <UniqueIdentifier>{50F91581-3CDD-D6D6-A53D-D1299140C158}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Drifter\Graphics">
+      <UniqueIdentifier>{AC20DDB9-98AF-6683-41CE-7A7E2D3C7729}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Drifter\Input">
       <UniqueIdentifier>{EBFFDFCD-5716-DE63-A08D-69850CE3AEEB}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Drifter\Renderer">
       <UniqueIdentifier>{129C7415-FE2A-FEDE-A749-12DA93B70E85}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Drifter\Renderer\Cameras">
-      <UniqueIdentifier>{FDB1D6BE-E96C-C66A-9224-3FB57EBE10FB}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Drifter\Renderer\Shaders">
-      <UniqueIdentifier>{EBB2F49D-D76D-E449-8025-5D946CBF2EDA}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Platform">
       <UniqueIdentifier>{21CA02E5-0D2D-9289-B6B2-CA3FA2F45D0C}</UniqueIdentifier>
@@ -40,14 +40,14 @@
     <Filter Include="src\Platform\OpenGL">
       <UniqueIdentifier>{35A49437-A105-7245-2A73-B8F796D3A804}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\Platform\OpenGL\Camera">
+      <UniqueIdentifier>{0DCB6844-F9DA-1415-6294-79334EC303AE}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Platform\OpenGL\Graphics">
+      <UniqueIdentifier>{15F830B4-01B3-2060-AA6A-99AA96046BF0}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Platform\OpenGL\Renderer">
       <UniqueIdentifier>{7B73C80F-672E-B8BB-10E6-3006FC7F024C}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Platform\OpenGL\Renderer\Cameras">
-      <UniqueIdentifier>{66E21BA6-52C9-DD9D-FB19-44BBE7DF5604}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\Platform\OpenGL\Renderer\Shaders">
-      <UniqueIdentifier>{54E33985-40CA-FB7C-E91A-629AD5E074E3}</UniqueIdentifier>
     </Filter>
     <Filter Include="src\Platform\Windows">
       <UniqueIdentifier>{5B054582-4794-CE4B-F0B2-E246DC20DFF1}</UniqueIdentifier>
@@ -72,14 +72,38 @@
     <ClInclude Include="..\vendors\stb_image\stb_image.h">
       <Filter>vendors\stb_image</Filter>
     </ClInclude>
-    <ClInclude Include="src\Core.h">
-      <Filter>src</Filter>
+    <ClInclude Include="src\DebugUtil\Assert.h">
+      <Filter>src\DebugUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DebugUtil\Debug.h">
+      <Filter>src\DebugUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DebugUtil\Instrumentation.h">
+      <Filter>src\DebugUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DebugUtil\Log.h">
+      <Filter>src\DebugUtil</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DebugUtil\internal\DebugAssert.h">
+      <Filter>src\DebugUtil\internal</Filter>
     </ClInclude>
     <ClInclude Include="src\Drifter.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="src\Drifter\Application.h">
       <Filter>src\Drifter</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Camera\Camera.h">
+      <Filter>src\Drifter\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Camera\CameraController.h">
+      <Filter>src\Drifter\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Core\Base.h">
+      <Filter>src\Drifter\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Core\Format.h">
+      <Filter>src\Drifter\Core</Filter>
     </ClInclude>
     <ClInclude Include="src\Drifter\Core\Time.h">
       <Filter>src\Drifter\Core</Filter>
@@ -93,11 +117,41 @@
     <ClInclude Include="src\Drifter\Events\Event.h">
       <Filter>src\Drifter\Events</Filter>
     </ClInclude>
+    <ClInclude Include="src\Drifter\Events\EventCategory.h">
+      <Filter>src\Drifter\Events</Filter>
+    </ClInclude>
     <ClInclude Include="src\Drifter\Events\KeyEvent.h">
       <Filter>src\Drifter\Events</Filter>
     </ClInclude>
     <ClInclude Include="src\Drifter\Events\MouseEvent.h">
       <Filter>src\Drifter\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Graphics\Buffer.h">
+      <Filter>src\Drifter\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Graphics\GraphicsContext.h">
+      <Filter>src\Drifter\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Graphics\GraphicsInterfaces.h">
+      <Filter>src\Drifter\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Graphics\Shader.h">
+      <Filter>src\Drifter\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Graphics\ShaderDataType.h">
+      <Filter>src\Drifter\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Graphics\Sprite.h">
+      <Filter>src\Drifter\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Graphics\Texture.h">
+      <Filter>src\Drifter\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Graphics\Uniform.h">
+      <Filter>src\Drifter\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Graphics\VertexArray.h">
+      <Filter>src\Drifter\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="src\Drifter\Input\Input.h">
       <Filter>src\Drifter\Input</Filter>
@@ -114,6 +168,18 @@
     <ClInclude Include="src\Drifter\LayerStack.h">
       <Filter>src\Drifter</Filter>
     </ClInclude>
+    <ClInclude Include="src\Drifter\Renderer\RenderCommand.h">
+      <Filter>src\Drifter\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Renderer\Renderer.h">
+      <Filter>src\Drifter\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Renderer\Renderer2D.h">
+      <Filter>src\Drifter\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Drifter\Renderer\RendererStatistics.h">
+      <Filter>src\Drifter\Renderer</Filter>
+    </ClInclude>
     <ClInclude Include="src\Drifter\Transform.h">
       <Filter>src\Drifter</Filter>
     </ClInclude>
@@ -122,6 +188,33 @@
     </ClInclude>
     <ClInclude Include="src\EntryPoint.h">
       <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\Camera\OpenGLOrthographicCamera.h">
+      <Filter>src\Platform\OpenGL\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\Camera\OpenGLPerspectiveCamera.h">
+      <Filter>src\Platform\OpenGL\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\Graphics\OpenGLBuffer.h">
+      <Filter>src\Platform\OpenGL\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\Graphics\OpenGLContext.h">
+      <Filter>src\Platform\OpenGL\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\Graphics\OpenGLShader.h">
+      <Filter>src\Platform\OpenGL\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\Graphics\OpenGLTexture.h">
+      <Filter>src\Platform\OpenGL\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\Graphics\OpenGLUniform.h">
+      <Filter>src\Platform\OpenGL\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\Graphics\OpenGLVertexArray.h">
+      <Filter>src\Platform\OpenGL\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Platform\OpenGL\Renderer\OpenGLRenderCommandParser.h">
+      <Filter>src\Platform\OpenGL\Renderer</Filter>
     </ClInclude>
     <ClInclude Include="src\Platform\Windows\WindowsInput.h">
       <Filter>src\Platform\Windows</Filter>
@@ -135,84 +228,6 @@
     <ClInclude Include="src\dfpch.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\DebugUtil\internal\DebugAssert.h">
-      <Filter>src\Debug\internal</Filter>
-    </ClInclude>
-    <ClInclude Include="src\DebugUtil\Assert.h">
-      <Filter>src\Debug</Filter>
-    </ClInclude>
-    <ClInclude Include="src\DebugUtil\Instrumentation.h">
-      <Filter>src\Debug</Filter>
-    </ClInclude>
-    <ClInclude Include="src\DebugUtil\Log.h">
-      <Filter>src\Debug</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drifter\Renderer\RenderCommand.h">
-      <Filter>src\Drifter\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drifter\Renderer\Renderer.h">
-      <Filter>src\Drifter\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drifter\Renderer\Renderer2D.h">
-      <Filter>src\Drifter\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drifter\Graphics\Buffer.h">
-      <Filter>src\Drifter\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drifter\Graphics\VertexArray.h">
-      <Filter>src\Drifter\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drifter\Graphics\GraphicsContext.h">
-      <Filter>src\Drifter\Renderer</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drifter\Camera\Camera.h">
-      <Filter>src\Drifter\Renderer\Cameras</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drifter\Camera\CameraController.h">
-      <Filter>src\Drifter\Renderer\Cameras</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drifter\Graphics\Shader.h">
-      <Filter>src\Drifter\Renderer\Shaders</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drifter\Graphics\ShaderDataType.h">
-      <Filter>src\Drifter\Renderer\Shaders</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drifter\Graphics\Texture.h">
-      <Filter>src\Drifter\Renderer\Shaders</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drifter\Graphics\Uniform.h">
-      <Filter>src\Drifter\Renderer\Shaders</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Drifter\Graphics\GraphicsInterfaces.h" />
-    <ClInclude Include="src\Drifter\Renderer\RendererStatistics.h" />
-    <ClInclude Include="src\Drifter\Graphics\Sprite.h" />
-    <ClInclude Include="src\Platform\OpenGL\Graphics\OpenGLBuffer.h">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\Graphics\OpenGLContext.h">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\Graphics\OpenGLShader.h">
-      <Filter>src\Platform\OpenGL\Renderer\Shaders</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\Graphics\OpenGLTexture.h">
-      <Filter>src\Platform\OpenGL\Renderer\Shaders</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\Graphics\OpenGLUniform.h">
-      <Filter>src\Platform\OpenGL\Renderer\Shaders</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\Camera\OpenGLOrthographicCamera.h">
-      <Filter>src\Platform\OpenGL\Renderer\Cameras</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\Camera\OpenGLPerspectiveCamera.h">
-      <Filter>src\Platform\OpenGL\Renderer\Cameras</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\Renderer\OpenGLRenderCommandParser.h">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Platform\OpenGL\Graphics\OpenGLVertexArray.h">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\vendors\glm\glm\detail\glm.cpp">
@@ -221,8 +236,20 @@
     <ClCompile Include="..\vendors\stb_image\stb_image.cpp">
       <Filter>vendors\stb_image</Filter>
     </ClCompile>
+    <ClCompile Include="src\DebugUtil\Log.cpp">
+      <Filter>src\DebugUtil</Filter>
+    </ClCompile>
     <ClCompile Include="src\Drifter\Application.cpp">
       <Filter>src\Drifter</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drifter\Camera\Camera.cpp">
+      <Filter>src\Drifter\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drifter\Camera\OrthographicCameraController.cpp">
+      <Filter>src\Drifter\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drifter\Camera\PerspectiveCameraController.cpp">
+      <Filter>src\Drifter\Camera</Filter>
     </ClCompile>
     <ClCompile Include="src\Drifter\Core\Time.cpp">
       <Filter>src\Drifter\Core</Filter>
@@ -230,14 +257,65 @@
     <ClCompile Include="src\Drifter\EditorUI\IMGUILayer.cpp">
       <Filter>src\Drifter\EditorUI</Filter>
     </ClCompile>
+    <ClCompile Include="src\Drifter\Graphics\Buffer.cpp">
+      <Filter>src\Drifter\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drifter\Graphics\Shader.cpp">
+      <Filter>src\Drifter\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drifter\Graphics\Texture.cpp">
+      <Filter>src\Drifter\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drifter\Graphics\Uniform.cpp">
+      <Filter>src\Drifter\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drifter\Graphics\VertexArray.cpp">
+      <Filter>src\Drifter\Graphics</Filter>
+    </ClCompile>
     <ClCompile Include="src\Drifter\Layer.cpp">
       <Filter>src\Drifter</Filter>
     </ClCompile>
     <ClCompile Include="src\Drifter\LayerStack.cpp">
       <Filter>src\Drifter</Filter>
     </ClCompile>
+    <ClCompile Include="src\Drifter\Renderer\RenderCommand.cpp">
+      <Filter>src\Drifter\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drifter\Renderer\Renderer.cpp">
+      <Filter>src\Drifter\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Drifter\Renderer\Renderer2D.cpp">
+      <Filter>src\Drifter\Renderer</Filter>
+    </ClCompile>
     <ClCompile Include="src\Drifter\Transform.cpp">
       <Filter>src\Drifter</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\Camera\OpenGLOrthographicCamera.cpp">
+      <Filter>src\Platform\OpenGL\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\Camera\OpenGLPerspectiveCamera.cpp">
+      <Filter>src\Platform\OpenGL\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\Graphics\OpenGLBuffer.cpp">
+      <Filter>src\Platform\OpenGL\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\Graphics\OpenGLContext.cpp">
+      <Filter>src\Platform\OpenGL\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\Graphics\OpenGLShader.cpp">
+      <Filter>src\Platform\OpenGL\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\Graphics\OpenGLTexture.cpp">
+      <Filter>src\Platform\OpenGL\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\Graphics\OpenGLUniform.cpp">
+      <Filter>src\Platform\OpenGL\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\Graphics\OpenGLVertexArray.cpp">
+      <Filter>src\Platform\OpenGL\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Platform\OpenGL\Renderer\OpenGLRenderCommandParser.cpp">
+      <Filter>src\Platform\OpenGL\Renderer</Filter>
     </ClCompile>
     <ClCompile Include="src\Platform\Windows\KeyCodes.cpp">
       <Filter>src\Platform\Windows</Filter>
@@ -256,69 +334,6 @@
     </ClCompile>
     <ClCompile Include="src\dfpch.cpp">
       <Filter>src</Filter>
-    </ClCompile>
-    <ClCompile Include="src\DebugUtil\Log.cpp">
-      <Filter>src\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Drifter\Renderer\RenderCommand.cpp">
-      <Filter>src\Drifter\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Drifter\Renderer\Renderer.cpp">
-      <Filter>src\Drifter\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Drifter\Renderer\Renderer2D.cpp">
-      <Filter>src\Drifter\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Drifter\Graphics\Buffer.cpp">
-      <Filter>src\Drifter\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Drifter\Graphics\VertexArray.cpp">
-      <Filter>src\Drifter\Renderer</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Drifter\Camera\Camera.cpp">
-      <Filter>src\Drifter\Renderer\Cameras</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Drifter\Camera\OrthographicCameraController.cpp">
-      <Filter>src\Drifter\Renderer\Cameras</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Drifter\Camera\PerspectiveCameraController.cpp">
-      <Filter>src\Drifter\Renderer\Cameras</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Drifter\Graphics\Shader.cpp">
-      <Filter>src\Drifter\Renderer\Shaders</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Drifter\Graphics\Texture.cpp">
-      <Filter>src\Drifter\Renderer\Shaders</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Drifter\Graphics\Uniform.cpp">
-      <Filter>src\Drifter\Renderer\Shaders</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\Graphics\OpenGLBuffer.cpp">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\Graphics\OpenGLContext.cpp">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\Graphics\OpenGLShader.cpp">
-      <Filter>src\Platform\OpenGL\Renderer\Shaders</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\Graphics\OpenGLTexture.cpp">
-      <Filter>src\Platform\OpenGL\Renderer\Shaders</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\Graphics\OpenGLUniform.cpp">
-      <Filter>src\Platform\OpenGL\Renderer\Shaders</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\Camera\OpenGLOrthographicCamera.cpp">
-      <Filter>src\Platform\OpenGL\Renderer\Cameras</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\Camera\OpenGLPerspectiveCamera.cpp">
-      <Filter>src\Platform\OpenGL\Renderer\Cameras</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\Renderer\OpenGLRenderCommandParser.cpp">
-      <Filter>src\Platform\OpenGL</Filter>
-    </ClCompile>
-    <ClCompile Include="src\Platform\OpenGL\Graphics\OpenGLVertexArray.cpp">
-      <Filter>src\Platform\OpenGL</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
