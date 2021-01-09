@@ -19,8 +19,8 @@ namespace Drifter {
 	}
 	void LayerStack::PopLayer(Ref<Layer> layer)
 	{
-		auto it = std::find(begin(), layersEnd(), layer);
-		if (it != m_layers.begin() + m_insertOffset   ) {
+		auto it = std::find(begin(),layersEnd(), layer);
+		if (it != layersEnd()) {
 			(*it)->OnDetach();
 			m_layers.erase(it);
 			--m_insertOffset;
