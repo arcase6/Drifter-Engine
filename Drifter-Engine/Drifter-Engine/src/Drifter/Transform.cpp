@@ -3,7 +3,8 @@
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtx/string_cast.hpp"
 
-#include "DebugUtil/Instrumentation.h"
+#include "DebugUtil/Debug.h"
+
 namespace Drifter
 {
 	glm::mat4 RectTransform::GetTransformMatrix() const{

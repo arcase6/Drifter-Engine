@@ -1,9 +1,9 @@
 #pragma once
 
 // For use by Drifter application
-#include "Core.h"
+#include "Drifter/Core/Base.h"
 #include "Drifter/Application.h"
-#include "DebugUtil/Instrumentation.h"
+#include "DebugUtil/Debug.h"
 
 //Layers
 #include "Drifter/Layer.h"

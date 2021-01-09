@@ -1,18 +1,18 @@
 #include "dfpch.h"
-
 #include "Application.h"
-#include "Core.h"
+
 #include "Drifter/Input/Input.h"
+
+#include "Drifter/Core/Base.h"
 #include "Drifter/Core/Time.h"
+#include "Drifter/Core/Format.h"
 
 #include "Drifter/Events/ApplicationEvent.h"
 #include "Drifter/Events/KeyEvent.h"
 #include "Drifter/Events/MouseEvent.h"
 
 #include "Drifter/Renderer/Renderer.h"
-#include "DebugUtil/Instrumentation.h"
-
-#include "spdlog/fmt/bundled/format.h"
+#include "DebugUtil/Debug.h"
 
 namespace Drifter {
 

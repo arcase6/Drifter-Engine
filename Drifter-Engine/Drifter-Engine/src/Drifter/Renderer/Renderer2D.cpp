@@ -6,7 +6,7 @@
 #include "Platform/OpenGL/Graphics/OpenGLShader.h"
 
 #include "glm/gtc/matrix_transform.hpp"
-#include "DebugUtil/Instrumentation.h"
+#include "DebugUtil/Debug.h"
 namespace Drifter {
 
 	struct QuadVertex {

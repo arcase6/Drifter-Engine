@@ -6,7 +6,8 @@
 #include <Platform/OpenGL/Graphics/OpenGLContext.h>
 
 #include "Drifter/Renderer/Renderer.h"
-#include "DebugUtil/Instrumentation.h"
+
+#include "DebugUtil/Debug.h"
 
 namespace Drifter
 {

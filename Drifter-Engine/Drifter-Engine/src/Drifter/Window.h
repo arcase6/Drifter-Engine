@@ -1,7 +1,7 @@
 #pragma once
 #include "dfpch.h"
 
-#include <Core.h>
+#include <Drifter/Core/Base.h>
 #include <Drifter/Events/Event.h>
 #include <Drifter/Graphics/GraphicsContext.h>
 

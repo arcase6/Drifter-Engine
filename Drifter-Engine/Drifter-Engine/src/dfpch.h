@@ -1,7 +1,5 @@
 #pragma once
 
-#include <Core.h>
-
 //utility
 #include <iostream>
 #include <memory>
