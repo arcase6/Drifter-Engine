@@ -1,5 +1,5 @@
 workspace "Drifter-Engine"
-	architecture "x64"
+	architecture "x86_64"
 	startproject "Sandbox"
 
 	configurations
@@ -7,6 +7,11 @@ workspace "Drifter-Engine"
 		"Debug",
 		"Release",
 		"Dist"
+	}
+
+	flags
+	{
+		"MultiProcessorCompile"
 	}
 
 	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
@@ -18,18 +23,25 @@ workspace "Drifter-Engine"
 	IncludeDir["glm"] = "vendors/glm"
 	IncludeDir["stb_image"] = "vendors/stb_image"
 
+group "Dependencies"
 	include "/vendors/glfw"
 	include "/vendors/glad"
 	include "/vendors/imgui"
+
+group ""
 
 project "Drifter-Engine"
 	location "Drifter-Engine"
 	kind "StaticLib"
 	language "C++"
+	cppdialect "C++17"
 	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	pchheader "dfpch.h"
+	pchsource "%{prj.name}/src/dfpch.cpp"
 	
 	files
 	{
@@ -41,7 +53,8 @@ project "Drifter-Engine"
 	}
 
 	defines{
-		"_CRT_SECURE_NO_WARNINGS"
+		"_CRT_SECURE_NO_WARNINGS",
+		"GLFW_INCLUDE_NONE"
 	}
 
 	includedirs{
@@ -62,25 +75,15 @@ project "Drifter-Engine"
 	}
 
 	filter "system:windows"
-		cppdialect "C++17"
 		systemversion "latest"
 
 		defines{
 			"DF_CORE",
-			"DF_PLATFORM_WINDOWS",
-			"DRIFTER_BUILD_DLL"
-		}
-
-		postbuildcommands
-		{
-			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox/\"")
+			"DF_PLATFORM_WINDOWS"
 		}
 
 	filter "configurations:Debug"
-		defines {
-			"DF_DEBUG",
-			"DF_ENABLE_ASSERTS"
-		}
+		defines "DF_DEBUG"
 		runtime "Debug"
 		symbols "on"
 
@@ -98,6 +101,7 @@ project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	cppdialect "C++17"
 	staticruntime "on"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}")
@@ -129,6 +133,9 @@ project "Sandbox"
 			"DF_CLIENT",
 			"DF_PLATFORM_WINDOWS"
 		}
+	
+	filter "system:windows"
+		systemversion "latest"
 
 	filter "configurations:Debug"
 		defines "DF_DEBUG"

@@ -1,3 +1,4 @@
+#include "dfpch.h"
 #include "RenderCommand.h"
 
 #include "Platform/OpenGL/Renderer/OpenGLRenderCommandParser.h"
