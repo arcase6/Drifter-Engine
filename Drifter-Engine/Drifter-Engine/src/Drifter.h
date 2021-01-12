@@ -29,3 +29,7 @@
 #include "Drifter/Graphics/Texture.h"
 #include "Drifter/Camera/Camera.h"
 #include "Drifter/Renderer/Renderer.h"
+
+//Graphics Classes
+#include "Drifter/Graphics/Sprite.h"
+#include "Drifter/Graphics/TextureAtlas.h"

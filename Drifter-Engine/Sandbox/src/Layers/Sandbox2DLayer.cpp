@@ -93,26 +93,26 @@ namespace Sandbox {
 
 	void Sandbox2DLayer::OnUpdate()
 	{
-		PROFILE_FUNCTION();
 		using namespace Drifter;
+		PROFILE_FUNCTION();
 		//move camera here
 		{
 			m_CameraController->OnUpdate();
 		}
 
 		Renderer2D::BeginScene(*m_Camera);
-		DrawGrid();
+		//DrawGrid();
+		DrawSpriteAtlas();
 		Renderer2D::EndScene();
 
 	}
 
 	void Sandbox2DLayer::DrawGrid()
 	{
+		using namespace Drifter;
+		PROFILE_FUNCTION();
 
 		Drifter::Sprite sprite{ m_MainTex, {m_Tiling, m_Offset}, m_Tint };
-		PROFILE_FUNCTION();
-		using namespace Drifter;
-		m_MainTex->Bind(0);
 		RectTransform transform({ 0,0 }, m_Size, m_Rotation, m_Pivot);
 		for (int r = 0; r < m_GridSize.x; r++) {
 			for (int c = 0; c < m_GridSize.y; c++) {
@@ -122,6 +122,20 @@ namespace Sandbox {
 		}
 	}
 
+	void Sandbox2DLayer::DrawSpriteAtlas() {
+		using namespace Drifter;
+		PROFILE_FUNCTION();
+
+		glm::ivec2 dim = m_Atlas->GetSpriteDimensions();
+		RectTransform transform({ 0,0 }, m_Size, m_Rotation, m_Pivot);
+		for (int y = 0; y < dim.y; ++y) {
+			for (int x = 0; x < dim.x; ++x) {
+				transform.SetPosition({ m_Size.x * 1.1f * x, m_Size.y * 1.1f * y , 0 });
+				auto& sprite = m_Atlas->GetSprite({ x,y });
+				Renderer2D::DrawSprite(transform, sprite);
+			}
+		}
+	}
 	void Sandbox2DLayer::OnEvent(Drifter::Event& e)
 	{
 		m_CameraController->OnEvent(e);

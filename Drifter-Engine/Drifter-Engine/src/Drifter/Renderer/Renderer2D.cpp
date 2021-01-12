@@ -156,20 +156,20 @@ namespace Drifter {
 	}
 
 	void Renderer2D::DrawSprite(const RectTransform& transform, const Sprite& sprite) {
-		DrawQuad(transform, sprite.tint, sprite.texture, sprite.textureCoordinates);
+		DrawQuad(transform, sprite.Tint, sprite.Texture, sprite.TilingAndOffset);
 	}
 	
 	uint32_t GetTextureSlot(const Ref<Texture2D> texture);
 
 
-	void Renderer2D::DrawQuad(const RectTransform& transform, const glm::vec4& tint, const Ref<Texture2D> texture, const glm::vec4& textureCoordinates) {
+	void Renderer2D::DrawQuad(const RectTransform& transform, const glm::vec4& tint, const Ref<Texture2D> texture, const glm::vec4& tilingAndOffset) {
 		PROFILE_RENDERER_FUNCTION();
 		static const glm::mat4 quad =  glm::mat4(glm::vec4(0.0, 0.0, 0.0, 1.0f), glm::vec4(0.0, -1.0, 0.0, 1.0f), glm::vec4(1.0, 0.0, 0.0, 1.0f), glm::vec4(1.0, -1.0, 0.0, 1.0f));
 		
 		glm::vec2 uvs[4] = { glm::vec2(0.0f, 1.0f),                 glm::vec2(0.0f, 0.0f),           glm::vec2(1.0f, 1.0f),          glm::vec2(1.0f, 0.0f), };
 		for(auto& uv : uvs) {
-			uv *= textureCoordinates.xy();
-			uv += textureCoordinates.zw();
+			uv *= tilingAndOffset.xy();
+			uv += tilingAndOffset.zw();
 		}
 
 

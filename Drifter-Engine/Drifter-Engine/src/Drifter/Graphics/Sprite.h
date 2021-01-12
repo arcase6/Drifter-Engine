@@ -3,9 +3,11 @@
 #include "Drifter/Graphics/Texture.h"
 
 namespace Drifter {
-	struct Sprite {
-		Ref<Texture2D> texture;
-		glm::vec4 textureCoordinates;
-		glm::vec4 tint;
+	class Sprite {
+	public:
+		Ref<Texture2D> Texture;
+		//Tiling is xy, Offset is zw
+		glm::vec4 TilingAndOffset = glm::vec4(1.0f, 1.0f, 0.0f, 0.0f);
+		glm::vec4 Tint = glm::vec4(1.0f);
 	};
 }
