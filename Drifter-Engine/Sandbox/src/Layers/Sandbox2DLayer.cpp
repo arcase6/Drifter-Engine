@@ -91,6 +91,48 @@ namespace Sandbox {
 		}
 	}
 
+	void Sandbox2DLayer::SetupTilemap() {
+		auto spriteSheet = Drifter::Texture2D::Create("./assets/textures/mapPack_tilesheet.png");
+		m_Atlas = Drifter::CreateRef<Drifter::UniformTextureAtlas>(spriteSheet, glm::ivec2(64));
+
+		const char* tilemapData =
+			"ggggssssss"
+			"ddddddssss"
+			"ggggsddddd"
+			"ggggsdssss"
+			"ggggsdssss"
+			"ggggsdssss"
+			"ggggsdssss"
+			"ggggsdssss"
+			"ggggsdssss"
+			"ggggsdssss";
+		
+			m_Tilemap = Drifter::CreateRef<Drifter::Tilemap>(tilemapData, 10);
+			m_Tilemap->SetRule('d', m_Atlas->GetSprite({ 6, 6 }));
+			m_Tilemap->SetRule('s', m_Atlas->GetSprite({ 11, 6 }));
+			m_Tilemap->SetRule('g', m_Atlas->GetSprite({ 6, 10 }));
+
+			tilemapData =
+				"xxxxxxxxxx"
+				"xxexxxxrxr"
+				"xttxxxxxxx"
+				"xttxxpcxxx"
+				"xxxxxxxxcx"
+				"rxxxxxcxxx"
+				"xrxxxxrxxx"
+				"xtxxxxxxxx"
+				"xtxxxxxxrx"
+				"xxxxxxxxxx";
+
+			m_TilemapOverlay = Drifter::CreateRef<Drifter::Tilemap>(tilemapData, 10);
+			m_TilemapOverlay->SetRule('p', m_Atlas->GetSprite({ 15, 1 }));
+			m_TilemapOverlay->SetRule('e', m_Atlas->GetSprite({ 16, 2 }));
+			m_TilemapOverlay->SetRule('t', m_Atlas->GetSprite({ 9, 4 }));
+			m_TilemapOverlay->SetRule('r', m_Atlas->GetSprite({ 8, 9 }));
+			m_TilemapOverlay->SetRule('c', m_Atlas->GetSprite({ 4, 9 }));
+
+	}
+
 	void Sandbox2DLayer::OnUpdate()
 	{
 		using namespace Drifter;
@@ -102,7 +144,9 @@ namespace Sandbox {
 
 		Renderer2D::BeginScene(*m_Camera);
 		//DrawGrid();
-		DrawSpriteAtlas();
+		m_Tilemap->Draw();
+		m_TilemapOverlay->Draw(1.0f);
+		//DrawSpriteAtlas();
 		Renderer2D::EndScene();
 
 	}

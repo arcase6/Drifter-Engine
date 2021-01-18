@@ -20,14 +20,15 @@ namespace Sandbox{
 			//m_MainTex = Drifter::Texture2D::Create("./assets/textures/Checkerboard.png");
 			m_MainTex = Drifter::Texture2D::Create("./assets/textures/Spiral.png");
 			SetupCameras();
-			auto spriteSheet = Drifter::Texture2D::Create("./assets/textures/mapPack_tilesheet.png");
-			m_Atlas = Drifter::CreateRef<Drifter::UniformTextureAtlas>(spriteSheet, glm::ivec2(64));
+			SetupTilemap();
 		}
 		
 	private:
 		void SetupCameras();
+		void SetupTilemap();
 		void DrawGrid();
 		void DrawSpriteAtlas();
+		void DrawTilemap();
 		void DrawImguiProfiling();
 	private:
 
@@ -48,6 +49,8 @@ namespace Sandbox{
 		glm::vec2 m_Offset{ 0.0f, 0.0f };
 
 		Drifter::Ref<Drifter::UniformTextureAtlas> m_Atlas;
+		Drifter::Ref<Drifter::Tilemap> m_Tilemap;
+		Drifter::Ref<Drifter::Tilemap> m_TilemapOverlay;
 
 	};
 }

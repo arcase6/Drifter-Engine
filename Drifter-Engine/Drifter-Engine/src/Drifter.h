@@ -33,3 +33,4 @@
 //Graphics Classes
 #include "Drifter/Graphics/Sprite.h"
 #include "Drifter/Graphics/TextureAtlas.h"
+#include "Drifter/Graphics/Tilemap.h"
